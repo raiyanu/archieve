@@ -1,0 +1,8 @@
+USER_NAME	score
+jaws 12
+safwan 3
+ray 88
+ray 1
+jaws javid 1
+ray roy 1
+ray 1
