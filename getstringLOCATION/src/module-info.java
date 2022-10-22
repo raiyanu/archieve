@@ -1,0 +1,9 @@
+/**
+ * 
+ */
+/**
+ * @author ray
+ *
+ */
+module getstringLOCATION {
+}
