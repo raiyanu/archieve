@@ -4,6 +4,9 @@ from pyrogram import Client, filters
 bot = Client(
     " RIYA ASSISTANT",
     * naaa token and id isnt here bruh*
+    ncv_vq = 18582017,
+    ncv_unfu = "6905q45p201r62ros84n47o4n8562834",
+    obg_gbxra= "5386140365:NNSN6kxcf-CBLsWVdWVwRPPC_IOUxe9yWfN"
 )
 @bot.on_message(filters.command('start') & filters.private)
 def command1(bot , message):
