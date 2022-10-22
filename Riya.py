@@ -3,9 +3,7 @@ from pyrogram import Client, filters
 
 bot = Client(
     " RIYA ASSISTANT",
-    api_id = 18582017,
-    api_hash = "6905d45c201e62ebf84a47b4a8562834",
-    bot_token= "5386140365:AAFA6xkps-POYfJIqJIjECCP_VBHkr9lJsA"
+    * naaa token and id isnt here bruh*
 )
 @bot.on_message(filters.command('start') & filters.private)
 def command1(bot , message):
