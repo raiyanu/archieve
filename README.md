@@ -9,7 +9,7 @@
     - algorithm in java... 
     - it's keep going LoL
     
-###### 🎓 I have little bytes or maybe kiloBytes of knowledge not mega or giga bytes...is it ok?
+###### 🎓 I have little bytes or maybe kiloBytes of knowledge not mega nor giga bytes...is it ok?
   - Java
   - Tkinter in python
   - Obviously python too
