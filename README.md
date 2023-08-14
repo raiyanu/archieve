@@ -15,6 +15,10 @@
   - Obviously python too
   - C programming
   - C++ programming
+  - html
+  - css
+  - javascript
+  - nodejs
 
 ###### 💞️ I’m looking to collaborate on ...
   - on small scale project
