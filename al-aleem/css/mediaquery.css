@@ -110,6 +110,7 @@
 
     .footer-container {
         display: grid;
+        align-items: center;
         grid-template-areas:
             'brand'
             'off'
@@ -143,7 +144,7 @@
 @media (max-width: 750px) {
     .slide-container{
         /* @todo */
-
+        /* background: none; */
     }
 }
 @media (max-width: 400px) {
