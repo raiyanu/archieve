@@ -29,10 +29,11 @@ This project is built using the MERN (MongoDB, Express, React, Node.js) stack. C
 ## Getting Started  
 ### Prerequisites  
 Before you get started, ensure you have the following installed:  
-- [Node.js](https://nodejs.org/) - [Express.js](https://expressjs.com/)  ### Installation  
+- [Node.js](https://nodejs.org/) - [Express.js](https://expressjs.com/)
+### Installation  
 1. Clone this repository:     
 ```shell    
-git clone https://github.com/your-username/todo-app.git
+git clone https://github.com/RaiyanAhmed-RK/todo.git
 ```
 2.  Navigate to the project directory:
 ```shell cd todo-app```
