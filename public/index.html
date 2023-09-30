@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO | Home</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <h1>TODO</h1>
+    <div class="box">
+        <input id="task-title" type="text">
+        <button id="add_task" onclick="add_task()"> Add</button>
+        <div class="tasklist">
+            <ul id="tasklist" style="
+                display: flex; 
+                flex-direction: column; 
+                gap: 5px;">
+                <li style="color: rgba(0, 0, 0,.7);">
+                    As you add your own task this will disappear
+                </li>
+                <li>
+                    <p style="color: rgb(0, 0, 0,.2);"><span style="color: rgb(0, 0, 0,.4);">Example:</span> buy 2
+                        spoonge</p>
+                </li>
+                <li>
+                    <p style="color: rgb(0, 0, 0,.2);"><span style="color: rgb(0, 0, 0,.4);">Example:</span> get rubber
+                        band</p>
+                </li>
+                <li>
+                    <p style="color: rgb(0, 0, 0,.2);"><span style="color: rgb(0, 0, 0,.4);">Example:</span> steal a
+                        big glass</p>
+                </li>
+                <li>
+                    <p style="color: rgb(0, 0, 0,.2);"><span style="color: rgb(0, 0, 0,.4);">Example:</span> snatch
+                        baloon</p>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+    <script>
+        const input = document.getElementById('task-title');
+        const list = document.getElementById('tasklist');
+        function add_task() {
+            task = input.value;
+            fetch('/add', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json',
+                },
+                body: JSON.stringify({ task })
+            })
+                .then((response) => response.json())
+                .then((data) => refresh(data));
+        }
+        function refresh(data) {
+            while (list.firstChild) {
+                list.removeChild(list.firstChild);
+            }
+            data.forEach(key => {
+                listy = document.createElement('li');
+                listy.textContent = key.task;
+                console.log('data :', key.task)
+                list.appendChild(listy);
+            });
+        }
+    </script>
+</body>
+
+</html>

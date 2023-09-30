@@ -1,0 +1,130 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    list-style-type: none;
+    text-decoration: none;
+    font-weight: 600;
+}
+:root{
+    --col-1: #FFF2D8;
+    --col-2: #FFF2D8;
+    --col-3: #BCA37F;
+    --col-4: #113946;
+}
+h1{
+    color: var(--col-1);
+    text-shadow: 2px 2px 5px  rgba(226, 208, 184,0.4);
+    font-weight: 900;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+body{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--col-4);
+    flex-direction: column; 
+}
+.box{
+    height: 450px;
+    width: 300px;
+    border-radius: .5rem;
+    border: 1px soldi white ;
+    padding: 10px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 15px 1px;
+    background: var(--col-2);
+    display: grid;
+    grid-template-areas: 
+        'inputy inputy inputy inputy inputy adder'
+        'listy listy listy listy listy listy'
+        'listy listy listy listy listy listy'
+        'listy listy listy listy listy listy'
+        'listy listy listy listy listy listy'
+        'listy listy listy listy listy listy'
+        'listy listy listy listy listy listy'
+        'listy listy listy listy listy listy'
+        'listy listy listy listy listy listy'
+        'listy listy listy listy listy listy'
+        'listy listy listy listy listy listy'
+        'listy listy listy listy listy listy'
+        'listy listy listy listy listy listy'
+        'listy listy listy listy listy listy'
+        'listy listy listy listy listy listy'
+        'listy listy listy listy listy listy'
+        'listy listy listy listy listy listy'
+    ;
+}
+#task-title{
+    background-color: var(--col-3);
+    color: var(--col-4);
+    font-weight: 900;
+    height: 30px;
+    border-radius: .5rem;
+    width: 200px;
+    grid-area: inputy;
+    border-style: none;
+    padding: 5px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 15px 1px;
+}
+#task-title:focus{
+    background-color: var(--col-3);
+    color: var(--col-4);
+    font-weight: 900;
+    height: 30px;
+    border-radius: .5rem;
+    width: 200px;
+    grid-area: inputy;
+    border-style: none;
+    padding: 5px;
+    border-style: none;
+}
+
+#add_task{
+    grid-area: adder;
+    background: var(--col-4);
+    padding: 5px 10px;
+    height: 30px;
+    width: 70px;
+    border-radius: .3rem;
+    border-style: none;
+    color: var(--col-1);
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 15px 1px;
+}
+.tasklist{
+    border-radius: .5rem;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 15px 1px;
+    padding: .5rem;
+    grid-area: listy;
+    background-color: var(--col-3);
+}
+.tasklist li{
+    display: flex;
+    align-items: center;
+    background-color: var(--col-1);
+    padding: 5px 10px 5px 1px;
+    width: auto;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 21px 5px;
+}
+.tasklist li::before{
+    content: '';
+    display: block;
+    height: 15px;
+    width: 15px;
+    background: var(--col-4);
+    margin: auto 5px;
+    border-radius: 50%;
+}
+.tasklist li::before::before{
+    content: '';
+    display: block;
+    height: 5px;
+    width: 5px;
+    background: var(--col-2);
+    margin: auto 5px;
+    border-radius: 50%;
+}
