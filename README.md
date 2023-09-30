@@ -29,7 +29,7 @@ This project is built using the MERN (MongoDB, Express, React, Node.js) stack. C
 ## Getting Started  
 ### Prerequisites  
 Before you get started, ensure you have the following installed:  
-- [Node.js](https://nodejs.org/) - [Express.js](https://expressjs.com/)
+- [Node.js](https://nodejs.org/) - [Express.js](https://expressjs.com/) - [bun](https://bun.sh)
 ### Installation  
 1. Clone this repository:     
 ```shell    
