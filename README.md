@@ -29,7 +29,7 @@
 ###### 📫 How to reach me ...
   - linkedln : C Raiyan Ahmed 
   - what's app & Telegram : +917339677034
-  - Email : raiyan.c.me@outlook.com
+  - Email : raiyan.c.me@gmail.com
   - Discord : Ray Forever K #7107
   - Github : OFCOURSE YOU ARE HERE SO YOU KNOW!
   - CODmobile : ray_forever_rk , uid: 6744218458122616833
