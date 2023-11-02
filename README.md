@@ -1,0 +1,9 @@
+# netflix-clone
+Deployment Status: [![Netlify Status](https://api.netlify.com/api/v1/badges/f0b70036-ad3c-402a-8cc5-51108625fd68/deploy-status)](https://app.netlify.com/sites/r-netflix-clone-1/deploys)
+
+Link: https://r-netflix-clone-1.netlify.app
+
+**Progress:**
+- hero page : complete
+- hero page responsive-ness: not started
+- showcase section : under progress
