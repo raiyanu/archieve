@@ -4,6 +4,12 @@ Deployment Status: [![Netlify Status](https://api.netlify.com/api/v1/badges/f0b7
 Link: https://r-netflix-clone-1.netlify.app
 
 **Progress:**
-- hero page : complete
+- navbar : completed
+- hero page : completed
+- showcase section : completed
+- Accordian (JS) : completed
+- footer : completed
+
 - hero page responsive-ness: not started
-- showcase section : under progress
+
+progress % : **75%**
