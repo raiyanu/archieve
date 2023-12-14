@@ -1,55 +1,64 @@
-*{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    color: white;
-    /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: white;
+  /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
-body{
-    width: 100%;
-    background-color: black;
-    scroll-behavior: smooth;
+body {
+  width: 100%;
+  background-color: black;
+  scroll-behavior: smooth;
 }
-.flex{
-    display: flex;
+.flex {
+  display: flex;
 }
-.center{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* navbar */
-nav{
-    position: absolute;
-    padding: 1rem;
+nav {
+  position: absolute;
+  padding: 1rem;
+  width: 100%;
+  z-index: 999;
+}
+.logo svg {
+  height: 2rem;
+}
+.nav-container {
+  width: calc(85% - 6rem);
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+@media (width<=700px) {
+  .nav-container {
+    padding: 1rem 2rem 1rem 2rem;
     width: 100%;
-    z-index: 999;
+  }
 }
-.logo svg{
-    height: 2rem;
+.option {
+  display: flex;
+  gap: 15px;
 }
-.nav-container{
-    width: calc(85% - 6rem);
-    justify-content: space-between;
+.option select {
+  border: 1px solid white;
+  padding: 3px 5px;
+  border-radius: 5px;
+  background-color: transparent;
 }
-.option{
-    display: flex;
-    gap: 15px;
-}
-.option select{
-    border: 1px solid white;
-    padding: 3px 5px;
-    border-radius: 5px;
-    background-color: transparent;
-}
-.signup{
-    background-color: red;
-    padding: 5px 7px;
-    border: none;
-    font-size: 1rem;
-    border-radius: 4px;
+.signup {
+  background-color: red;
+  padding: 5px 7px;
+  border: none;
+  font-size: 1rem;
+  border-radius: 4px;
 }
 
 /* hero section */

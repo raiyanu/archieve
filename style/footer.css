@@ -6,11 +6,14 @@ li{
 }
 footer{
     padding: 5rem;
-    background-color: rgba(128, 128, 128, 0.24);
+    background-color: black;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 400;
 }
 .footer-container h5{
+    color: rgba(255, 255, 255, 0.7);
     font-size: 20px;
-    font-weight: 100;
+    font-weight: 300;
 }
 .footer-container{
     width: 70%;
@@ -34,10 +37,29 @@ footer{
     gap: 1rem;
 }
 .footer-option ul li a{
+    color: rgba(255, 255, 255, 0.7);
     font-size: 16px;
-    font-weight: 100;
+    font-weight: 400;
 }
 .footer-container span{
     margin-top: 1.5rem;
     font-size: 16px;
+}
+@media (width<=750px) {
+    footer{
+        padding: 2rem .5rem;
+        width: 100%;
+    }
+    .footer-option{
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    .footer-option ul{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+    .footer-container{
+        width: 95%;
+    }
 }

@@ -52,7 +52,7 @@
 }
 .getstarted{
     display: flex;
-    align-items: c;
+    align-items: center;
     gap: .9rem;
 }
 .getstarted input{
@@ -75,4 +75,33 @@
     align-items: center;
     justify-content: center;
     font-size: 1.3rem;
+    flex-grow: 0;
+}
+@media (width <=750px) {
+    .getstarted{
+        flex-direction: column;
+        max-width: 100%;
+    }
+    .hero-container h1{
+        font-size: 32px;
+        text-align: center;
+    }
+    .hero-container p{
+        text-align: center;
+        font-size: 18px;
+        font-weight: 18px;
+    }
+    .hero{
+        min-height: 90vh;
+        min-height: 90dvh;
+    }
+    .subscribe{
+        max-width: 95%;
+    }
+    .getstarted input{
+        max-width: 100%;
+    }
+    .hero-container {
+        width: 100%;
+    }
 }

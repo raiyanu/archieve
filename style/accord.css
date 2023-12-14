@@ -59,3 +59,16 @@
 .view {
     display: block;
 }
+.subscribe{
+    margin-top: 1rem;
+}
+
+@media (width<=800px) {
+    .accordian-item{
+        width: calc(100% - 1rem) !important;
+    }
+    .accordian-item h1{
+        font-size: 1.2rem;
+        font-weight: 400;
+    }
+}
