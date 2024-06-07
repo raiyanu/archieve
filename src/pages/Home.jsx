@@ -4,6 +4,7 @@ import MainLayout from "../layouts/MainLayout";
 import HeroSection from "../Components/HeroSection";
 import Brands from "../Components/Brands";
 import AboutMe from "../Components/AboutMe";
+import Footer from "../Components/Footer";
 document.getElementsByTagName("title")[0].text = " RayDev | Home ";
 
 function Home() {
@@ -12,8 +13,9 @@ function Home() {
       <MainLayout>
         <Navbar />
         <HeroSection />
-        <Brands />
+        {/* <Brands /> */}
         <AboutMe />
+        <Footer />
       </MainLayout>
     </>
   );

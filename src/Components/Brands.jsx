@@ -4,7 +4,7 @@ const Brands = () => {
   const deg = 12;
   const style = {
     icon:
-      "h-[100px] rotate-[-12deg]  text-[darkslategrey] inline aspect-square ml-12" +
+      "h-[100px] rotate-[-12deg]  text-[darkslategrey] inline aspect-square ml-12 cursor-pointer" +
       " " +
       `rotate-[${"-" + deg.toString() + "deg"}]`,
   };

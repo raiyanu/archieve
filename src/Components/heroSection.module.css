@@ -34,6 +34,13 @@
     color: darkslategray;
 }
 
+.introText p {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.685);
+    margin-top: 1rem;
+}
+
 .introAction {
     display: flex;
     align-items: center;
