@@ -1,10 +1,14 @@
 import './App.css'
+import Card from './components/Card'
+import ThemeContextProvider  from './components/ThemeContext';
 
-function App() {
-
+function App(){
   return (
     <>
-    <h1>hey there</h1>
+    <ThemeContextProvider >
+    <h1 className='text-center text-2xl text-blue-400 m-6'>Test on useContext providers</h1>
+    <Card/>
+    </ThemeContextProvider>
     </>
   )
 }
