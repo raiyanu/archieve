@@ -11,8 +11,8 @@ import {
   Listbox,
   ListboxItem,
 } from "@nextui-org/react";
-import store from "./store";
-import { bugAdded, bugRemoved, bugResolved } from "./actions";
+import store from "./store/store";
+import { bugAdded, bugRemoved, bugResolved } from "./store/actions";
 
 function App() {
   const [isFollowed, setIsFollowed] = useState(false);
