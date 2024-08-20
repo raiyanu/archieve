@@ -12,58 +12,47 @@ import {
   ListboxItem,
 } from "@nextui-org/react";
 import store from "./store/store";
-import { bugAdded, bugRemoved, bugResolved } from "./store/actions";
+import {
+  bugAdded,
+  bugRemoved,
+  bugResolved,
+  getAllBugs /** not used - TODO: remove */,
+} from "./store/reducer";
 
 function App() {
   const [isFollowed, setIsFollowed] = useState(false);
   const [bugs, setBugs] = useState([]);
   const [bugComment, setBugComment] = useState("");
   store.subscribe(() => {
-    setBugs(store.getState());
+    updateBugs();
   });
-  useEffect(() => {
-    // console.clear();
-    console.log(store.getState());
-    console.log(store);
-    setBugs(store.getState());
+  const updateBugs = () => {
+    setBugs(store.getState().bugs);
+  };
+  // useEffect(() => {
+  //   // console.clear();
+  //   console.log(store.getState());
+  //   console.log(store);
 
-    // console.log(store.getState());
-  }, []);
-  const addBug = (desc) => {
+  //   // console.log(store.getState());
+  // }, []);
+  const addBug = (description) => {
     const doo = async () => {
-      store.dispatch(bugAdded(desc));
-      setBugs(store.getState());
+      store.dispatch(bugAdded({ description }));
     };
-    const unsubscribe = store.subscribe(() => {
-      setBugs(store.getState());
-    });
     doo();
-    unsubscribe();
   };
   const removeBug = (id) => {
-    console.log(id);
-
     const doo = async () => {
-      store.dispatch(bugRemoved(id));
-      setBugs(store.getState());
+      store.dispatch(bugRemoved({ id }));
     };
-    const unsubscribe = store.subscribe(() => {
-      setBugs(store.getState());
-    });
     doo();
-    unsubscribe();
   };
   const resolveBug = (id) => {
-    console.log(id);
     const doo = async () => {
-      store.dispatch(bugResolved(id));
-      setBugs(store.getState());
+      store.dispatch(bugResolved({ id }));
     };
-    const unsubscribe = store.subscribe(() => {
-      setBugs(store.getState());
-    });
     doo();
-    unsubscribe();
   };
 
   return (
@@ -97,11 +86,13 @@ function App() {
             aria-label="Actions"
             className="py-3 min-h-56 max-h-56 overflow-y-scroll"
           >
-            {store.getState().map((bug, index) => (
+            {bugs.map((bug, index) => (
               <ListboxItem
                 key={`key-${index}`}
                 onDoubleClick={() => removeBug(bug.id)}
-                onClick={() => resolveBug(bug.id)}
+                onClick={() => {
+                  if (!bug.resolved) resolveBug(bug.id);
+                }}
                 textValue={`${index + 1}. ${bug.description}`}
                 className={`*:flex *:items-center *:justify-between`}
               >

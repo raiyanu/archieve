@@ -1,21 +1,6 @@
+import { createAction, createReducer } from "@reduxjs/toolkit";
 import * as ActionTypes from "./actionTypes";
 
-export const bugAdded = (desc) => ({
-  type: ActionTypes.ADDED_BUG,
-  payload: {
-    description: desc,
-  },
-});
-export const bugRemoved = (id) => ({
-  type: ActionTypes.REMOVED_BUG,
-  payload: {
-    id: id,
-  },
-});
-
-export const bugResolved = (id) => ({
-  type: ActionTypes.RESOLVED_BUG,
-  payload: {
-    id: id,
-  },
-});
+export const bugAdded = createAction(actionTypes.ADDED_BUG);
+export const bugRemoved = createAction(actionTypes.REMOVED_BUG);
+export const bugResolved = createAction(actionTypes.RESOLVED_BUG);
