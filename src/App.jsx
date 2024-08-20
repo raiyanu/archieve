@@ -78,6 +78,12 @@ function App() {
               size="sm"
               value={bugComment}
               onChange={(e) => setBugComment(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" && bugComment.length > 4) {
+                  addBug(bugComment);
+                  setBugComment("");
+                }
+              }}
             />{" "}
             <Button
               color="primary"
@@ -97,9 +103,18 @@ function App() {
                 onDoubleClick={() => removeBug(bug.id)}
                 onClick={() => resolveBug(bug.id)}
                 textValue={`${index + 1}. ${bug.description}`}
-                className={`${bug.resolved ? "bg-green-100" : "bg-red-100"}`}
+                className={`*:flex *:items-center *:justify-between`}
               >
-                {index + 1}. {bug.description}
+                <span>
+                  {index + 1}. {bug.description}
+                </span>
+                <span
+                  className={` h-5 w-5 inline-block rounded-full ${
+                    bug.resolved ? "bg-green-400" : "bg-red-200"
+                  }`}
+                >
+                  {" "}
+                </span>
               </ListboxItem>
             ))}
           </Listbox>
