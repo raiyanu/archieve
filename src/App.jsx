@@ -18,6 +18,7 @@ import {
   bugResolved,
   getAllBugs /** not used - TODO: remove */,
 } from "./store/reducer";
+import * as apiActions from "./store/apiAction";
 
 function App() {
   const [isFollowed, setIsFollowed] = useState(false);
@@ -29,13 +30,19 @@ function App() {
   const updateBugs = () => {
     setBugs(store.getState().bugs);
   };
-  // useEffect(() => {
-  //   // console.clear();
-  //   console.log(store.getState());
-  //   console.log(store);
-
-  //   // console.log(store.getState());
-  // }, []);
+  useEffect(() => {
+    const doo = async () => {
+      store.dispatch(
+        apiActions.apiCallBegan({
+          url: "/api/bugs",
+          method: "get",
+          data: {},
+          onSucces:"api/CallSuccess"
+        })
+      );
+    };
+    doo();
+  }, []);
   const addBug = (description) => {
     const doo = async () => {
       store.dispatch(bugAdded({ description }));
