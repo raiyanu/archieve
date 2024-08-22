@@ -1,6 +1,5 @@
 {
 	"name": "bugs-backend",
-	"packageManager": "yarn@4.4.0",
 	"scripts": {
 		"start": "node index.js"
 	},

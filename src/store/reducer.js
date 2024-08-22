@@ -1,29 +1,54 @@
 import * as ActionTypes from "./actionTypes";
 import { combineReducers, createReducer, createSlice } from "@reduxjs/toolkit";
 import { createSelector } from "reselect";
-let lastId = 0;
+import * as apiAction from "./apiAction";
+let lastId = 2;
 
 const bugSlice = createSlice({
   name: "bugs",
-  initialState: [],
+  initialState: {
+    list: [
+      {
+        id: 1,
+        description: "default here",
+        resolved: false,
+      },
+      {
+        id: 2,
+        description: "default here 2",
+        resolved: true,
+      },
+    ],
+    isloading: false,
+  },
   reducers: {
     bugAdded: (bugs, action) => {
       if (action.payload.description.length < 5) {
         return bugs;
       }
-      bugs.push({
+      bugs.list.push({
         id: ++lastId,
         description: action.payload.description,
         resolved: false,
       });
     },
     bugRemoved: (bugs, action) => {
-      return bugs.filter((bug) => bug.id !== action.payload.id);
+      bugs.list = bugs.list.filter((bug) => bug.id !== action.payload.id);
     },
     bugResolved: (bugs, action) => {
-      return bugs.map((bug) =>
+      bugs.list = bugs.list.map((bug) =>
         bug.id === action.payload.id ? { ...bug, resolved: true } : bug
       );
+    },
+    bugsRecived: (bugs, action) => {
+      console.log("pushing bug in bugs");
+      action.payload.forEach((bug) => {
+        bugs.list.push(bug);
+      });
+      bugs.isloading = false;
+    },
+    bugRequested: (bugs, action) => {
+      bugs.isloading = true;
     },
   },
 });
@@ -36,7 +61,9 @@ const reducer = combineReducers({
 });
 
 export default reducer;
-export const { bugAdded, bugRemoved, bugResolved } = bugSlice.actions;
+
+export const { bugAdded, bugRemoved, bugResolved, bugsRecived, bugRequested } =
+  bugSlice.actions;
 
 export const getAllBugs = (store) =>
   createSelector(
