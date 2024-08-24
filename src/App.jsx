@@ -28,6 +28,11 @@ function App() {
       store.dispatch(
         apiActions.loadBugs()
       );
+      // setInterval(() => {
+      //   store.dispatch(
+      //     apiActions.loadBugs()
+      //   )
+      // }, 1000);
       window.store = store;
     };
     console.log(

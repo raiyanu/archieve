@@ -16,10 +16,6 @@ const api = (store) => (next) => async (action) => {
       data,
     });
     // General handler for onSuccess
-    store.dispatch({
-      type: apiActions.apiCallSuccess.type,
-      payload: response.data,
-    });
     if (onSuccess) store.dispatch({ type: onSuccess, payload: response.data });
     store.dispatch({
       type: apiActions.apiCallSuccess.type,
@@ -28,8 +24,13 @@ const api = (store) => (next) => async (action) => {
   } catch (error) {
     console.trace("apiCallBegin  error: ", error);
     // General handler for onError
-    store.dispatch({ type: apiActions.apiCallFailed.type, payload: error });
-    // if (onError) store.dispatch({ type: onError, payload: error });
+    store.dispatch({
+      type: apiActions.apiCallFailed.type,
+      payload: error.message,
+    });
+
+    // custom handler for onError
+    if (onError) store.dispatch({ type: onError, payload: error.message });
   }
 };
 

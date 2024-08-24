@@ -46,9 +46,13 @@ const bugSlice = createSlice({
         bugs.list.push(bug);
       });
       bugs.isloading = false;
+      bugs.lastFetch = Date.now();
     },
     bugRequested: (bugs, action) => {
       bugs.isloading = true;
+    },
+    bugRequestFailed: (bugs, action) => {
+      bugs.isloading = false;
     },
   },
 });
@@ -62,8 +66,14 @@ const reducer = combineReducers({
 
 export default reducer;
 
-export const { bugAdded, bugRemoved, bugResolved, bugsRecived, bugRequested } =
-  bugSlice.actions;
+export const {
+  bugAdded,
+  bugRemoved,
+  bugResolved,
+  bugsRecived,
+  bugRequested,
+  bugRequestFailed,
+} = bugSlice.actions;
 
 export const getAllBugs = (store) =>
   createSelector(
