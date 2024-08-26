@@ -8,16 +8,16 @@ const bugSlice = createSlice({
   name: "bugs",
   initialState: {
     list: [
-      {
-        id: 1,
-        description: "default here",
-        resolved: false,
-      },
-      {
-        id: 2,
-        description: "default here 2",
-        resolved: true,
-      },
+      // {
+      //   id: 1,
+      //   description: "default here",
+      //   resolved: false,
+      // },
+      // {
+      //   id: 2,
+      //   description: "default here 2",
+      //   resolved: true,
+      // },
     ],
     isloading: false,
   },

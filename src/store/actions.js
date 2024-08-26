@@ -1,4 +1,4 @@
-import { createAction, createReducer } from "@reduxjs/toolkit";
+import { createAction } from "@reduxjs/toolkit";
 import * as actionTypes from "./actionTypes";
 
 export const bugAdded = createAction(actionTypes.ADDED_BUG);

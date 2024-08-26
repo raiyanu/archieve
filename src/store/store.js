@@ -9,7 +9,10 @@ import api from "./middleware/api";
 const store = configureStore({
   reducer,
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(logger("console"), preFuncActions, api),
+    getDefaultMiddleware().concat(
+      // logger("console"), preFuncActions,
+      api
+    ),
 });
 
 export default store;
