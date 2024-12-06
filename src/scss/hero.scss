@@ -1,0 +1,32 @@
+.hero-section {
+	padding-block: 50px;
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	overflow: hidden;
+	padding-bottom: 200px;
+	.hero-content-text {
+		max-width: 500px;
+		width: 30vw;
+		span {
+			background: linear-gradient(to bottom, #00b4ec, #2b3087);
+			-webkit-text-fill-color: transparent;
+			-webkit-background-clip: text;
+			background-clip: text;
+		}
+		h1 {
+			font-weight: 700;
+		}
+	}
+	.hero-content-media {
+		& > img {
+			top: -100px;
+			left: -50px;
+			width: 900px;
+			scale: 1.25;
+		}
+		width: 50%;
+
+		// translate: -80px;
+	}
+}

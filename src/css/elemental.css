@@ -1,0 +1,25 @@
+.rounded-button {
+  border-radius: 50px;
+  padding: 4px 24px;
+}
+
+.nav-button {
+  font-size: 14px;
+  color: #fff;
+}
+
+.text-secondary {
+  font-size: 16;
+}
+
+.hero-button {
+  background: #22a75d;
+  color: #fff;
+  border-radius: 50px;
+  padding: 10px 30px;
+}
+.hero-button:hover {
+  background: transparent;
+}
+
+/*# sourceMappingURL=elemental.css.map */

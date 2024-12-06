@@ -1,0 +1,89 @@
+$color-green: #22a75d;
+$color-navy: #0f1320;
+$color-navy-soft: #171b29;
+$color-blue: #2278d4;
+$color-black: #0f1320;
+$font-size-heading-primary: 48px;
+$font-size-heading-secondary: 36px;
+$font-size-heading-featured: 32px;
+$font-size-heading-tips: 26px;
+$font-size-secondary: 16px;
+$font-size-body-tips: 18px;
+$font-size-accent: 14px;
+$font-size-accent-secondary: 12px; // barely needed : credit text
+
+.center {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.consumer-target-card {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-block: 200px;
+	.consumer-target-card-wrapper {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-wrap: wrap;
+		gap: 1rem;
+		.card {
+			display: inline-block;
+			width: 550px;
+			padding: 2rem 1.5rem;
+			background: $color-navy-soft;
+			border-radius: 15px;
+			gap: 10px;
+			max-width: 90vw;
+			h3 {
+				font-weight: 700;
+			}
+			.consumer-icon {
+				width: fit-content;
+				padding: 10px;
+				border-radius: 999px;
+				aspect-ratio: 1/1;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				margin-bottom: 1rem;
+				box-shadow: rgba($color-green, 0.25) 0px 54px 55px,
+					rgba($color-green, 0.12) 0px -12px 30px,
+					rgba($color-green, 0.12) 0px 4px 6px,
+					rgba($color-green, 0.17) 0px 12px 13px,
+					rgba($color-green, 0.09) 0px -3px 5px;
+
+				& > img {
+					height: 16px;
+					width: 16px;
+					aspect-ratio: 1/1;
+				}
+			}
+			.a {
+				border-bottom: 5px solid $color-blue;
+				padding-bottom: 10px;
+			}
+		}
+		.card:nth-child(1) {
+			a {
+				color: $color-green;
+			}
+			.consumer-icon {
+				background: $color-green;
+			}
+		}
+		.card:nth-child(2) {
+			a {
+				color: $color-blue;
+			}
+			@media (min-width: 1000px) {
+				translate: 0 5rem;
+			}
+			.consumer-icon {
+				background: $color-blue;
+			}
+		}
+	}
+}

@@ -1,0 +1,32 @@
+.hero-section {
+  padding-block: 50px;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
+  padding-bottom: 200px;
+}
+.hero-section .hero-content-text {
+  max-width: 500px;
+  width: 30vw;
+}
+.hero-section .hero-content-text span {
+  background: linear-gradient(to bottom, #00b4ec, #2b3087);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+.hero-section .hero-content-text h1 {
+  font-weight: 700;
+}
+.hero-section .hero-content-media {
+  width: 50%;
+}
+.hero-section .hero-content-media > img {
+  top: -100px;
+  left: -50px;
+  width: 900px;
+  scale: 1.25;
+}
+
+/*# sourceMappingURL=hero.css.map */
