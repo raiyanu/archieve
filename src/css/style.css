@@ -45,4 +45,39 @@ body {
   border-radius: 10px;
 }
 
+.border-radius-top-left-circle {
+  border-top-left-radius: 20vw;
+}
+
+.border-radius-top-right-circle {
+  border-top-right-radius: 20vw;
+}
+
+@media (max-width: 720px) {
+  .border-radius-top-right-circle {
+    border-top-right-radius: 0;
+    border-top-left-radius: 40vw;
+  }
+  .border-radius-top-left-circle {
+    border-top-left-radius: 0;
+    border-top-right-radius: 40vw;
+  }
+}
+.inverse-radius-w-r-b::after {
+  content: " ";
+  display: block;
+  position: absolute;
+  right: 0;
+  height: 300px;
+  width: 300px;
+  background: transparent;
+  box-shadow: 150px 0 0 0 white;
+  border-top-right-radius: 50%;
+}
+@media (max-width: 992px) {
+  .inverse-radius-w-r-b::after {
+    display: none;
+  }
+}
+
 /*# sourceMappingURL=style.css.map */

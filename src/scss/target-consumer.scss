@@ -30,6 +30,20 @@ $font-size-accent-secondary: 12px; // barely needed : credit text
 		flex-wrap: wrap;
 		gap: 1rem;
 		.card {
+			&:nth-child(1) .consumer-icon {
+				box-shadow: rgba($color-green, 0.25) 0px 54px 55px,
+					rgba($color-green, 0.12) 0px -12px 30px,
+					rgba($color-green, 0.12) 0px 4px 6px,
+					rgba($color-green, 0.17) 0px 12px 13px,
+					rgba($color-green, 0.09) 0px -3px 5px;
+			}
+			&:nth-child(2) .consumer-icon {
+				box-shadow: rgba($color-blue, 0.25) 0px 54px 55px,
+					rgba($color-blue, 0.12) 0px -12px 30px,
+					rgba($color-blue, 0.12) 0px 4px 6px,
+					rgba($color-blue, 0.17) 0px 12px 13px,
+					rgba($color-blue, 0.09) 0px -3px 5px;
+			}
 			display: inline-block;
 			width: 550px;
 			padding: 2rem 1.5rem;
@@ -49,11 +63,6 @@ $font-size-accent-secondary: 12px; // barely needed : credit text
 				align-items: center;
 				justify-content: center;
 				margin-bottom: 1rem;
-				box-shadow: rgba($color-green, 0.25) 0px 54px 55px,
-					rgba($color-green, 0.12) 0px -12px 30px,
-					rgba($color-green, 0.12) 0px 4px 6px,
-					rgba($color-green, 0.17) 0px 12px 13px,
-					rgba($color-green, 0.09) 0px -3px 5px;
 
 				& > img {
 					height: 16px;

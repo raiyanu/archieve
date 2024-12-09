@@ -59,3 +59,43 @@ body {
 	background-color: rgb(0, 0, 0);
 	border-radius: 10px;
 }
+
+$border-circle-radius: 20vw;
+
+.border-radius-top-left-circle {
+	border-top-left-radius: $border-circle-radius;
+}
+
+.border-radius-top-right-circle {
+	border-top-right-radius: $border-circle-radius;
+}
+@media (max-width: 720px) {
+	.border-radius-top-right-circle {
+		border-top-right-radius: 0;
+		border-top-left-radius: 40vw;
+	}
+	.border-radius-top-left-circle {
+		border-top-left-radius: 0;
+		border-top-right-radius: 40vw;
+	}
+}
+.inverse-radius-w-r-b {
+	// clip-path: ellipse(45% 46% at 55% 47%);
+	&::after {
+		content: " ";
+		display: block;
+		position: absolute;
+		right: 0;
+		$size: 300px;
+		height: $size;
+		width: $size;
+		background: transparent;
+		box-shadow: calc($size / 2) 0 0 0 white;
+		border-top-right-radius: 50%;
+	}
+	@media (max-width: 992px) {
+		&::after {
+			display: none;
+		}
+	}
+}
