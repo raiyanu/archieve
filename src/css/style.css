@@ -80,4 +80,71 @@ body {
   }
 }
 
+.py-10 {
+  padding-block: 5rem;
+}
+
+.time-line .time-line-list .diode {
+  position: relative;
+  display: inline-block;
+  border-top-left-radius: 100px;
+  border-top-right-radius: 100px;
+  border-bottom-right-radius: 100px;
+  border-bottom-left-radius: 33.3333333333px;
+  padding: 0.9rem;
+  color: #0f1320;
+  background-color: var(--accent-color);
+}
+.time-line .time-line-list .diode + * {
+  translate: 0 8px;
+}
+.time-line .time-line-list .diode::after {
+  position: absolute;
+  right: -20px;
+  top: calc(50% - 5px);
+  content: " ";
+  display: inline-block;
+  padding: 5px;
+  border-radius: 50%;
+  aspect-ratio: 1/1;
+  background-color: var(--accent-color);
+}
+.time-line .time-line-list ul {
+  padding: 0;
+  list-style-type: none;
+  list-style-type: none;
+}
+.time-line .time-line-list ul > li {
+  counter-increment: item;
+  margin-top: 5px;
+}
+.time-line .time-line-list ul > li:before {
+  margin-right: 10px;
+  content: "0" counter(item);
+  border-radius: 100%;
+  color: var(--accent-color);
+  width: 1.2em;
+  display: block;
+}
+
+.collapse:is(.custom):not(.show) {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  max-height: 400px;
+}
+.collapse:is(.custom):not(.show)::after {
+  content: " ";
+  display: block;
+  height: 200px;
+  width: 100%;
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.8));
+  position: absolute;
+  bottom: 0;
+}
+
+.collapsing {
+  height: 400px !important;
+}
+
 /*# sourceMappingURL=style.css.map */
