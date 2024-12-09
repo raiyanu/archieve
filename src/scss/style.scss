@@ -174,3 +174,32 @@ $border-circle-radius: 20vw;
 .collapsing {
 	height: 400px !important;
 }
+
+.diode {
+	position: relative;
+	& + * {
+		translate: 0 8px;
+	}
+	display: inline-block;
+	$radius-distance: 100px;
+	border-top-left-radius: $radius-distance;
+	border-top-right-radius: $radius-distance;
+	border-bottom-right-radius: $radius-distance;
+	border-bottom-left-radius: $radius-distance / 3;
+	padding: 0.9rem;
+	color: #333;
+	background-color: var(--accent-color);
+}
+
+.presale-detail-card {
+	padding: 100px 70px 20px 70px;
+}
+
+.fly-lower-text {
+	color: transparent;
+	-webkit-text-stroke: 1px rgba(0, 0, 0, 0.1);
+	font-size: 150px;
+	top: 50px;
+	font-weight: 700;
+	font-family: sans-serif;
+}

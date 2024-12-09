@@ -147,4 +147,32 @@ body {
   height: 400px !important;
 }
 
+.diode {
+  position: relative;
+  display: inline-block;
+  border-top-left-radius: 100px;
+  border-top-right-radius: 100px;
+  border-bottom-right-radius: 100px;
+  border-bottom-left-radius: 33.3333333333px;
+  padding: 0.9rem;
+  color: #333;
+  background-color: var(--accent-color);
+}
+.diode + * {
+  translate: 0 8px;
+}
+
+.presale-detail-card {
+  padding: 100px 70px 20px 70px;
+}
+
+.fly-lower-text {
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(0, 0, 0, 0.1);
+  font-size: 150px;
+  top: 50px;
+  font-weight: 700;
+  font-family: sans-serif;
+}
+
 /*# sourceMappingURL=style.css.map */
