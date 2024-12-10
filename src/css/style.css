@@ -32,7 +32,6 @@ body {
   max-height: 1000px;
   filter: blur(50px) saturate(100%);
   rotate: -165deg;
-  border: 1px solid white;
   translate: 350px -220px;
 }
 
