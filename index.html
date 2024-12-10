@@ -11,14 +11,13 @@
 			integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
 			crossorigin="anonymous"
 		/>
-
 		<link rel="stylesheet" href="./src/css/style.css" />
 		<link rel="stylesheet" href="./src/css/navbar.css" />
 		<link rel="stylesheet" href="./src/css/elemental.css" />
 		<link rel="stylesheet" href="./src/css/hero.css" />
 		<link rel="stylesheet" href="./src/css/target-consumer.css" />
 	</head>
-	<body data-bs-theme="dark">
+	<body data-bs-theme="dark" style="overflow-x: hidden">
 		<div class="bg-effector">
 			<img src="radialEffect.png" alt="" />
 		</div>
@@ -120,7 +119,6 @@
 			</div>
 		</div>
 		<!-- Slogan Section -->
-
 		<div class="container-fluid p-0">
 			<div class="row row-cols-lg-2 h-100">
 				<!-- Abstract Art Image Content -->
@@ -243,7 +241,7 @@
 			<div class="row align-items-start">
 				<div class="cs-text-content col-12 col-lg-6">
 					<div
-						class="text-content-wrapper collapse custom show"
+						class="text-content-wrapper collapse custom"
 						id="comingSoonReadMoreText"
 					>
 						<h2>
@@ -304,7 +302,78 @@
 				/>
 			</div>
 		</section>
-
+		<section class="presale-detail w-100 text-center">
+			<img src="/abstract-2.2.svg" class="presale-detail-bg" />
+			<div class="wrapper container z-10">
+				<h3>Presale Details</h3>
+				<div
+					class="carousel slide text-black d-flex align-items-center gap-4 overflow-x-scroll presale-detail-carousel"
+					id="presaleCarousel"
+				>
+					<div
+						class="presale-detail-card bg-white rounded rounded-4 d-inline-block rounded rounded-4 position-relative"
+						id="presale-detail-card-1"
+					>
+						<span style="--accent-color: #22a75d" class="diode">01</span>
+						<h1
+							style="--accent-color: #22a75d"
+							class="fly-lower-text position-absolute display-1"
+						>
+							01
+						</h1>
+						<h4>Phase One</h4>
+						<span class="date"> 0/04/2021 - 16/04/2021</span>
+						<br /><br />
+						<p><strong>1BNB = 100000WNR</strong></p>
+						<p>soft cap : <strong>5000WNR</strong></p>
+						<p>Winter cap : <strong>10000WNR</strong></p>
+					</div>
+					<div
+						class="presale-detail-card bg-white rounded rounded-4 d-inline-block rounded rounded-4 position-relative"
+						id="presale-detail-card-2"
+					>
+						<span style="--accent-color: #2278d4" class="diode">01</span>
+						<h1
+							style="--accent-color: #2278d4"
+							class="fly-lower-text position-absolute display-1"
+						>
+							02
+						</h1>
+						<h4>Phase Two</h4>
+						<span class="date"> 0/04/2021 - 16/04/2021</span>
+						<br /><br />
+						<p><strong>1BNB = 100000WNR</strong></p>
+						<p>soft cap : <strong>5000WNR</strong></p>
+						<p>Winter cap : <strong>10000WNR</strong></p>
+					</div>
+					<div
+						class="presale-detail-card bg-white rounded rounded-4 d-inline-block rounded rounded-4 position-relative"
+						id="presale-detail-card-3"
+					>
+						<span style="--accent-color: #ffd100" class="diode">01</span>
+						<h1
+							style="--accent-color: #ffd100"
+							class="fly-lower-text position-absolute display-1"
+						>
+							03
+						</h1>
+						<h4>Phase Three</h4>
+						<span class="date"> 0/04/2021 - 16/04/2021</span>
+						<br /><br />
+						<p><strong>1BNB = 100000WNR</strong></p>
+						<p>soft cap : <strong>5000WNR</strong></p>
+						<p>Winter cap : <strong>10000WNR</strong></p>
+					</div>
+				</div>
+				<ul class="slider-button-wrapper">
+					<a href="#presale-detail-card-1"></a>
+					<a href="#presale-detail-card-2"></a>
+					<a href="#presale-detail-card-3"></a>
+				</ul>
+			</div>
+		</section>
+		<hr />
+		<hr />
 		<script
 			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
 			integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
