@@ -378,6 +378,9 @@ body {
   align-items: center;
   justify-content: center;
 }
+.bottom-links-wrapper li:hover a {
+  border: 3px solid rgba(255, 255, 255, 0.3);
+}
 
 footer > * {
   margin-top: 2rem;

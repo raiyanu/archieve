@@ -417,6 +417,9 @@ $border-circle-radius: 20vw;
 		align-items: center;
 		justify-content: center;
 	}
+	li:hover a {
+		border: 3px solid rgba(255, 255, 255, 0.3);
+	}
 }
 footer {
 	& > * {

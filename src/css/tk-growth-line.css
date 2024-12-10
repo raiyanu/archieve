@@ -1,0 +1,57 @@
+.token-growth-timeline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.token-growth-timeline .tk-growth-card-wrapper {
+  display: grid;
+  justify-items: center;
+  justify-content: center;
+  place-content: center;
+}
+.token-growth-timeline .tk-growth-card-wrapper > *,
+.token-growth-timeline .tk-growth-card-wrapper .tk-growth-card {
+  flex-shrink: 0;
+  width: 100%;
+}
+
+@media screen and (min-width: 340px) {
+  .tk-growth-card-wrapper {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5px;
+  }
+}
+@media screen and (min-width: 920px) {
+  .tk-growth-card-wrapper {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+  }
+}
+@media screen and (min-width: 920px) {
+  .tk-growth-card-wrapper {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .tk-growth-card-wrapper {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+@media screen and (min-width: 1500px) {
+  .tk-growth-card-wrapper {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+.tk-growth-card {
+  background: #171b29;
+}
+
+.diode-sm + span {
+  color: var(--accent-color);
+}
+.diode-sm:nth-child(1n+1) {
+  box-shadow: 2px 4px 4px var(--accent-color);
+}
+
+/*# sourceMappingURL=tk-growth-line.css.map */
