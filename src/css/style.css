@@ -14,6 +14,7 @@ body {
   font-family: "gothic", "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   background-color: #0f1320;
   position: relative;
+  scroll-behavior: smooth;
 }
 
 .bg-effector {
@@ -53,7 +54,7 @@ body {
   border-top-right-radius: 20vw;
 }
 
-@media (max-width: 720px) {
+@media screen and (max-width: 720px) {
   .border-radius-top-right-circle {
     border-top-right-radius: 0;
     border-top-left-radius: 40vw;
@@ -131,7 +132,7 @@ body {
   display: block;
   position: relative;
   overflow: hidden;
-  max-height: 400px;
+  max-height: 300px;
 }
 .collapse:is(.custom):not(.show)::after {
   content: " ";
@@ -173,6 +174,109 @@ body {
   top: 50px;
   font-weight: 700;
   font-family: sans-serif;
+}
+
+.presale-detail-carousel {
+  scroll-behavior: smooth;
+}
+.presale-detail-carousel::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+@media (min-width: 1000px) {
+  #presaleCarousel {
+    justify-content: center;
+  }
+  .slider-button-wrapper {
+    display: none;
+  }
+}
+.slider-button-wrapper {
+  margin: 1rem auto;
+  padding: 0;
+}
+.slider-button-wrapper a {
+  outline: none;
+  border: none;
+  background-color: transparent;
+  border: 1px solid white;
+  padding: 2px;
+  display: inline-block;
+  margin-left: 1rem;
+  border-radius: 50%;
+}
+.slider-button-wrapper a:focus, .slider-button-wrapper a:active, .slider-button-wrapper a:hover {
+  padding: 4px;
+  background-color: rgb(255, 255, 255);
+}
+.slider-button-wrapper a a {
+  height: 100%;
+  width: 100%;
+}
+
+.presale-detail {
+  position: relative;
+  padding-top: 2rem;
+  background: url("/abstract-2.2.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.presale-detail .presale-detail-bg {
+  position: absolute;
+  object-fit: contain;
+  object-position: center;
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: none;
+  z-index: -1;
+}
+.presale-detail .wrapper {
+  padding-top: 3rem;
+}
+
+.presale-detail-card:nth-child(2) {
+  margin-top: 80px;
+}
+
+@media (max-width: 1000px) {
+  .presale-detail-card {
+    flex-shrink: 0;
+  }
+  .presale-detail-card:nth-child(2) {
+    margin-top: 0;
+  }
+  .presale-detail {
+    padding-top: 12rem;
+  }
+}
+@media screen and (max-width: 600px) {
+  .presale-detail {
+    background: url("/abstract-2.3.svg");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    overflow: visible;
+    padding-block: 15rem;
+  }
+}
+@media screen and (min-width: 600px) {
+  .presale-detail {
+    overflow: visible;
+    padding-block: 12rem;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .presale-detail-bg {
+    display: block;
+  }
+  .presale-detail {
+    margin-block: 5rem;
+    overflow: visible;
+    padding-block: 18rem;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
