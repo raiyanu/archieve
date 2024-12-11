@@ -1,0 +1,42 @@
+.hero-section .wrapper {
+  width: 100%;
+}
+
+.tokners-schedule-count.annual-number {
+  width: fit-content;
+  margin-inline: auto;
+}
+
+.annual-number-mini:nth-child(1) {
+  margin-bottom: auto;
+}
+.annual-number-mini:nth-child(3) {
+  margin-top: 5rem;
+}
+
+@media screen and (max-width: 900px) {
+  .tokners-schedule-count.annual-number {
+    width: unset;
+    margin-inline: unset;
+  }
+  .bottom-text-content {
+    flex-wrap: wrap;
+  }
+  .bottom-text-content > div:nth-child(1) {
+    order: 1;
+  }
+  .bottom-text-content > div:nth-child(2) {
+    order: 3;
+  }
+  .bottom-text-content > div:nth-child(3) {
+    order: 2;
+  }
+  .annual-number-mini:nth-child(1) {
+    margin-bottom: 0rem;
+  }
+  .annual-number-mini:nth-child(2) {
+    margin-top: 0rem;
+  }
+}
+
+/*# sourceMappingURL=token.css.map */
