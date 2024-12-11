@@ -14,6 +14,28 @@
   margin-top: 5rem;
 }
 
+.hero-image {
+  position: relative;
+}
+.hero-image > .actual-image {
+  width: 600px;
+  max-width: 90vw;
+  z-index: 99;
+  position: relative;
+}
+.hero-image > .shadow-image {
+  width: 600px;
+  max-width: 90vw;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  transform: translateY(10px) translateY(-10px);
+  border: 2px solid rgba(100, 150, 255, 0.1);
+  filter: blur(10px);
+  z-index: 1;
+  opacity: 0.3;
+}
+
 @media screen and (max-width: 900px) {
   .tokners-schedule-count.annual-number {
     width: unset;
@@ -36,6 +58,9 @@
   }
   .annual-number-mini:nth-child(2) {
     margin-top: 0rem;
+  }
+  .annual-number-digits > span {
+    right: 0.5rem;
   }
 }
 
