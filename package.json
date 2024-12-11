@@ -5,11 +5,13 @@
 	"type": "module",
 	"scripts": {
 		"dev": "vite",
+		"fulldev": "concurrently --names \"vite,style\" --prefix \"name\" --color \"bgBlue.bold,bgGreen.bold\" \"vite\" \"sass ./src/scss:./src/css --watch\"",
 		"build": "vite build",
 		"preview": "vite preview",
 		"style": "sass ./src/scss:./src/css --watch"
 	},
 	"devDependencies": {
+		"concurrently": "^9.1.0",
 		"sass": "^1.82.0",
 		"vite": "^6.0.1"
 	}
