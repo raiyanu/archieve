@@ -1,9 +1,30 @@
-.profile-wrapper img {
+@media (max-width: 640px) {
+  .profile-wrapper .profile-card > img {
+    z-index: 1;
+  }
+  .profile-wrapper .profile-card > form {
+    transform: translateY(-250px);
+    z-index: 2;
+    background-color: whitesmoke;
+    border-radius: 5px;
+  }
+  .profile-wrapper .profile-card .profile-card {
+    gap: 2rem;
+    max-width: 300px;
+  }
+}
+.profile-wrapper .profile-card > img {
   max-width: 300px;
   height: 400px;
   object-fit: cover;
 }
-.profile-line-card img {
+@media (max-width: 640px) {
+  .profile-wrapper .profile-card {
+    gap: 2rem;
+  }
+}
+
+.profile-line-card > img {
   width: 50px;
   height: 50px;
 }
