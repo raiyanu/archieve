@@ -1,326 +1,274 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<link rel="icon" type="image/svg+xml" href="/vite.svg" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Tokners | Home</title>
-		<link
-			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-			rel="stylesheet"
-			integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-			crossorigin="anonymous"
-		/>
-		<link rel="stylesheet" href="./src/css/style.css" />
-		<link rel="stylesheet" href="./src/css/navbar.css" />
-		<link rel="stylesheet" href="./src/css/elemental.css" />
-		<link rel="stylesheet" href="./src/css/hero.css" />
-		<link rel="stylesheet" href="./src/css/target-consumer.css" />
-	</head>
-	<body data-bs-theme="dark" style="overflow-x: hidden">
-		<div class="bg-effector">
-			<img src="radialEffect.png" alt="" />
-		</div>
-		<nav class="container navbar navbar-expand-lg">
-			<div class="container-fluid">
-				<a class="navbar-brand" href="/" aria-current="page">
-					<img src="Logo.svg" alt="" /> <img src="Tokners.svg" alt=""
-				/></a>
-				<button
-					class="navbar-toggler"
-					type="button"
-					data-bs-toggle="collapse"
-					data-bs-target="#navbarSupportedContent"
-					aria-controls="navbarSupportedContent"
-					aria-expanded="false"
-					aria-label="Toggle navigation"
-					style="border: none; outline: none"
-				>
-					<img src="/menu-ic.svg" alt="" />
-				</button>
-				<div class="collapse navbar-collapse" id="navbarSupportedContent">
-					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-						<li class="nav-item">
-							<a class="nav-link" href="/team.html">Our team</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="/token.html">Tokens</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#">Connect wallet</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#">Lightpaper</a>
-						</li>
-					</ul>
-					<div class="d-flex">
-						<button type="button" class="btn nav-button">Sign in</button>
-						<button
-							class="btn btn-outline-success rounded-button nav-button"
-							type="submit"
-						>
-							Sign up
-						</button>
-					</div>
-				</div>
-			</div>
-		</nav>
 
-		<section class="hero-section container-fluid align-items-center">
-			<div
-				class="hero-content-text-wrapper col-12 col-lg-6 position-relative row-6 d-flex justify-content-center"
-			>
-				<div class="hero-content-text w-100">
-					<span>At Tokners we are</span>
-					<h1>Reimagining social media through the power of the blockchain.</h1>
-					<p class="text-secondary">
-						We are creating social media 3.0 with influencers, celebrities and
-						creators being able to launch their own digital currency by simply
-						creating a profile with media content posted as Non fungible Tokens
-						that can be owned and traded on the Tknrs network
-					</p>
-					<button class="btn btn-outline-success hero-button">
-						Learn More
-					</button>
-				</div>
-			</div>
-			<div class="hero-content-media col-12 col-lg-6 position-relative row-6">
-				<img src="hero.png" class="position-absolute" alt="" />
-			</div>
-		</section>
-		<div class="consumer-target-card">
-			<div class="consumer-target-card-wrapper">
-				<div class="card">
-					<div class="consumer-icon">
-						<img src="consumer-icon-1.svg" alt="" />
-					</div>
-					<h3>For <span>creators</span></h3>
-					<p class="text-secondary">
-						Creators can gain independence through a decentralised digital
-						currency system that is dependent on growing and engaging with the
-						community and also their star power. They own 10-15% of the total
-						value of the tokens minted.
-					</p>
-					<a href="#">Learn More <img src="arrow-right-ic.svg" alt="" /></a>
-				</div>
-				<div class="card">
-					<div class="consumer-icon">
-						<img src="consumer-icon-1.svg" alt="" />
-					</div>
-					<h3>For <span>creators</span></h3>
-					<p class="text-secondary">
-						Creators can gain independence through a decentralised digital
-						currency system that is dependent on growing and engaging with the
-						community and also their star power. They own 10-15% of the total
-						value of the tokens minted.
-					</p>
-					<a href="#">Learn More <img src="arrow-right-blue.svg" alt="" /></a>
+<head>
+	<meta charset="UTF-8" />
+	<link rel="icon" type="image/svg+xml" href="/vite.svg" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Tokners | Home</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+	<link rel="stylesheet" href="./src/css/style.css" />
+	<link rel="stylesheet" href="./src/css/navbar.css" />
+	<link rel="stylesheet" href="./src/css/elemental.css" />
+	<link rel="stylesheet" href="./src/css/hero.css" />
+	<link rel="stylesheet" href="./src/css/target-consumer.css" />
+	<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+</head>
+
+<body data-bs-theme="dark" style="overflow-x: hidden">
+	<div class="bg-effector">
+		<img src="radialEffect.png" alt="" />
+	</div>
+	<nav class="container navbar navbar-expand-lg">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="/" aria-current="page">
+				<img src="Logo.svg" alt="" /> <img src="Tokners.svg" alt="" /></a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+				data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation" style="border: none; outline: none">
+				<img src="/menu-ic.svg" alt="" />
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<li class="nav-item">
+						<a class="nav-link" href="/team.html">Our team</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/token.html">Tokens</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">Connect wallet</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">Lightpaper</a>
+					</li>
+				</ul>
+				<div class="d-flex">
+					<button type="button" class="btn nav-button">Sign in</button>
+					<button class="btn btn-outline-success rounded-button nav-button" type="submit"> Sign up </button>
 				</div>
 			</div>
 		</div>
-		<!-- Slogan Section -->
-		<div class="container-fluid p-0" style="width: 100vw; overflow: hidden">
-			<div class="row row-cols-lg-2 h-100">
-				<!-- Abstract Art Image Content -->
-				<div
-					class="abtract-card col-12 col-lg-6 border-radius-top-right-circle overflow-hidden row-6 h-100 flex-shrink-0 flex-grow-1"
-				>
-					<img
-						src="Group33.svg"
-						alt=""
-						class="img-fluid h-100 w-100 d-inline-block w-100"
-						style="object-fit: cover"
-					/>
+	</nav>
+	<section class="hero-section container-fluid align-items-center">
+		<div class="hero-content-text-wrapper col-12 col-lg-6 position-relative row-6 d-flex justify-content-center">
+			<div class="hero-content-text w-100">
+				<span data-aos="zoom-out-up">At Tokners we are</span>
+				<h1 data-aos="zoom-out-up">Reimagining social media through the power of the blockchain.</h1>
+				<p class="text-secondary" data-aos="zoom-out-up"> We are creating social media 3.0 with influencers,
+					celebrities and creators being able to launch their own digital currency by simply creating a
+					profile with media content posted as Non fungible Tokens that can be owned and traded on the Tknrs
+					network </p>
+				<button class="btn btn-outline-success hero-button" data-aos="zoom-out-up"> Learn More </button>
+			</div>
+		</div>
+		<div class="hero-content-media col-12 col-lg-6 position-relative row-6" data-aos="zoom-out-left">
+			<img src="hero.png" class="position-absolute" alt="" />
+		</div>
+	</section>
+	<div class="consumer-target-card">
+		<div class="consumer-target-card-wrapper">
+			<div class="card" data-aos="fade-up" data-aos-anchor-placement="center-bottom">
+				<div class="consumer-icon">
+					<img src="consumer-icon-1.svg" alt="" />
 				</div>
-
-				<!-- Text Content -->
-				<div
-					class="col-12 col-lg-6 border-radius-top-left-circle pt-4 bg-white text-dark align-items-start align-self-end row-6 h-100 inverse-radius-w-r-b d-inline-block"
-				>
-					<div
-						class="col col-9 container h-100 p-0 pt-4 mx-auto"
-						style="margin-top: 100px; margin-bottom: 100px"
-					>
-						<h2 style="--bs-text-opacity: 1" class="mt-4">
-							<strong style="font-weight: 900"
-								>What makes us different
-								<span style="font-family: sans-serif">?</span></strong
-							>
-						</h2>
-						<p>
-							<strong class="text-secondary" style="font-weight: 700">
-								We would only launch tokens with the express permission of the
-								creators.
-							</strong>
-						</p>
-						<p class="text-secondary" style="font-weight: 400">
-							There are several thousand celebrities and creators on twitter,
-							tiktok, Instagram and YouTube with followings in the millions who
-							we would be actively engaging before we go viral.
-							<br />
-							We would get them on our platform and they would see the
-							opportunity to create a fan driven digital economy where their
-							digital content can be traded as NFTs and their most loyal fans
-							can have the monetary value of their creator's currency increase
-							significantly as they promote their digital currency across their
-							channels while our native token holders benefit from the Weentar
-							popularity.
-						</p>
-					</div>
+				<h3>For <span>creators</span></h3>
+				<p class="text-secondary"> Creators can gain independence through a decentralised digital currency
+					system that is dependent on growing and engaging with the community and also their star power. They
+					own 10-15% of the total value of the tokens minted. </p>
+				<a href="#">Learn More <img src="arrow-right-ic.svg" alt="" /></a>
+			</div>
+			<div class="card" data-aos="fade-up" data-aos-anchor-placement="center-bottom">
+				<div class="consumer-icon">
+					<img src="consumer-icon-1.svg" alt="" />
+				</div>
+				<h3>For <span>creators</span></h3>
+				<p class="text-secondary"> Creators can gain independence through a decentralised digital currency
+					system that is dependent on growing and engaging with the community and also their star power. They
+					own 10-15% of the total value of the tokens minted. </p>
+				<a href="#">Learn More <img src="arrow-right-blue.svg" alt="" /></a>
+			</div>
+		</div>
+	</div>
+	<!-- Slogan Section -->
+	<div class="container-fluid p-0" style="width: 100vw; overflow: hidden">
+		<div class="row row-cols-lg-2 h-100">
+			<!-- Abstract Art Image Content -->
+			<div class="abtract-card col-12 col-lg-6 border-radius-top-right-circle overflow-hidden row-6 h-100 flex-shrink-0 flex-grow-1"
+				data-aos="fade-right" data-aos-anchor-placement="center-bottom">
+				<img src="Group33.svg" alt="" class="img-fluid h-100 w-100 d-inline-block w-100"
+					style="object-fit: cover" />
+			</div>
+			<!-- Text Content -->
+			<div class="col-12 col-lg-6 border-radius-top-left-circle pt-4 bg-white text-dark align-items-start align-self-end row-6 h-100 inverse-radius-w-r-b d-inline-block"
+				data-aos="fade-left" data-aos-anchor-placement="center-bottom">
+				<div class="col col-9 container h-100 p-0 pt-4 mx-auto" style="margin-top: 100px; margin-bottom: 100px">
+					<h2 style="--bs-text-opacity: 1" class="mt-4">
+						<strong style="font-weight: 900">What makes us different <span
+								style="font-family: sans-serif">?</span></strong>
+					</h2>
+					<p>
+						<strong class="text-secondary" style="font-weight: 700"> We would only launch tokens with the
+							express permission of the creators. </strong>
+					</p>
+					<p class="text-secondary" style="font-weight: 400"> There are several thousand celebrities and
+						creators on twitter, tiktok, Instagram and YouTube with followings in the millions who we would
+						be actively engaging before we go viral. <br /> We would get them on our platform and they would
+						see the opportunity to create a fan driven digital economy where their digital content can be
+						traded as NFTs and their most loyal fans can have the monetary value of their creator's currency
+						increase significantly as they promote their digital currency across their channels while our
+						native token holders benefit from the Weentar popularity. </p>
 				</div>
 			</div>
 		</div>
-
-		<!-- Time Line and Crypto Welcome Section -->
-		<section class="time-line container py-10 my-10">
-			<div class="row p-2 align-self-center">
-				<div
-					style="--accent-color: #22a75d"
-					class="col-12 col-lg-6 col-xl-3 align-items-center time-line-list mt-4"
-				>
-					<p class="d-flex align-items-end gap-2" style="margin-bottom: 2.5rem">
-						<span class="diode">Q1</span> <span>2021</span>
+	</div>
+	<!-- Time Line and Crypto Welcome Section -->
+	<section class="time-line container py-10 my-10" style="margin-block: 6rem">
+		<div class="row p-2 align-self-center">
+			<div data-aos="fade-up-right" data-aos-anchor-placement="center-bottom" data-aos-delay="200"
+				style="--accent-color: #22a75d" class="col-12 col-lg-6 col-xl-3 align-items-center time-line-list mt-4">
+				<p class="d-flex align-items-end gap-2" style="margin-bottom: 2.5rem">
+					<span class="diode">Q1</span> <span>2021</span>
+				</p>
+				<ul>
+					<li class="d-flex">Team set-up</li>
+					<li class="d-flex">Launch of information website</li>
+				</ul>
+			</div>
+			<div data-aos="fade-up-right" data-aos-anchor-placement="center-bottom" data-aos-delay="400"
+				style="--accent-color: #2278d4" class="col-12 col-lg-6 col-xl-3 align-items-center time-line-list mt-4">
+				<p class="d-flex align-items-end gap-2" style="margin-bottom: 2.5rem">
+					<span class="diode">Q1</span> <span>2021</span>
+				</p>
+				<ul>
+					<li class="d-flex">Presale and exchange listings</li>
+					<li class="d-flex">Blockchain development and launch</li>
+					<li class="d-flex">Launch of our MVP</li>
+					<li class="d-flex">Influencer agency partnerships</li>
+					<li class="d-flex">Marketing and promotion</li>
+				</ul>
+			</div>
+			<div data-aos="fade-up-right" data-aos-anchor-placement="center-bottom" data-aos-delay="600"
+				style="--accent-color: #ffd100" class="col-12 col-lg-6 col-xl-3 align-items-center time-line-list mt-4">
+				<p class="d-flex align-items-end gap-2" style="margin-bottom: 2.5rem">
+					<span class="diode">Q1</span> <span>2021</span>
+				</p>
+				<ul>
+					<li class="d-flex"> Celebrity, Creator and Influencer partnerships </li>
+					<li class="d-flex"> Expansion of creator communities on our platform </li>
+					<li class="d-flex">More Marketing and promotion</li>
+				</ul>
+			</div>
+			<div data-aos="fade-up-right" data-aos-anchor-placement="center-bottom" data-aos-delay="800"
+				style="--accent-color: #e20613" class="col-12 col-lg-6 col-xl-3 align-items-center time-line-list mt-4">
+				<p class="d-flex align-items-end gap-2" style="margin-bottom: 2.5rem">
+					<span class="diode">Q1</span> <span>2021</span>
+				</p>
+				<ul>
+					<li class="d-flex">Mainstream partnerships</li>
+					<li class="d-flex">500 active creator communities</li>
+					<li class="d-flex">2Million active community members</li>
+					<li class="d-flex">More Marketing and promotion</li>
+				</ul>
+			</div>
+		</div>
+	</section>
+	<section class="coming-soon container">
+		<div class="row align-items-start" data-aos="fade-left" data-aos-anchor-placement="center-bottom">
+			<div class="cs-text-content col-12 col-lg-6">
+				<div class="text-content-wrapper collapse custom show" id="comingSoonReadMoreText">
+					<h2 class="mb-4">
+						<img src="Logo.svg" alt="" />
+						<img src="Tokners.svg" alt="" /> Tokner is coming
+					</h2>
+					<p>
+						<strong> Cryptocurrency adoption is under 1% of the global population, with some nations and
+							organizations actively resisting its widespread use, while the most skilled developers and
+							tech enthusiasts continue to champion its growth. </strong>
+						<br /> We aim to transform this space in the same way investment apps revolutionized the world
+						for "nonexistent retail investors."
 					</p>
-
-					<ul>
-						<li class="d-flex">Team set-up</li>
-						<li class="d-flex">Launch of information website</li>
-					</ul>
+					<p>
+						<strong> A new digital economy is emerging. Individuals will hold as much power as countries,
+							and creators will earn far more than the meager amounts traditional social media platforms
+							provide. </strong>
+						<br /> New markets will emerge, and advertisers with limited offerings will struggle to find
+						their place. As Kanye put it,
+					</p>
+					<blockquote class="blockquote">
+						<p> "Personalities would become the new currency, and services would be built on top of them."
+						</p>
+					</blockquote>
+					<p> Well, Kanye didn't exactly say that, but it's something we wish he had. <br /> Currency has been
+						digital for some time, but this time, there won't be any dead presidents on the bills—just
+						people like you—and you will own it, because it will make the most sense in the world. </p>
 				</div>
-				<div
-					style="--accent-color: #2278d4"
-					class="col-12 col-lg-6 col-xl-3 align-items-center time-line-list mt-4"
-				>
-					<p class="d-flex align-items-end gap-2" style="margin-bottom: 2.5rem">
-						<span class="diode">Q1</span> <span>2021</span>
-					</p>
-					<ul>
-						<li class="d-flex">Presale and exchange listings</li>
-						<li class="d-flex">Blockchain development and launch</li>
-						<li class="d-flex">Launch of our MVP</li>
-						<li class="d-flex">Influencer agency partnerships</li>
-						<li class="d-flex">Marketing and promotion</li>
-					</ul>
+				<button class="btn btn-outline-success rounded-button nav-button py-2" type="button"
+					data-bs-toggle="collapse" data-bs-target="#comingSoonReadMoreText" aria-expanded="false"
+					aria-controls="comingSoonReadMoreText"> Read More </button>
+			</div>
+			<img data-aos="fade-left" data-aos-anchor-placement="center-bottom"
+				src="Woman-Holding-iPhone-Xs-in-Hand-Mockup 1.png" alt="Woman-Holding-iPhone-Xs-in-Hand-Mockup 1"
+				class="cs-media-content col-12 col-lg-6 object-fit-contain" />
+		</div>
+	</section>
+	<section class="presale-detail w-100 text-center">
+		<img src="/abstract-2.2.svg" class="presale-detail-bg" />
+		<div class="wrapper container z-10 d-none d-lg-block">
+			<h3 class="mb-0 mt-4">Presale Details</h3>
+			<div id="presaleCarousel"
+				class="carousel slide text-black d-flex align-items-center gap-4 overflow-x-scroll presale-detail-carousel">
+				<div data-aos="zoom-in-down" data-aos-anchor-placement="center-bottom"
+					class="presale-detail-card bg-white rounded rounded-4 d-inline-block rounded rounded-4 position-relative"
+					id="presale-detail-card-1">
+					<span style="--accent-color: #22a75d" class="diode">01</span>
+					<h1 style="--accent-color: #22a75d" class="fly-lower-text position-absolute display-1"> 01 </h1>
+					<h4>Phase One</h4>
+					<span class="date"> 0/04/2021 - 16/04/2021</span>
+					<br /><br />
+					<p><strong>1BNB = 100000WNR</strong></p>
+					<p>soft cap : <strong>5000WNR</strong></p>
+					<p>Winter cap : <strong>10000WNR</strong></p>
 				</div>
-				<div
-					style="--accent-color: #ffd100"
-					class="col-12 col-lg-6 col-xl-3 align-items-center time-line-list mt-4"
-				>
-					<p class="d-flex align-items-end gap-2" style="margin-bottom: 2.5rem">
-						<span class="diode">Q1</span> <span>2021</span>
-					</p>
-
-					<ul>
-						<li class="d-flex">
-							Celebrity, Creator and Influencer partnerships
-						</li>
-						<li class="d-flex">
-							Expansion of creator communities on our platform
-						</li>
-						<li class="d-flex">More Marketing and promotion</li>
-					</ul>
+				<div data-aos="zoom-in-down" data-aos-anchor-placement="center-bottom"
+					class="presale-detail-card bg-white rounded rounded-4 d-inline-block rounded rounded-4 position-relative"
+					id="presale-detail-card-2">
+					<span style="--accent-color: #2278d4" class="diode">02</span>
+					<h1 style="--accent-color: #2278d4" class="fly-lower-text position-absolute display-1"> 02 </h1>
+					<h4>Phase Two</h4>
+					<span class="date"> 0/04/2021 - 16/04/2021</span>
+					<br /><br />
+					<p><strong>1BNB = 100000WNR</strong></p>
+					<p>soft cap : <strong>5000WNR</strong></p>
+					<p>Winter cap : <strong>10000WNR</strong></p>
 				</div>
-				<div
-					style="--accent-color: #e20613"
-					class="col-12 col-lg-6 col-xl-3 align-items-center time-line-list mt-4"
-				>
-					<p class="d-flex align-items-end gap-2" style="margin-bottom: 2.5rem">
-						<span class="diode">Q1</span> <span>2021</span>
-					</p>
-
-					<ul>
-						<li class="d-flex">Mainstream partnerships</li>
-						<li class="d-flex">500 active creator communities</li>
-						<li class="d-flex">2Million active community members</li>
-						<li class="d-flex">More Marketing and promotion</li>
-					</ul>
+				<div data-aos="zoom-in-down" data-aos-anchor-placement="center-bottom"
+					class="presale-detail-card bg-white rounded rounded-4 d-inline-block rounded rounded-4 position-relative"
+					id="presale-detail-card-3">
+					<span style="--accent-color: #ffd100" class="diode">03</span>
+					<h1 style="--accent-color: #ffd100" class="fly-lower-text position-absolute display-1"> 03 </h1>
+					<h4>Phase Three</h4>
+					<span class="date"> 0/04/2021 - 16/04/2021</span>
+					<br /><br />
+					<p><strong>1BNB = 100000WNR</strong></p>
+					<p>soft cap : <strong>5000WNR</strong></p>
+					<p>Winter cap : <strong>10000WNR</strong></p>
 				</div>
 			</div>
-		</section>
-		<section class="coming-soon container">
-			<div class="row align-items-start">
-				<div class="cs-text-content col-12 col-lg-6">
-					<div
-						class="text-content-wrapper collapse custom show"
-						id="comingSoonReadMoreText"
-					>
-						<h2 class="mb-4">
-							<img src="Logo.svg" alt="" />
-							<img src="Tokners.svg" alt="" /> Tokner is coming
-						</h2>
-						<p>
-							<strong>
-								Cryptocurrency adoption is under 1% of the global population,
-								with some nations and organizations actively resisting its
-								widespread use, while the most skilled developers and tech
-								enthusiasts continue to champion its growth.
-							</strong>
-							<br />
-							We aim to transform this space in the same way investment apps
-							revolutionized the world for "nonexistent retail investors."
-						</p>
-						<p>
-							<strong>
-								A new digital economy is emerging. Individuals will hold as much
-								power as countries, and creators will earn far more than the
-								meager amounts traditional social media platforms provide.
-							</strong>
-							<br />
-							New markets will emerge, and advertisers with limited offerings
-							will struggle to find their place. As Kanye put it,
-						</p>
-						<blockquote class="blockquote">
-							<p>
-								"Personalities would become the new currency, and services would
-								be built on top of them."
-							</p>
-						</blockquote>
-						<p>
-							Well, Kanye didn't exactly say that, but it's something we wish he
-							had.
-							<br />
-							Currency has been digital for some time, but this time, there
-							won't be any dead presidents on the bills—just people like you—and
-							you will own it, because it will make the most sense in the world.
-						</p>
-					</div>
-					<button
-						class="btn btn-outline-success rounded-button nav-button py-2"
-						type="button"
-						data-bs-toggle="collapse"
-						data-bs-target="#comingSoonReadMoreText"
-						aria-expanded="false"
-						aria-controls="comingSoonReadMoreText"
-					>
-						Read More
-					</button>
-				</div>
-				<img
-					src="Woman-Holding-iPhone-Xs-in-Hand-Mockup 1.png"
-					alt="Woman-Holding-iPhone-Xs-in-Hand-Mockup 1"
-					class="cs-media-content col-12 col-lg-6 object-fit-contain"
-				/>
-			</div>
-		</section>
-		<section class="presale-detail w-100 text-center">
-			<img src="/abstract-2.2.svg" class="presale-detail-bg" />
-			<div class="wrapper container z-10 d-none d-lg-block">
-				<h3 class="mb-0 mt-4">Presale Details</h3>
-				<div
-					id="presaleCarousel"
-					class="carousel slide text-black d-flex align-items-center gap-4 overflow-x-scroll presale-detail-carousel"
-				>
-					<div
-						class="presale-detail-card bg-white rounded rounded-4 d-inline-block rounded rounded-4 position-relative"
-						id="presale-detail-card-1"
-					>
+			<ul class="slider-button-wrapper">
+				<a href="#presale-detail-card-1"></a>
+				<a href="#presale-detail-card-2"></a>
+				<a href="#presale-detail-card-3"></a>
+			</ul>
+		</div>
+		<div id="carouselExample" class="carousel slide d-block d-lg-none text-black">
+			<div class="carousel-inner">
+				<div class="carousel-item active">
+					<div class="presale-detail-card bg-white rounded rounded-4 d-inline-block rounded rounded-4 position-relative"
+						id="presale-detail-card-1">
 						<span style="--accent-color: #22a75d" class="diode">01</span>
-						<h1
-							style="--accent-color: #22a75d"
-							class="fly-lower-text position-absolute display-1"
-						>
-							01
-						</h1>
+						<h1 style="--accent-color: #22a75d" class="fly-lower-text position-absolute display-1"> 01 </h1>
 						<h4>Phase One</h4>
 						<span class="date"> 0/04/2021 - 16/04/2021</span>
 						<br /><br />
@@ -328,17 +276,12 @@
 						<p>soft cap : <strong>5000WNR</strong></p>
 						<p>Winter cap : <strong>10000WNR</strong></p>
 					</div>
-					<div
-						class="presale-detail-card bg-white rounded rounded-4 d-inline-block rounded rounded-4 position-relative"
-						id="presale-detail-card-2"
-					>
+				</div>
+				<div class="carousel-item">
+					<div class="presale-detail-card bg-white rounded rounded-4 d-inline-block rounded rounded-4 position-relative"
+						id="presale-detail-card-2">
 						<span style="--accent-color: #2278d4" class="diode">02</span>
-						<h1
-							style="--accent-color: #2278d4"
-							class="fly-lower-text position-absolute display-1"
-						>
-							02
-						</h1>
+						<h1 style="--accent-color: #2278d4" class="fly-lower-text position-absolute display-1"> 02 </h1>
 						<h4>Phase Two</h4>
 						<span class="date"> 0/04/2021 - 16/04/2021</span>
 						<br /><br />
@@ -346,17 +289,12 @@
 						<p>soft cap : <strong>5000WNR</strong></p>
 						<p>Winter cap : <strong>10000WNR</strong></p>
 					</div>
-					<div
-						class="presale-detail-card bg-white rounded rounded-4 d-inline-block rounded rounded-4 position-relative"
-						id="presale-detail-card-3"
-					>
+				</div>
+				<div class="carousel-item">
+					<div class="presale-detail-card bg-white rounded rounded-4 d-inline-block rounded rounded-4 position-relative"
+						id="presale-detail-card-3">
 						<span style="--accent-color: #ffd100" class="diode">03</span>
-						<h1
-							style="--accent-color: #ffd100"
-							class="fly-lower-text position-absolute display-1"
-						>
-							03
-						</h1>
+						<h1 style="--accent-color: #ffd100" class="fly-lower-text position-absolute display-1"> 03 </h1>
 						<h4>Phase Three</h4>
 						<span class="date"> 0/04/2021 - 16/04/2021</span>
 						<br /><br />
@@ -365,249 +303,129 @@
 						<p>Winter cap : <strong>10000WNR</strong></p>
 					</div>
 				</div>
-				<ul class="slider-button-wrapper">
-					<a href="#presale-detail-card-1"></a>
-					<a href="#presale-detail-card-2"></a>
-					<a href="#presale-detail-card-3"></a>
-				</ul>
 			</div>
-			<div
-				id="carouselExample"
-				class="carousel slide d-block d-lg-none text-black"
-			>
-				<div class="carousel-inner">
-					<div class="carousel-item active">
-						<div
-							class="presale-detail-card bg-white rounded rounded-4 d-inline-block rounded rounded-4 position-relative"
-							id="presale-detail-card-1"
-						>
-							<span style="--accent-color: #22a75d" class="diode">01</span>
-							<h1
-								style="--accent-color: #22a75d"
-								class="fly-lower-text position-absolute display-1"
-							>
-								01
-							</h1>
-							<h4>Phase One</h4>
-							<span class="date"> 0/04/2021 - 16/04/2021</span>
-							<br /><br />
-							<p><strong>1BNB = 100000WNR</strong></p>
-							<p>soft cap : <strong>5000WNR</strong></p>
-							<p>Winter cap : <strong>10000WNR</strong></p>
-						</div>
-					</div>
-					<div class="carousel-item">
-						<div
-							class="presale-detail-card bg-white rounded rounded-4 d-inline-block rounded rounded-4 position-relative"
-							id="presale-detail-card-2"
-						>
-							<span style="--accent-color: #2278d4" class="diode">02</span>
-							<h1
-								style="--accent-color: #2278d4"
-								class="fly-lower-text position-absolute display-1"
-							>
-								02
-							</h1>
-							<h4>Phase Two</h4>
-							<span class="date"> 0/04/2021 - 16/04/2021</span>
-							<br /><br />
-							<p><strong>1BNB = 100000WNR</strong></p>
-							<p>soft cap : <strong>5000WNR</strong></p>
-							<p>Winter cap : <strong>10000WNR</strong></p>
-						</div>
-					</div>
-					<div class="carousel-item">
-						<div
-							class="presale-detail-card bg-white rounded rounded-4 d-inline-block rounded rounded-4 position-relative"
-							id="presale-detail-card-3"
-						>
-							<span style="--accent-color: #ffd100" class="diode">03</span>
-							<h1
-								style="--accent-color: #ffd100"
-								class="fly-lower-text position-absolute display-1"
-							>
-								03
-							</h1>
-							<h4>Phase Three</h4>
-							<span class="date"> 0/04/2021 - 16/04/2021</span>
-							<br /><br />
-							<p><strong>1BNB = 100000WNR</strong></p>
-							<p>soft cap : <strong>5000WNR</strong></p>
-							<p>Winter cap : <strong>10000WNR</strong></p>
-						</div>
-					</div>
-				</div>
-				<button
-					class="carousel-control-prev carousel-control-icon d-block d-lg-none"
-					type="button"
-					data-bs-target="#carouselExample"
-					data-bs-slide="prev"
-				>
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						fill="none"
-						height="24"
-						viewBox="0 0 24 24"
-						width="24"
-					>
-						<path
-							d="m15 6-5.29289 5.2929c-.33334.3333-.5.5-.5.7071s.16666.3738.5.7071l5.29289 5.2929"
-							stroke="#333"
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							stroke-width="1.5"
-						/>
-					</svg>
-					<span class="visually-hidden">Previous</span>
-				</button>
-				<button
-					class="carousel-control-next carousel-control-icon d-block d-lg-none"
-					type="button"
-					data-bs-target="#carouselExample"
-					data-bs-slide="next"
-				>
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						fill="none"
-						height="24"
-						viewBox="0 0 24 24"
-						width="24"
-					>
-						<path
-							d="m9 18 5.2929-5.2929c.3333-.3333.5-.5.5-.7071s-.1667-.3738-.5-.7071l-5.2929-5.2929"
-							stroke="#333"
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							stroke-width="1.5"
-						/>
-					</svg>
-					<span class="visually-hidden">Next</span>
-				</button>
+			<button class="carousel-control-prev carousel-control-icon d-block d-lg-none" type="button"
+				data-bs-target="#carouselExample" data-bs-slide="prev">
+				<svg xmlns="http://www.w3.org/2000/svg" fill="none" height="24" viewBox="0 0 24 24" width="24">
+					<path d="m15 6-5.29289 5.2929c-.33334.3333-.5.5-.5.7071s.16666.3738.5.7071l5.29289 5.2929"
+						stroke="#333" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+				</svg>
+				<span class="visually-hidden">Previous</span>
+			</button>
+			<button class="carousel-control-next carousel-control-icon d-block d-lg-none" type="button"
+				data-bs-target="#carouselExample" data-bs-slide="next">
+				<svg xmlns="http://www.w3.org/2000/svg" fill="none" height="24" viewBox="0 0 24 24" width="24">
+					<path d="m9 18 5.2929-5.2929c.3333-.3333.5-.5.5-.7071s-.1667-.3738-.5-.7071l-5.2929-5.2929"
+						stroke="#333" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+				</svg>
+				<span class="visually-hidden">Next</span>
+			</button>
+		</div>
+	</section>
+	<section class="buying-process">
+		<h3 class="text-center mt-4"><strong>How to buy</strong></h3>
+		<div class="wrapper mx-auto">
+			<div class="card buying-process-card rounded-4 border-0" data-aos="flip-up"
+				data-aos-anchor-placement="center-bottom">
+				<span class="overlay-number text-secondary">01</span>
+				<p class="mb-0">
+					<strong>First Connect your Metamask or TrustWallet to the "Connect Wallet" on the Homepage.</strong>
+				</p>
 			</div>
-		</section>
-		<section class="buying-process">
-			<h3 class="text-center mt-4"><strong>How to buy</strong></h3>
-			<div class="wrapper mx-auto">
-				<div class="card buying-process-card rounded-4 border-0">
-					<span class="overlay-number text-secondary">01</span>
-					<p class="mb-0">
-						<strong
-							>First Connect your Metamask or TrustWallet to the "Connect
-							Wallet" on the Homepage.</strong
-						>
-					</p>
+			<div class="card buying-process-card rounded-4 border-0" data-aos="flip-up"
+				data-aos-anchor-placement="center-bottom">
+				<div style="--accent-color: #22a75d" class="overlay-arrow overlay-arrow-1">
+					<strong>></strong>
 				</div>
-				<div class="card buying-process-card rounded-4 border-0">
-					<div
-						style="--accent-color: #22a75d"
-						class="overlay-arrow overlay-arrow-1"
-					>
-						<strong>></strong>
-					</div>
-					<span class="overlay-number text-secondary">02</span>
-					<p class="mb-0">
-						<strong
-							>Then send minimum of 0.1 BNB or maximum of 10 BNB to the Presale
-							wallet</strong
-						>
-					</p>
-					<div
-						style="--accent-color: #ffd100"
-						class="overlay-arrow overlay-arrow-2"
-					>
-						<strong>></strong>
-					</div>
-				</div>
-				<div class="card buying-process-card rounded-4 border-0">
-					<span class="overlay-number text-secondary">03</span>
-					<p class="mb-0">
-						<strong
-							>Then after you will received your $WNTR to your address within
-							24hours.
-						</strong>
-					</p>
+				<span class="overlay-number text-secondary">02</span>
+				<p class="mb-0">
+					<strong>Then send minimum of 0.1 BNB or maximum of 10 BNB to the Presale wallet</strong>
+				</p>
+				<div style="--accent-color: #ffd100" class="overlay-arrow overlay-arrow-2">
+					<strong>></strong>
 				</div>
 			</div>
-		</section>
-
-		<section aria-label="breadcrumb bottom-links  border ">
-			<ol class="breadcrumb justify-content-center">
-				<li class="breadcrumb-item">
-					<a class="text-white" href="#">Our Team</a>
-				</li>
-				<li class="breadcrumb-item">
-					<a class="text-white" href="#">Tokens</a>
-				</li>
-				<li class="breadcrumb-item">
-					<a class="text-white" href="#">Connect Wallet</a>
-				</li>
-				<li class="breadcrumb-item">
-					<a class="text-white" href="#">Lightpaper</a>
-				</li>
-			</ol>
-		</section>
-		<div class="container">
-			<footer
-				class="d-flex flex-wrap justify-content-between align-items-center py-3 mt-4"
-				style="padding-bottom: 5rem !important"
-			>
-				<div class="d-flex align-items-center mx-auto">
-					<a
-						href="/"
-						class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1"
-					>
-						<img src="Logo.svg" alt="" /> <img src="Tokners.svg" alt="" />
+			<div class="card buying-process-card rounded-4 border-0" data-aos="flip-up"
+				data-aos-anchor-placement="center-bottom">
+				<span class="overlay-number text-secondary">03</span>
+				<p class="mb-0">
+					<strong>Then after you will received your $WNTR to your address within 24hours. </strong>
+				</p>
+			</div>
+		</div>
+	</section>
+	<section aria-label="breadcrumb bottom-links border" style="margin-top: 10rem">
+		<ol class="breadcrumb justify-content-center">
+			<li class="breadcrumb-item">
+				<a class="text-white" href="#">Our Team</a>
+			</li>
+			<li class="breadcrumb-item">
+				<a class="text-white" href="#">Tokens</a>
+			</li>
+			<li class="breadcrumb-item">
+				<a class="text-white" href="#">Connect Wallet</a>
+			</li>
+			<li class="breadcrumb-item">
+				<a class="text-white" href="#">Lightpaper</a>
+			</li>
+		</ol>
+	</section>
+	<div class="container">
+		<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 mt-4"
+			style="padding-bottom: 5rem !important">
+			<div class="d-flex align-items-center mx-auto">
+				<a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
+					<img src="Logo.svg" alt="" /> <img src="Tokners.svg" alt="" />
+				</a>
+				<br />
+			</div>
+			<ul class="nav justify-content-center list-unstyled d-flex bottom-links-wrapper align-items-center mx-auto">
+				<li class="ms-3">
+					<a class="text-body-secondary" href="#">
+						<img src="/icons/github 1.svg" alt="" />
 					</a>
-					<br />
-				</div>
+				</li>
+				<li class="ms-3">
+					<a class="text-body-secondary" href="#">
+						<img src="/icons/Telegram.svg" alt="" />
+					</a>
+				</li>
+				<li class="ms-3">
+					<a class="text-body-secondary" href="#">
+						<img src="/icons/instagram.svg" alt="" />
+					</a>
+				</li>
+				<li class="ms-3">
+					<a class="text-body-secondary" href="#">
+						<img src="/icons/medium.svg" alt="" />
+					</a>
+				</li>
+				<li class="ms-3">
+					<a class="text-body-secondary" href="#">
+						<img src="/icons/github 1.svg" alt="" />
+					</a>
+				</li>
+				<li class="ms-3">
+					<a class="text-body-secondary" href="#">
+						<img src="/icons/reddit 1.svg" alt="" />
+					</a>
+				</li>
+			</ul>
+			<span class="mb-3 mb-md-0 d-inline-block mx-auto"> © 2024 Company, Inc </span>
+		</footer>
+	</div>
+	<div class="bg-effector-second">
+		<img src="radialEffect-2.png" alt="" />
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+		crossorigin="anonymous"></script>
+	<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+	<script>
+		AOS.init({
+			duration: 900,
+		});
+	</script>
+</body>
 
-				<ul
-					class="nav justify-content-center list-unstyled d-flex bottom-links-wrapper align-items-center mx-auto"
-				>
-					<li class="ms-3">
-						<a class="text-body-secondary" href="#">
-							<img src="/icons/github 1.svg" alt="" />
-						</a>
-					</li>
-					<li class="ms-3">
-						<a class="text-body-secondary" href="#">
-							<img src="/icons/Telegram.svg" alt="" />
-						</a>
-					</li>
-					<li class="ms-3">
-						<a class="text-body-secondary" href="#">
-							<img src="/icons/instagram.svg" alt="" />
-						</a>
-					</li>
-
-					<li class="ms-3">
-						<a class="text-body-secondary" href="#">
-							<img src="/icons/medium.svg" alt="" />
-						</a>
-					</li>
-					<li class="ms-3">
-						<a class="text-body-secondary" href="#">
-							<img src="/icons/github 1.svg" alt="" />
-						</a>
-					</li>
-					<li class="ms-3">
-						<a class="text-body-secondary" href="#">
-							<img src="/icons/reddit 1.svg" alt="" />
-						</a>
-					</li>
-				</ul>
-				<span class="mb-3 mb-md-0 d-inline-block mx-auto">
-					© 2024 Company, Inc
-				</span>
-			</footer>
-		</div>
-		<div class="bg-effector-second">
-			<img src="radialEffect-2.png" alt="" />
-		</div>
-		<script
-			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-			integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-			crossorigin="anonymous"
-		></script>
-	</body>
 </html>
