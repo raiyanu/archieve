@@ -23,7 +23,7 @@
 		</div>
 		<nav class="container navbar navbar-expand-lg">
 			<div class="container-fluid">
-				<a class="navbar-brand" href="#">
+				<a class="navbar-brand" href="/">
 					<img src="Logo.svg" alt="" /> <img src="Tokners.svg" alt=""
 				/></a>
 				<button
@@ -41,12 +41,10 @@
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 						<li class="nav-item">
-							<a class="nav-link" href="#">Our team</a>
+							<a class="nav-link" aria-current="page" href="#">Our team</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" aria-current="page" href="/token.html"
-								>Tokens</a
-							>
+							<a class="nav-link" href="#">Tokens</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="#">Connect wallet</a>
@@ -306,7 +304,7 @@
 		</section>
 		<section class="presale-detail w-100 text-center">
 			<img src="/abstract-2.2.svg" class="presale-detail-bg" />
-			<div class="wrapper container z-10">
+			<div class="wrapper container z-10 d-none d-lg-block">
 				<h3 class="mb-0 mt-4">Presale Details</h3>
 				<div
 					id="presaleCarousel"
@@ -334,7 +332,7 @@
 						class="presale-detail-card bg-white rounded rounded-4 d-inline-block rounded rounded-4 position-relative"
 						id="presale-detail-card-2"
 					>
-						<span style="--accent-color: #2278d4" class="diode">01</span>
+						<span style="--accent-color: #2278d4" class="diode">02</span>
 						<h1
 							style="--accent-color: #2278d4"
 							class="fly-lower-text position-absolute display-1"
@@ -352,7 +350,7 @@
 						class="presale-detail-card bg-white rounded rounded-4 d-inline-block rounded rounded-4 position-relative"
 						id="presale-detail-card-3"
 					>
-						<span style="--accent-color: #ffd100" class="diode">01</span>
+						<span style="--accent-color: #ffd100" class="diode">03</span>
 						<h1
 							style="--accent-color: #ffd100"
 							class="fly-lower-text position-absolute display-1"
@@ -372,6 +370,119 @@
 					<a href="#presale-detail-card-2"></a>
 					<a href="#presale-detail-card-3"></a>
 				</ul>
+			</div>
+			<div
+				id="carouselExample"
+				class="carousel slide d-block d-lg-none text-black"
+			>
+				<div class="carousel-inner">
+					<div class="carousel-item active">
+						<div
+							class="presale-detail-card bg-white rounded rounded-4 d-inline-block rounded rounded-4 position-relative"
+							id="presale-detail-card-1"
+						>
+							<span style="--accent-color: #22a75d" class="diode">01</span>
+							<h1
+								style="--accent-color: #22a75d"
+								class="fly-lower-text position-absolute display-1"
+							>
+								01
+							</h1>
+							<h4>Phase One</h4>
+							<span class="date"> 0/04/2021 - 16/04/2021</span>
+							<br /><br />
+							<p><strong>1BNB = 100000WNR</strong></p>
+							<p>soft cap : <strong>5000WNR</strong></p>
+							<p>Winter cap : <strong>10000WNR</strong></p>
+						</div>
+					</div>
+					<div class="carousel-item">
+						<div
+							class="presale-detail-card bg-white rounded rounded-4 d-inline-block rounded rounded-4 position-relative"
+							id="presale-detail-card-2"
+						>
+							<span style="--accent-color: #2278d4" class="diode">02</span>
+							<h1
+								style="--accent-color: #2278d4"
+								class="fly-lower-text position-absolute display-1"
+							>
+								02
+							</h1>
+							<h4>Phase Two</h4>
+							<span class="date"> 0/04/2021 - 16/04/2021</span>
+							<br /><br />
+							<p><strong>1BNB = 100000WNR</strong></p>
+							<p>soft cap : <strong>5000WNR</strong></p>
+							<p>Winter cap : <strong>10000WNR</strong></p>
+						</div>
+					</div>
+					<div class="carousel-item">
+						<div
+							class="presale-detail-card bg-white rounded rounded-4 d-inline-block rounded rounded-4 position-relative"
+							id="presale-detail-card-3"
+						>
+							<span style="--accent-color: #ffd100" class="diode">03</span>
+							<h1
+								style="--accent-color: #ffd100"
+								class="fly-lower-text position-absolute display-1"
+							>
+								03
+							</h1>
+							<h4>Phase Three</h4>
+							<span class="date"> 0/04/2021 - 16/04/2021</span>
+							<br /><br />
+							<p><strong>1BNB = 100000WNR</strong></p>
+							<p>soft cap : <strong>5000WNR</strong></p>
+							<p>Winter cap : <strong>10000WNR</strong></p>
+						</div>
+					</div>
+				</div>
+				<button
+					class="carousel-control-prev carousel-control-icon d-block d-lg-none"
+					type="button"
+					data-bs-target="#carouselExample"
+					data-bs-slide="prev"
+				>
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						fill="none"
+						height="24"
+						viewBox="0 0 24 24"
+						width="24"
+					>
+						<path
+							d="m15 6-5.29289 5.2929c-.33334.3333-.5.5-.5.7071s.16666.3738.5.7071l5.29289 5.2929"
+							stroke="#333"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="1.5"
+						/>
+					</svg>
+					<span class="visually-hidden">Previous</span>
+				</button>
+				<button
+					class="carousel-control-next carousel-control-icon d-block d-lg-none"
+					type="button"
+					data-bs-target="#carouselExample"
+					data-bs-slide="next"
+				>
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						fill="none"
+						height="24"
+						viewBox="0 0 24 24"
+						width="24"
+					>
+						<path
+							d="m9 18 5.2929-5.2929c.3333-.3333.5-.5.5-.7071s-.1667-.3738-.5-.7071l-5.2929-5.2929"
+							stroke="#333"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="1.5"
+						/>
+					</svg>
+					<span class="visually-hidden">Next</span>
+				</button>
 			</div>
 		</section>
 		<section class="buying-process">

@@ -1,4 +1,5 @@
 .hero-section .wrapper {
+  min-height: max-content;
   width: 100%;
 }
 
