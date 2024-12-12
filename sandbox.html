@@ -13,6 +13,7 @@
 	<link rel="stylesheet" href="./src/css/elemental.css" />
 	<link rel="stylesheet" href="./src/css/hero.css" />
 	<link rel="stylesheet" href="./src/css/target-consumer.css" />
+	<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
 
 <body data-bs-theme="dark" style="overflow-x: hidden">
@@ -21,7 +22,7 @@
 	</div>
 	<nav class="container navbar navbar-expand-lg">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="#">
+			<a class="navbar-brand" href="/" aria-current="page">
 				<img src="Logo.svg" alt="" /> <img src="Tokners.svg" alt="" /></a>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
 				data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -31,10 +32,10 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 					<li class="nav-item">
-						<a class="nav-link" href="#">Our team</a>
+						<a class="nav-link" href="/team.html">Our team</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" aria-current="page" href="/token.html">Tokens</a>
+						<a class="nav-link" href="/token.html">Tokens</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="#">Connect wallet</a>
@@ -53,21 +54,22 @@
 	<section class="hero-section container-fluid align-items-center">
 		<div class="hero-content-text-wrapper col-12 col-lg-6 position-relative row-6 d-flex justify-content-center">
 			<div class="hero-content-text w-100">
-				<span>At Tokners we are</span>
-				<h1>Reimagining social media through the power of the blockchain.</h1>
-				<p class="text-secondary"> We are creating social media 3.0 with influencers, celebrities and creators
-					being able to launch their own digital currency by simply creating a profile with media content
-					posted as Non fungible Tokens that can be owned and traded on the Tknrs network </p>
-				<button class="btn btn-outline-success hero-button"> Learn More </button>
+				<span data-aos="zoom-out-up">At Tokners we are</span>
+				<h1 data-aos="zoom-out-up">Reimagining social media through the power of the blockchain.</h1>
+				<p class="text-secondary" data-aos="zoom-out-up"> We are creating social media 3.0 with influencers,
+					celebrities and creators being able to launch their own digital currency by simply creating a
+					profile with media content posted as Non fungible Tokens that can be owned and traded on the Tknrs
+					network </p>
+				<button class="btn btn-outline-success hero-button" data-aos="zoom-out-up"> Learn More </button>
 			</div>
 		</div>
-		<div class="hero-content-media col-12 col-lg-6 position-relative row-6">
+		<div class="hero-content-media col-12 col-lg-6 position-relative row-6" data-aos="zoom-out-left">
 			<img src="hero.png" class="position-absolute" alt="" />
 		</div>
 	</section>
 	<div class="consumer-target-card">
 		<div class="consumer-target-card-wrapper">
-			<div class="card">
+			<div class="card" data-aos="fade-down" data-aos-anchor-placement="center-bottom">
 				<div class="consumer-icon">
 					<img src="consumer-icon-1.svg" alt="" />
 				</div>
@@ -77,7 +79,7 @@
 					own 10-15% of the total value of the tokens minted. </p>
 				<a href="#">Learn More <img src="arrow-right-ic.svg" alt="" /></a>
 			</div>
-			<div class="card">
+			<div class="card" data-aos="fade-down" data-aos-anchor-placement="center-bottom">
 				<div class="consumer-icon">
 					<img src="consumer-icon-1.svg" alt="" />
 				</div>
@@ -93,14 +95,14 @@
 	<div class="container-fluid p-0" style="width: 100vw; overflow: hidden">
 		<div class="row row-cols-lg-2 h-100">
 			<!-- Abstract Art Image Content -->
-			<div
-				class="abtract-card col-12 col-lg-6 border-radius-top-right-circle overflow-hidden row-6 h-100 flex-shrink-0 flex-grow-1">
+			<div class="abtract-card col-12 col-lg-6 border-radius-top-right-circle overflow-hidden row-6 h-100 flex-shrink-0 flex-grow-1"
+				data-aos="fade-right" data-aos-anchor-placement="center-bottom">
 				<img src="Group33.svg" alt="" class="img-fluid h-100 w-100 d-inline-block w-100"
 					style="object-fit: cover" />
 			</div>
 			<!-- Text Content -->
-			<div
-				class="col-12 col-lg-6 border-radius-top-left-circle pt-4 bg-white text-dark align-items-start align-self-end row-6 h-100 inverse-radius-w-r-b d-inline-block">
+			<div class="col-12 col-lg-6 border-radius-top-left-circle pt-4 bg-white text-dark align-items-start align-self-end row-6 h-100 inverse-radius-w-r-b d-inline-block"
+				data-aos="fade-left" data-aos-anchor-placement="center-bottom">
 				<div class="col col-9 container h-100 p-0 pt-4 mx-auto" style="margin-top: 100px; margin-bottom: 100px">
 					<h2 style="--bs-text-opacity: 1" class="mt-4">
 						<strong style="font-weight: 900">What makes us different <span
@@ -122,10 +124,10 @@
 		</div>
 	</div>
 	<!-- Time Line and Crypto Welcome Section -->
-	<section class="time-line container py-10 my-10">
+	<section class="time-line container py-10 my-10" style="margin-block: 6rem">
 		<div class="row p-2 align-self-center">
-			<div style="--accent-color: #22a75d"
-				class="col-12 col-lg-6 col-xl-3 align-items-center time-line-list mt-4">
+			<div data-aos="fade-up-right" data-aos-anchor-placement="center-bottom" data-aos-delay="200"
+				style="--accent-color: #22a75d" class="col-12 col-lg-6 col-xl-3 align-items-center time-line-list mt-4">
 				<p class="d-flex align-items-end gap-2" style="margin-bottom: 2.5rem">
 					<span class="diode">Q1</span> <span>2021</span>
 				</p>
@@ -134,8 +136,8 @@
 					<li class="d-flex">Launch of information website</li>
 				</ul>
 			</div>
-			<div style="--accent-color: #2278d4"
-				class="col-12 col-lg-6 col-xl-3 align-items-center time-line-list mt-4">
+			<div data-aos="fade-up-right" data-aos-anchor-placement="center-bottom" data-aos-delay="400"
+				style="--accent-color: #2278d4" class="col-12 col-lg-6 col-xl-3 align-items-center time-line-list mt-4">
 				<p class="d-flex align-items-end gap-2" style="margin-bottom: 2.5rem">
 					<span class="diode">Q1</span> <span>2021</span>
 				</p>
@@ -147,8 +149,8 @@
 					<li class="d-flex">Marketing and promotion</li>
 				</ul>
 			</div>
-			<div style="--accent-color: #ffd100"
-				class="col-12 col-lg-6 col-xl-3 align-items-center time-line-list mt-4">
+			<div data-aos="fade-up-right" data-aos-anchor-placement="center-bottom" data-aos-delay="600"
+				style="--accent-color: #ffd100" class="col-12 col-lg-6 col-xl-3 align-items-center time-line-list mt-4">
 				<p class="d-flex align-items-end gap-2" style="margin-bottom: 2.5rem">
 					<span class="diode">Q1</span> <span>2021</span>
 				</p>
@@ -158,8 +160,8 @@
 					<li class="d-flex">More Marketing and promotion</li>
 				</ul>
 			</div>
-			<div style="--accent-color: #e20613"
-				class="col-12 col-lg-6 col-xl-3 align-items-center time-line-list mt-4">
+			<div data-aos="fade-up-right" data-aos-anchor-placement="center-bottom" data-aos-delay="800"
+				style="--accent-color: #e20613" class="col-12 col-lg-6 col-xl-3 align-items-center time-line-list mt-4">
 				<p class="d-flex align-items-end gap-2" style="margin-bottom: 2.5rem">
 					<span class="diode">Q1</span> <span>2021</span>
 				</p>
@@ -173,7 +175,7 @@
 		</div>
 	</section>
 	<section class="coming-soon container">
-		<div class="row align-items-start">
+		<div class="row align-items-start" data-aos="fade-left" data-aos-anchor-placement="center-bottom">
 			<div class="cs-text-content col-12 col-lg-6">
 				<div class="text-content-wrapper collapse custom show" id="comingSoonReadMoreText">
 					<h2 class="mb-4">
@@ -206,7 +208,8 @@
 					data-bs-toggle="collapse" data-bs-target="#comingSoonReadMoreText" aria-expanded="false"
 					aria-controls="comingSoonReadMoreText"> Read More </button>
 			</div>
-			<img src="Woman-Holding-iPhone-Xs-in-Hand-Mockup 1.png" alt="Woman-Holding-iPhone-Xs-in-Hand-Mockup 1"
+			<img data-aos="fade-left" data-aos-anchor-placement="center-bottom"
+				src="Woman-Holding-iPhone-Xs-in-Hand-Mockup 1.png" alt="Woman-Holding-iPhone-Xs-in-Hand-Mockup 1"
 				class="cs-media-content col-12 col-lg-6 object-fit-contain" />
 		</div>
 	</section>
@@ -216,7 +219,8 @@
 			<h3 class="mb-0 mt-4">Presale Details</h3>
 			<div id="presaleCarousel"
 				class="carousel slide text-black d-flex align-items-center gap-4 overflow-x-scroll presale-detail-carousel">
-				<div class="presale-detail-card bg-white rounded rounded-4 d-inline-block rounded rounded-4 position-relative"
+				<div data-aos="zoom-in-down" data-aos-anchor-placement="center-bottom"
+					class="presale-detail-card bg-white rounded rounded-4 d-inline-block rounded rounded-4 position-relative"
 					id="presale-detail-card-1">
 					<span style="--accent-color: #22a75d" class="diode">01</span>
 					<h1 style="--accent-color: #22a75d" class="fly-lower-text position-absolute display-1"> 01 </h1>
@@ -227,7 +231,8 @@
 					<p>soft cap : <strong>5000WNR</strong></p>
 					<p>Winter cap : <strong>10000WNR</strong></p>
 				</div>
-				<div class="presale-detail-card bg-white rounded rounded-4 d-inline-block rounded rounded-4 position-relative"
+				<div data-aos="zoom-in-down" data-aos-anchor-placement="center-bottom"
+					class="presale-detail-card bg-white rounded rounded-4 d-inline-block rounded rounded-4 position-relative"
 					id="presale-detail-card-2">
 					<span style="--accent-color: #2278d4" class="diode">02</span>
 					<h1 style="--accent-color: #2278d4" class="fly-lower-text position-absolute display-1"> 02 </h1>
@@ -238,7 +243,8 @@
 					<p>soft cap : <strong>5000WNR</strong></p>
 					<p>Winter cap : <strong>10000WNR</strong></p>
 				</div>
-				<div class="presale-detail-card bg-white rounded rounded-4 d-inline-block rounded rounded-4 position-relative"
+				<div data-aos="zoom-in-down" data-aos-anchor-placement="center-bottom"
+					class="presale-detail-card bg-white rounded rounded-4 d-inline-block rounded rounded-4 position-relative"
 					id="presale-detail-card-3">
 					<span style="--accent-color: #ffd100" class="diode">03</span>
 					<h1 style="--accent-color: #ffd100" class="fly-lower-text position-absolute display-1"> 03 </h1>
@@ -319,13 +325,15 @@
 	<section class="buying-process">
 		<h3 class="text-center mt-4"><strong>How to buy</strong></h3>
 		<div class="wrapper mx-auto">
-			<div class="card buying-process-card rounded-4 border-0">
+			<div class="card buying-process-card rounded-4 border-0" data-aos="flip-up"
+				data-aos-anchor-placement="center-bottom">
 				<span class="overlay-number text-secondary">01</span>
 				<p class="mb-0">
 					<strong>First Connect your Metamask or TrustWallet to the "Connect Wallet" on the Homepage.</strong>
 				</p>
 			</div>
-			<div class="card buying-process-card rounded-4 border-0">
+			<div class="card buying-process-card rounded-4 border-0" data-aos="flip-up"
+				data-aos-anchor-placement="center-bottom">
 				<div style="--accent-color: #22a75d" class="overlay-arrow overlay-arrow-1">
 					<strong>></strong>
 				</div>
@@ -337,7 +345,8 @@
 					<strong>></strong>
 				</div>
 			</div>
-			<div class="card buying-process-card rounded-4 border-0">
+			<div class="card buying-process-card rounded-4 border-0" data-aos="flip-up"
+				data-aos-anchor-placement="center-bottom">
 				<span class="overlay-number text-secondary">03</span>
 				<p class="mb-0">
 					<strong>Then after you will received your $WNTR to your address within 24hours. </strong>
@@ -345,7 +354,7 @@
 			</div>
 		</div>
 	</section>
-	<section aria-label="breadcrumb bottom-links  border ">
+	<section aria-label="breadcrumb bottom-links border" style="margin-top: 10rem">
 		<ol class="breadcrumb justify-content-center">
 			<li class="breadcrumb-item">
 				<a class="text-white" href="#">Our Team</a>
@@ -411,6 +420,12 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
 		crossorigin="anonymous"></script>
+	<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+	<script>
+		AOS.init({
+			duration: 900,
+		});
+	</script>
 </body>
 
 </html>
