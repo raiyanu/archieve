@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="icon" type="image/svg+xml" href="/vite.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Tokners | Our Team</title>
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+			crossorigin="anonymous"
+		/>
+		<link rel="stylesheet" href="./src/css/style.css" />
+		<link rel="stylesheet" href="./src/css/navbar.css" />
+		<link rel="stylesheet" href="./src/css/elemental.css" />
+		<link rel="stylesheet" href="./src/css/hero.css" />
+		<link rel="stylesheet" href="./src/css/target-consumer.css" />
+		<link rel="stylesheet" href="./src/css/team.css" />
+	</head>
+	<body data-bs-theme="dark" style="overflow-x: hidden">
+		<div class="bg-effector">
+			<img src="radialEffect.png" alt="" />
+		</div>
+		<nav class="container navbar navbar-expand-lg">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="/">
+					<img src="Logo.svg" alt="" /> <img src="Tokners.svg" alt=""
+				/></a>
+				<button
+					class="navbar-toggler"
+					type="button"
+					data-bs-toggle="collapse"
+					data-bs-target="#navbarSupportedContent"
+					aria-controls="navbarSupportedContent"
+					aria-expanded="false"
+					aria-label="Toggle navigation"
+					style="border: none; outline: none"
+				>
+					<img src="/menu-ic.svg" alt="" />
+				</button>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+						<li class="nav-item">
+							<a class="nav-link" aria-current="page" href="#">Our team</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#">Tokens</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#">Connect wallet</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#">Lightpaper</a>
+						</li>
+					</ul>
+					<div class="d-flex">
+						<button type="button" class="btn nav-button">Sign in</button>
+						<button
+							class="btn btn-outline-success rounded-button nav-button"
+							type="submit"
+						>
+							Sign up
+						</button>
+					</div>
+				</div>
+			</div>
+		</nav>
+
+		<div class="card-slider container my-4">
+			<div class="wrapper my-4">
+				<div
+					class="slider-head d-flex align-items-center justify-content-between"
+				>
+					<h3 class="h3">Our Team</h3>
+					<div class="slider-button d-none d-lg-flex">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 320 512"
+							onclick="scrollTheSlide(-300)"
+						>
+							<path
+								fill="white"
+								d="m34.52 239.03 194.35-194.34c9.37-9.37 24.57-9.37 33.94 0l22.67 22.67c9.36 9.36 9.37 24.52.04 33.9l-154.03 154.74 154.02 154.75c9.34 9.38 9.32 24.54-.04 33.9l-22.67 22.67c-9.37 9.37-24.57 9.37-33.94 0l-194.34-194.35c-9.37-9.37-9.37-24.57 0-33.94z"
+							/>
+						</svg>
+
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 320 512"
+							onclick="scrollTheSlide(300)"
+						>
+							<path
+								fill="white"
+								d="m285.476 272.971-194.344 194.343c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901l154.021-154.746-154.021-154.745c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0l194.343 194.343c9.373 9.372 9.373 24.568.001 33.941z"
+							/>
+						</svg>
+						<script>
+							function scrollTheSlide(slideByValue) {
+								card_slider_container.scrollLeft += slideByValue;
+							}
+						</script>
+					</div>
+				</div>
+				<div
+					class="card-slider-container d-flex gap-3 overflow-x-scroll"
+					id="card_slider_container"
+					style="scroll-behavior: smooth; scroll-snap-type: x mandatory"
+				>
+					<!-- Card -->
+					<div
+						class="team-card pt-4 rounded-4 d-inline-flex align-items-start justify-content-between flex-column"
+						style="min-width: 250px; background: #0d0b16"
+					>
+						<div class="person-detail px-4">
+							<div class="h6 mb-1" style="font-weight: 500">Brad pie</div>
+							<p style="font-size: smaller">CEO and Co founder</p>
+						</div>
+						<img
+							src="/team/team-1.png"
+							style="margin-inline: auto"
+							width="180px"
+							alt=""
+						/>
+					</div>
+
+					<!-- Card -->
+					<div
+						style="min-width: 250px"
+						class="team-card pt-4 rounded-4 d-inline-flex align-items-start justify-content-between flex-column team-card-main"
+					>
+						<div class="person-detail px-4">
+							<div class="h6 mb-1" style="font-weight: 500">Lee Lee</div>
+							<p style="font-size: smaller">CEO and Co founder</p>
+						</div>
+						<img
+							src="/team/team-2.png"
+							style="margin-inline: auto"
+							width="180px"
+							alt=""
+						/>
+					</div>
+
+					<!-- Card -->
+					<div
+						class="team-card pt-4 rounded-4 d-inline-flex align-items-start justify-content-between flex-column"
+						style="min-width: 250px; background: #0d0b16"
+					>
+						<div class="person-detail px-4">
+							<div class="h6 mb-1" style="font-weight: 500">Shan khan</div>
+							<p style="font-size: smaller">Head of Development</p>
+						</div>
+						<img
+							src="/team/team-2.png"
+							style="margin-inline: auto"
+							width="180px"
+							alt=""
+						/>
+					</div>
+
+					<!-- Card -->
+					<div
+						class="team-card pt-4 rounded-4 d-inline-flex align-items-start justify-content-between flex-column"
+						style="min-width: 250px; background: #0d0b16"
+					>
+						<div class="person-detail px-4">
+							<div class="h6 mb-1" style="font-weight: 500">Shan Lopez</div>
+							<p style="font-size: smaller">Head of marketing</p>
+						</div>
+						<img
+							src="/team/team-3.png"
+							style="margin-inline: auto"
+							width="180px"
+							alt=""
+						/>
+					</div>
+
+					<!-- Card -->
+					<div
+						class="team-card pt-4 rounded-4 d-inline-flex align-items-start justify-content-between flex-column"
+						style="min-width: 250px; background: #0d0b16"
+					>
+						<div class="person-detail px-4">
+							<div class="h6 mb-1" style="font-weight: 500">Lily</div>
+							<p style="font-size: smaller">Community manager</p>
+						</div>
+						<img
+							src="/team/team-4.png"
+							style="margin-inline: auto"
+							width="180px"
+							alt=""
+						/>
+					</div>
+
+					<!-- Card -->
+					<div
+						class="team-card pt-4 rounded-4 d-inline-flex align-items-start justify-content-between flex-column"
+						style="min-width: 250px; background: #0d0b16"
+					>
+						<div class="person-detail px-4">
+							<div class="h6 mb-1" style="font-weight: 500">Brad pie</div>
+							<p style="font-size: smaller">CEO and Co founder</p>
+						</div>
+						<img
+							src="/team/team-1.png"
+							style="margin-inline: auto"
+							width="180px"
+							alt=""
+						/>
+					</div>
+				</div>
+				<div
+					class="slide-button d-flex d-lg-none align-items-center justify-content-center my-4 gap-2"
+				>
+					<span onclick="scrollTheSlide(-255)" class="slider-dot"> </span>
+					<span class="slider-dot slider-dot-active"> </span>
+					<span onclick="scrollTheSlide(255)" class="slider-dot"> </span>
+				</div>
+			</div>
+		</div>
+
+		<section aria-label="breadcrumb bottom-links  border mt-4">
+			<ol class="breadcrumb justify-content-center">
+				<li class="breadcrumb-item">
+					<a class="text-white" href="#">Our Team</a>
+				</li>
+				<li class="breadcrumb-item">
+					<a class="text-white" href="#">Tokens</a>
+				</li>
+				<li class="breadcrumb-item">
+					<a class="text-white" href="#">Connect Wallet</a>
+				</li>
+				<li class="breadcrumb-item">
+					<a class="text-white" href="#">Lightpaper</a>
+				</li>
+			</ol>
+		</section>
+		<div class="container">
+			<footer
+				class="d-flex flex-wrap justify-content-between align-items-center py-3 mt-4"
+				style="padding-bottom: 5rem !important"
+			>
+				<div class="d-flex align-items-center mx-auto">
+					<a
+						href="/"
+						class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1"
+					>
+						<img src="Logo.svg" alt="" /> <img src="Tokners.svg" alt="" />
+					</a>
+					<br />
+				</div>
+
+				<ul
+					class="nav justify-content-center list-unstyled d-flex bottom-links-wrapper align-items-center mx-auto"
+				>
+					<li class="ms-3">
+						<a class="text-body-secondary" href="#">
+							<img src="/icons/github 1.svg" alt="" />
+						</a>
+					</li>
+					<li class="ms-3">
+						<a class="text-body-secondary" href="#">
+							<img src="/icons/Telegram.svg" alt="" />
+						</a>
+					</li>
+					<li class="ms-3">
+						<a class="text-body-secondary" href="#">
+							<img src="/icons/instagram.svg" alt="" />
+						</a>
+					</li>
+
+					<li class="ms-3">
+						<a class="text-body-secondary" href="#">
+							<img src="/icons/medium.svg" alt="" />
+						</a>
+					</li>
+					<li class="ms-3">
+						<a class="text-body-secondary" href="#">
+							<img src="/icons/github 1.svg" alt="" />
+						</a>
+					</li>
+					<li class="ms-3">
+						<a class="text-body-secondary" href="#">
+							<img src="/icons/reddit 1.svg" alt="" />
+						</a>
+					</li>
+				</ul>
+				<span class="mb-3 mb-md-0 d-inline-block mx-auto">
+					© 2024 Company, Inc
+				</span>
+			</footer>
+		</div>
+		<div class="bg-effector-second">
+			<img src="radialEffect-2.png" alt="" />
+		</div>
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+			crossorigin="anonymous"
+		></script>
+	</body>
+</html>
+<!-- Card -->
+<div
+	class="team-card pt-4 rounded-4 d-inline-flex align-items-center justify-start-between flex-column"
+	style="min-width: 250px; background: #0d0b16"
+>
+	<div class="person-detail px-4">
+		<div class="h6 mb-1" style="font-weight: 500">Brad pie</div>
+		<p style="font-size: smaller">CEO and Co founder</p>
+	</div>
+	<img
+		src="/team/team-1.png"
+		style="margin-inline: auto"
+		width="180px"
+		alt=""
+	/>
+</div>

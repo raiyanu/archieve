@@ -1,0 +1,52 @@
+.card-slider {
+	.wrapper {
+		& ::-webkit-scrollbar {
+			display: none;
+		}
+		& ::-webkit-scrollbar-thumb {
+			display: none;
+		}
+		.slider-button {
+			user-select: none;
+			svg {
+				&:nth-child(1) {
+					margin-right: 10px;
+				}
+				cursor: pointer;
+				width: 25px;
+				height: auto;
+				aspect-ratio: 1/1;
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				padding: 5px;
+				border-radius: 50%;
+				border: 2px solid rgba($color: #fff, $alpha: 0.3);
+			}
+		}
+	}
+}
+
+.slider-dot {
+	background-color: white;
+	border: 1px solid white;
+	height: auto;
+	width: 5px;
+	aspect-ratio: 1/1;
+	border-radius: 50%;
+}
+.slider-dot-active {
+	width: 10px;
+}
+.team-card {
+	max-width: 96vw;
+	scroll-snap-align: center;
+}
+
+.team-card-main {
+	background-color: #0d0b16;
+	background-image: url("/dis-rect.svg");
+	background-repeat: no-repeat;
+	background-position: -120px 120px;
+	background-size: 500px;
+}
