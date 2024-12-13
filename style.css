@@ -120,9 +120,7 @@
 	}
 
 	.featured-image {
-		border: 1px solid red;
 		border-radius: 8px;
-		aspect-ratio: 12/9;
 	}
 
 	.text-content {
