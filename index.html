@@ -23,10 +23,12 @@
 				},
 			};
 		</script>
-		<!-- <link rel="stylesheet" href="main.css" /> -->
 	</head>
 
-	<body class="bg-primary text-white overflow-x-clip pb-48">
+	<body
+		class="bg-primary text-white overflow-x-clip pb-48 snap-y snap-proximity"
+	>
+		<!-- Header and Navbar -->
 		<header
 			class="container mx-auto text-white flex items-center justify-between gap-3 p-4"
 		>
@@ -41,7 +43,7 @@
 				<a href="#">Solution</a>
 			</div>
 			<svg
-				class="md:hidden h-10 w-10"
+				class="md:hidden h-10 w-10 cursor-pointer"
 				width="24"
 				height="24"
 				viewBox="0 0 24 24"
@@ -49,7 +51,7 @@
 				xmlns="http://www.w3.org/2000/svg"
 			>
 				<path
-					d="M17 8H10"
+					d="M17 16H10"
 					stroke="white"
 					stroke-width="2"
 					stroke-linecap="round"
@@ -63,7 +65,7 @@
 					stroke-linejoin="round"
 				/>
 				<path
-					d="M17 16H8"
+					d="M17 8H8"
 					stroke="white"
 					stroke-width="2"
 					stroke-linecap="round"
@@ -71,12 +73,14 @@
 				/>
 			</svg>
 		</header>
+
+		<!-- Hero Section -->
 		<div
-			class="container flex min-h-[80vh] mx-auto justify-around md:*:w-1/2 flex-wrap md:flex-nowrap max-md:px-6 items-center before:contain-content before:h-64 before:w-24 before:bg-white before:bg-opacity-55 before:blur-[100px] before:bg-transparent before:top-1/2 before:absolute relative before:-translate-y-1/2 before:rounded-[50%] before:-translate-x-20 before:shadow-2xl before:shadow-white flex-col md:flex-row before:left-0 py-12 gap-8"
+			class="container flex min-h-[80vh] mx-auto justify-around md:*:w-1/2 flex-wrap md:flex-nowrap max-md:px-6 items-center before:contain-content before:h-64 before:w-24 before:bg-white before:bg-opacity-55 before:blur-[100px] before:bg-transparent before:top-1/2 before:absolute relative before:-translate-y-1/2 before:rounded-[50%] before:-translate-x-20 before:shadow-2xl before:shadow-white flex-col md:flex-row before:left-0 py-12 gap-8 snap-center"
 		>
 			<div class="hero-text-content">
 				<span
-					class="text-gray-400 text-xs flex items-center justify-start gap-1 md:gap-2 w-fit rounded-full px-3 bg-gradient-to-b from-gray-900 via-gray-950 to-black m-0 max-md:text-[10px]"
+					class="text-gray-400 text-xs flex items-center justify-start gap-1 md:gap-2 w-fit rounded-full px-3 bg-gradient-to-b from-gray-900 via-gray-950 to-black m-0 max-md:text-[10px] mb-4"
 				>
 					<img src="./assets/Discount.svg" alt="" /><wbr />
 					<span class="text-white">20%</span> DISCOUNT FOR
@@ -139,7 +143,7 @@
 					xmlns="http://www.w3.org/2000/svg"
 					class="absolute -top-20 h-full w-full"
 				>
-					<g class="glass-v" filter="url(#filter0_f_4117_141)">
+					<g class="glass-v scale-110" filter="url(#filter0_f_4117_141)">
 						<path
 							d="M124 73L298.468 644H502.608L702 73H124Z"
 							fill="url(#paint0_linear_4117_141)"
@@ -947,8 +951,10 @@
 				</svg>
 			</div>
 		</div>
+
+		<!-- numeric-details -->
 		<section
-			class="numeric-details container mx-auto max-sm:flex max-sm:items-center max-sm:justify-center"
+			class="numeric-details container mx-auto max-sm:flex max-sm:items-center max-sm:justify-center snap-center"
 		>
 			<div
 				class="wrapper flex flex-col md:flex-row items-center max-sm:items-start justify-evenly divide-white max-md:gap-4"
@@ -984,6 +990,142 @@
 					>
 						TRANSACTION
 					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Brand Promising -->
+		<section
+			class="brand-promising container mx-auto flex py-[200px] gap-6 snap-center max-md:flex-wrap p-4"
+		>
+			<div class="brand-promising-text">
+				<h4 class="text-5xl">You do the business, we'll handle the money.</h4>
+				<p class="text-gray-400 mt-6">
+					With the right credit card, you can improve your financial life by
+					building credit, earning rewards and saving money. But with hundreds
+					of credit cards on the market.
+				</p>
+				<button
+					class="bg-gradient-to-r from-[#5ce1e6] via-[#5ce1e6] to-[#aef9fc] rounded px-8 py-3 text-black font-bold text-md mt-6"
+				>
+					Get Started
+				</button>
+			</div>
+			<div class="brand-promising-text min-w-[50%]">
+				<div
+					class="wrapper promise_list"
+					onmouseenter="showBG(true)"
+					onmouseleave="showBG(false)"
+				>
+					<div
+						class="flex items-center gap-3 px-3 py-4 rounded-lg relative cursor-pointer"
+						id="targetBackground"
+						onmouseenter="hoveredPromisingBrand(0)"
+					>
+						<div
+							id="bgElement"
+							class="contain-content h-full w-full absolute bg-white -z-[1] bg-gradient-to-r from-[#26242c] via-[#14101D] to-[#14101D] rounded-lg top-0 left-0 transition-all duration-300 ease-out"
+						></div>
+						<img src="./assets/star.svg" class="h-1/2" alt="icon" />
+						<div>
+							<p class="text-2xl">Rewards</p>
+							<p class="text-sm text-gray-400">
+								The best credit cards offer some tantalizing combinations of
+								promotions and prizes
+							</p>
+						</div>
+					</div>
+					<div
+						class="flex items-center gap-3 px-3 py-4 rounded-lg cursor-pointer"
+						onmouseenter="hoveredPromisingBrand(100)"
+					>
+						<img src="./assets/shield.svg" class="h-1/2" alt="icon" />
+						<div>
+							<p class="text-2xl">100% Secured</p>
+							<p class="text-sm text-gray-400">
+								We take proactive steps make sure your information and
+								transactions are secure.
+							</p>
+						</div>
+					</div>
+					<div
+						class="flex items-center gap-3 px-3 py-4 rounded-lg cursor-pointer"
+						onmouseenter="hoveredPromisingBrand(200)"
+					>
+						<img src="./assets/sent.svg" class="h-1/2" alt="icon" />
+						<div>
+							<p class="text-2xl">Balance Transfer</p>
+							<p class="text-sm text-gray-400">
+								A balance transfer credit card can save you a lot of money in
+								interest charges.
+							</p>
+						</div>
+					</div>
+				</div>
+				<script>
+					let hoveredPromisingBrand = (translateTo) =>
+						(bgElement.style.translate = `0 ${translateTo}%`);
+					let showBG = (doShow) =>
+						(bgElement.style.opacity = doShow ? "1" : "0");
+				</script>
+			</div>
+		</section>
+
+		<!-- Billing control intro -->
+		<section
+			class="before:contain-content before:h-64 before:w-24 before:bg-white before:bg-opacity-55 before:blur-[100px] before:bg-transparent before:top-0 before:absolute before:-translate-y-1/2 before:rounded-[50%] before:-translate-x-20 before:shadow-2xl before:shadow-white before:left-0 relative flex items-center p-4 flex-col lg:flex-row lg:*:w-1/2 *:flex-shrink-0"
+		>
+			<div class="billing-media min-w-[50vw] p-12">
+				<div class="wrapper m-auto w-fit relative max-md:-translate-x-12">
+					<div
+						class="bg-white rounded-lg items-center justify-center text-black w-fit bottom-0 right-0 min-w-fit px-2 py-1 *:flex-shrink-0 *:flex-grow absolute translate-x-1/3 translate-y-1/2"
+					>
+						<img src="./assets/completeIcon.svg" class="inline-block" alt="" />
+						<p class="inline">Great! Your Payment is succesfully.</p>
+					</div>
+					<img
+						src="./assets/paypal-card.svg"
+						class="top-0 right-0 absolute translate-x-1/2 -translate-y-[60%] shadow-lg"
+						alt=""
+					/>
+					<img src="./assets/transations.svg" class="right-0" alt="" />
+				</div>
+			</div>
+			<div class="billing-text md:ml-4 max-lg:pt-8">
+				<h3 class="text-5xl font-bold mb-4">
+					Easily control your billing & invoicing.
+				</h3>
+				<p class="text-gray-300">
+					Elit enim sed massa etiam. Mauris eu adipiscing ultrices ametodio
+					aenean neque. Fusce ipsum orci rhoncus aliporttitor integer platea
+					placerat.
+				</p>
+				<div class="flex gap-3 mt-8">
+					<button>
+						<img src="./assets/applestore.svg" alt="applestore" />
+					</button>
+					<button><img src="./assets/playstore.svg" alt="playstore" /></button>
+				</div>
+			</div>
+		</section>
+
+		<!-- Better Deal -->
+		<section class="better-deal container mx-auto p-1">
+			<div class="wrapper">
+				<div class="md:ml-4">
+					<h3 class="text-5xl font-bold mb-4">
+						Easily control your billing & invoicing.
+					</h3>
+					<p class="text-gray-300">
+						Elit enim sed massa etiam. Mauris eu adipiscing ultrices ametodio
+						aenean neque. Fusce ipsum orci rhoncus aliporttitor integer platea
+						placerat.
+					</p>
+					<button
+						class="bg-gradient-to-r from-[#5ce1e6] via-[#5ce1e6] to-[#aef9fc] rounded px-8 py-3 text-black font-bold text-md mt-6"
+					>
+						Get Started
+					</button>
 				</div>
 			</div>
 		</section>
