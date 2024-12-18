@@ -1,126 +1,223 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Payment Site | Home</title>
-		<style>
-			@import url("https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
-		</style>
-		<script src="https://cdn.tailwindcss.com"></script>
-		<script>
-			tailwind.config = {
-				theme: {
-					extend: {
-						backgroundImage: {
-							spiral: "url('assets/spiral.svg')",
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Payment Site | Home</title>
+	<style>
+		@import url("https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+
+		*:hover,
+		a:hover {
+			cursor: url('https://127.0.0.1:5500/cursor.cur'), url('https://s141.convertio.me/p/zro487NW-h8aBzAlEK1Wlg/a89a9d40dc37f1ff277f2590ceda943d/cursor.cur'), auto;
+		}
+
+		*.loading {
+			cursor: url('https://127.0.0.1:5500/cursor.cur'), url('https://s141.convertio.me/p/zro487NW-h8aBzAlEK1Wlg/a89a9d40dc37f1ff277f2590ceda943d/cursor.cur'), auto;
+		}
+	</style>
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script>
+		tailwind.config = {
+			theme: {
+				extend: {
+					animation: {
+						'smooth-up-down': 'smoothUpDown 2s ease-in-out infinite',
+						'smooth-up-down-1': 'smoothUpDown-1 var(--d) ease-in-out infinite',
+						'smooth-up-down-2': 'smoothUpDown-2 var(--d) ease-in-out infinite',
+						'smooth-up-down-3': 'smoothUpDown-3 var(--d) ease-in-out infinite',
+						'smooth-rotate': 'smoothRotate 2s ease-in-out infinite',
+						'smooth-push-up-down': 'smoothPushUpDown 2s ease-in-out infinite',
+					},
+					keyframes: {
+						'smoothUpDown': {
+							'0%, 100%': {
+								translate: ' 0 0',
+							},
+							'50%': {
+								translate: ' 0 -20px',
+							},
 						},
-						content: {
-							ball: "url('assets/boll.svg')",
+						'smoothUpDown-1': {
+							'0%, 100%': {
+								translate: ' 0 0',
+							},
+							'50%': {
+								translate: ' 0 -20px',
+							},
 						},
-						colors: {
-							primary: "#00040F",
-							secondary: "#5CE1E6",
+						'smoothUpDown-2': {
+							'0%, 100%': {
+								translate: ' 0 0',
+							},
+							'50%': {
+								translate: ' 0 -40px',
+							},
+						},
+						'smoothUpDown-3': {
+							'0%, 100%': {
+								translate: ' 0 0',
+							},
+							'50%': {
+								translate: ' 0 -60px',
+							},
+						},
+						'smoothRotate': {
+							'0%, 100%': {
+								transform: 'rotate(0deg)',
+							},
+							'50%': {
+								transform: 'rotate(360deg)',
+							},
+						},
+						smoothPushUpDown: {
+							'0%, 100%': {
+								'padding-bottom': '0rem',
+							},
+							'50%': {
+								'padding-bottom': '3rem',
+							},
 						},
 					},
+					backgroundImage: {
+						spiral: "url('assets/spiral.svg')",
+					},
+					content: {
+						ball: "url('assets/boll.svg')",
+					},
+					colors: {
+						primary: "#00040F",
+						secondary: "#5CE1E6",
+					},
+					cursor: {
+						customFancy: "url('https://127.0.0.1:5500/cursor.cur'), url('https://s141.convertio.me/p/zro487NW-h8aBzAlEK1Wlg/a89a9d40dc37f1ff277f2590ceda943d/cursor.cur'), auto ",
+					}
 				},
-			};
-		</script>
-	</head>
+			},
+		};
+	</script>
+	<!-- <link rel="stylesheet" href="main.css"> -->
+</head>
 
-	<body
-		class="bg-primary text-white pb-8 snap-y snap-proximity overflow-x-clip"
-	>
-		<!-- Header and Navbar -->
-		<header
-			class="container mx-auto text-white flex items-center justify-between gap-3 p-4"
-		>
-			<div class="flex items-center">
-				<img src="./assets/brand.svg" alt="" />
-				<span class="text-xl">Raa<span class="text-secondary">shid</span></span>
-			</div>
-			<div class="*:ml-4 hover:*:underline underline-offset-8 max-md:hidden">
-				<a href="#">Home</a>
-				<a href="#">About Us</a>
-				<a href="#">Features</a>
-				<a href="#">Solution</a>
-			</div>
-			<svg
-				class="md:hidden h-10 w-10 cursor-pointer"
-				width="24"
-				height="24"
-				viewBox="0 0 24 24"
-				fill="none"
-				xmlns="http://www.w3.org/2000/svg"
-			>
-				<path
-					d="M17 16H10"
-					stroke="white"
-					stroke-width="2"
-					stroke-linecap="round"
-					stroke-linejoin="round"
-				/>
-				<path
-					d="M17 12H13"
-					stroke="white"
-					stroke-width="2"
-					stroke-linecap="round"
-					stroke-linejoin="round"
-				/>
-				<path
-					d="M17 8H8"
-					stroke="white"
-					stroke-width="2"
-					stroke-linecap="round"
-					stroke-linejoin="round"
-				/>
-			</svg>
-		</header>
-
-		<!-- Better Deal -->
-		<section class="better-deal container mx-auto p-4 my-32">
-			<div
-				class="wrapper flex lg:*:w-1/2 items-center flex-wrap-reverse lg:flex-nowrap justify-center"
-			>
-				<div class="md:ml-4">
-					<h3 class="text-5xl font-bold mb-4">
-						Easily control your billing & invoicing.
-					</h3>
-					<p class="text-gray-300">
-						Elit enim sed massa etiam. Mauris eu adipiscing ultrices ametodio
-						aenean neque. Fusce ipsum orci rhoncus aliporttitor integer platea
-						placerat.
-					</p>
-					<button
-						class="bg-gradient-to-r from-[#5ce1e6] via-[#5ce1e6] to-[#aef9fc] rounded px-8 py-3 text-black font-bold text-md mt-6 hover:bg-[#5ce1e6] active:bg-[#5ce1e6] focus:outline-none focus:ring focus:ring-[#5ce1e6] hover:bg-transparent"
-					>
-						Get Started
-					</button>
+<body class="bg-primary text-white  snap-y snap-proximity overflow-x-clip   cursor-customFancy *:cursor-customFancy">
+	<!-- Header and Navbar -->
+	<header class="container mx-auto text-white flex items-center justify-between gap-3 p-4 z-30">
+		<a href="#" class="flex items-center group/logo">
+			<img src="./assets/brand.svg" class="group-hover/logo:animate-spin" alt="" />
+			<span class="text-xl smooth-rotate">Raa<span class="text-secondary">shid</span></span>
+		</a>
+		<div
+			class="*:ml-4 hover:*:underline underline-offset-8  max-md:hidden max-md:absolute  max-md:flex-col max-md:top-16 max-md:right-16 max-md:bg-primary max-md:border max-md:border-opacity-50 max-md:rounded-xl transition-all max-md:gap-4 max-md:px-8 max-md:py-16 max-md:z-10 max-md:text-2xl nav-links visible">
+			<a href="#">Home</a>
+			<a href="#">About Us</a>
+			<a href="#">Features</a>
+			<a href="#">Solution</a>
+		</div>
+		<svg class="md:hidden h-10 w-10 cursor-pointer" onclick="toggleMenu()" width="24" height="24"
+			viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path d="M17 16H10" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+			<path d="M17 12H13" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+			<path d="M17 8H8" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+		</svg>
+	</header>
+	<!-- Brand Promising -->
+	<section class="brand-promising container mx-auto flex py-[200px] gap-6 snap-center max-md:flex-wrap p-12">
+		<div class="brand-promising-text">
+			<h4 class="text-5xl">You do the business, we'll handle the money.</h4>
+			<p class="text-gray-400 mt-6"> With the right credit card, you can improve your financial life by building
+				credit, earning rewards and saving money. But with hundreds of credit cards on the market. </p>
+			<button
+				class="before:bg-gradient-to-r before:bg-secondary before:contain-content before:h-[110%] before:w-[110%] before:animate-spin  duration-75   before:block  before:absolute relative before:-z-[1] rounded text-black font-bold text-md mt-6 hover:bg-[#5ce1e6] active:bg-[#5ce1e6] focus:outline-none focus:ring focus:ring-[#5ce1e6] hover:bg-transparent w-max  overflow-clip p-[2px]">
+				<span class="border border-primary h-2/3 w-full block bg-primary px-4 py-2 text-secondary"> Get Started
+				</span>
+			</button>
+		</div>
+		<div class="brand-promising-text min-w-[50%]">
+			<div class="wrapper promise_list" onmouseenter="showBG(true)" onmouseleave="showBG(false)">
+				<div class="flex items-center gap-3 px-3 py-4 rounded-lg relative " id="targetBackground"
+					onmouseenter="hoveredPromisingBrand(0)">
+					<div id="bgElement"
+						class="contain-content h-full w-full absolute bg-white -z-[1] bg-gradient-to-r from-[#26242c] via-[#14101D] to-[#14101D] rounded-lg top-0 left-0 transition-all duration-300 ease-out">
+					</div>
+					<img src="./assets/star.svg" class="h-1/2" alt="icon" />
+					<div>
+						<p class="text-2xl">Rewards</p>
+						<p class="text-sm text-gray-400"> The best credit cards offer some tantalizing combinations of
+							promotions and prizes </p>
+					</div>
 				</div>
-				<div class="media-content relative my-24 lg:my-4 p-4">
-					<img
-						src="./assets/spiral.svg"
-						class="select-none h-auto mx-auto aspect-square md:w-[450px] lg:w-[450px] xl:w-[600px] max-md:max-w-[90vw] max-h-[70vh]"
-						alt=""
-					/>
-					<img
-						src="./assets/analysis_card.svg"
-						class="select-none absolute top-0 right-0 max-sm:right-4 max-sm:top-4 max-md:max-w-[40vw]"
-						alt=""
-					/>
-					<img
-						src="./assets/scan_opt.svg"
-						class="select-none absolute left-0 max-sm:left-4 top-[45%] -translate-y-1/2 max-md:max-w-[35vw]"
-						alt=""
-					/>
-
-					<img
-						src="./assets/payment_method.svg"
-						class="select-none absolute bottom-0 max-sm:bottom-4 translate-y-1/3 left-1/2 -translate-x-1/2 max-md:max-w-[40vw]"
-						alt=""
-					/>
+				<div class="flex items-center gap-3 px-3 py-4 rounded-lg " onmouseenter="hoveredPromisingBrand(100)">
+					<img src="./assets/shield.svg" class="h-1/2" alt="icon" />
+					<div>
+						<p class="text-2xl">100% Secured</p>
+						<p class="text-sm text-gray-400"> We take proactive steps make sure your information and
+							transactions are secure. </p>
+					</div>
+				</div>
+				<div class="flex items-center gap-3 px-3 py-4 rounded-lg " onmouseenter="hoveredPromisingBrand(200)">
+					<img src="./assets/sent.svg" class="h-1/2" alt="icon" />
+					<div>
+						<p class="text-2xl">Balance Transfer</p>
+						<p class="text-sm text-gray-400"> A balance transfer credit card can save you a lot of money in
+							interest charges. </p>
+					</div>
 				</div>
 			</div>
-		</section>
-	</body>
+			<script>
+				let hoveredPromisingBrand = (translateTo) =>
+					(bgElement.style.translate = `0 ${translateTo}%`);
+				let showBG = (doShow) =>
+					(bgElement.style.opacity = doShow ? "1" : "0");
+			</script>
+		</div>
+	</section>
+	<!-- Footer -->
+	<footer class="mx-auto flex flex-wrap justify-evenly gap-8 p-4 lg:px-8 bg-black">
+		<div class="flex justify-between w-auto flex-grow flex-wrap p-8 *:mt-20">
+			<div class="brand">
+				<div class="flex items-center gap-2 mb-2">
+					<img src="./assets/brand.svg" width="100" alt="" />
+					<span class="text-6xl">Raa<span class="text-secondary">shid</span></span>
+				</div>
+				<p class="text-gray-400 max-w-[300px]"> A new way to make the payments easy, reliable and secure. </p>
+			</div>
+			<div class="*:block hover:*:underline *:mb-2 *:underline-offset-8">
+				<h3 class="font-bold decoration-transparent pb-4 text-xl"> Usefull Links </h3>
+				<a href="#">Content</a>
+				<a href="#">How it Works </a>
+				<a href="#">Create</a>
+				<a href="#">Explore</a>
+				<a href="#">Terms & Services</a>
+			</div>
+			<div class="*:block hover:*:underline *:mb-2 *:underline-offset-8">
+				<h3 class="font-bold decoration-transparent pb-4 text-xl"> Community </h3>
+				<a href="#">Help Center</a>
+				<a href="#">Partners </a>
+				<a href="#">Suggestions</a>
+				<a href="#">Blog</a>
+				<a href="#">Newsletters</a>
+			</div>
+			<div class="*:block hover:*:underline *:mb-2 *:underline-offset-8">
+				<h3 class="font-bold decoration-transparent pb-4 text-xl">Partner</h3>
+				<a href="#">Our Partner</a>
+				<a href="#">Become a Partner </a>
+			</div>
+		</div>
+	</footer>
+	<div class="mx-auto p-4 lg:px-8 pb-12 bg-black ">
+		<hr class="opacity-20" />
+		<div class="flex items-center justify-between flex-wrap max-sm:justify-center mt-4 gap-y-8 px-4 lg:px-8">
+			<p>Copyright © 2021 Raashid. All Rights Reserved.</p>
+			<div class="flex gap-8 items-center ">
+				<a href="#"><img src="./assets/socal-icon/insta.svg" alt="instagram" /></a>
+				<a href="#"><img src="./assets/socal-icon/facebook.svg" alt="facebook" /></a>
+				<a href="#"><img src="./assets/socal-icon/twitter.svg" alt="" /></a>
+				<a href="#"><img src="./assets/socal-icon/linkedin.svg" alt="" /></a>
+			</div>
+		</div>
+	</div>
+	<script src="./main.js"></script>
+</body>
+
 </html>
