@@ -13,6 +13,55 @@
 		tailwind.config = {
 			theme: {
 				extend: {
+					animation: {
+						'smooth-up-down': 'smoothUpDown var(--duration) ease-in-out infinite',
+						'smooth-up-down-1': 'smoothUpDown-1 var(--duration) ease-in-out infinite',
+						'smooth-up-down-2': 'smoothUpDown-2 var(--duration) ease-in-out infinite',
+						'smooth-up-down-3': 'smoothUpDown-3 var(--duration) ease-in-out infinite',
+						'smooth-rotate': 'smoothRotate var(--duration) ease-in-out infinite',
+					},
+					keyframes: {
+						smoothUpDown: {
+							'0%, 100%': {
+								transform: 'translateY(0)',
+							},
+							'50%': {
+								transform: 'translateY(-20px)',
+							},
+						},
+						'smoothUpDown-1': {
+							'0%, 100%': {
+								transform: 'translateY(0)',
+							},
+							'50%': {
+								transform: 'translateY(-20px)',
+							},
+						},
+						'smoothUpDown-2': {
+							'0%, 100%': {
+								transform: 'translateY(0)',
+							},
+							'50%': {
+								transform: 'translateY(-40px)',
+							},
+						},
+						'smoothUpDown-3': {
+							'0%, 100%': {
+								transform: 'translateY(0)',
+							},
+							'50%': {
+								transform: 'translateY(-60px)',
+							},
+						},
+						'smoothRotate': {
+							'0%, 100%': {
+								transform: 'rotate(0deg)',
+							},
+							'50%': {
+								transform: 'rotate(360deg)',
+							},
+						},
+					},
 					backgroundImage: {
 						spiral: "url('assets/spiral.svg')",
 					},
@@ -23,15 +72,18 @@
 						primary: "#00040F",
 						secondary: "#5CE1E6",
 					},
+					cursor: {
+						customFancy: "url(https://cdn-icons-png.flaticon.com/128/747/747970.png), auto ",
+					}
 				},
 			},
 		};
 	</script>
 </head>
 
-<body class="bg-primary text-white  snap-y snap-proximity overflow-x-clip">
+<body class="bg-primary text-white  snap-y snap-proximity overflow-x-clip cursor-customFancy">
 	<!-- Header and Navbar -->
-	<header class="container mx-auto text-white flex items-center justify-between gap-3 p-4">
+	<header class="container mx-auto text-white flex items-center justify-between gap-3 p-4 z-30">
 		<a href="#" class="flex items-center">
 			<img src="./assets/brand.svg" alt="" />
 			<span class="text-xl">Raa<span class="text-secondary">shid</span></span>
@@ -51,14 +103,14 @@
 	</header>
 	<!-- Hero Section -->
 	<div
-		class="container flex min-h-[80vh] mx-auto justify-around md:*:w-1/2 flex-wrap md:flex-nowrap max-md:px-6 items-center before:contain-content before:h-64 before:w-24 before:bg-white before:bg-opacity-55 before:blur-[100px] before:bg-transparent before:top-1/2 before:absolute relative before:-translate-y-1/2 before:rounded-[50%] before:-translate-x-20 before:shadow-2xl before:shadow-white flex-col md:flex-row before:left-0 py-12 gap-8 snap-center max-w-[99vw] overflow-x-clip lg:p-8">
+		class="container flex min-h-[80vh] mx-auto justify-around md:*:w-1/2 flex-wrap md:flex-nowrap max-md:px-6 items-center before:contain-content before:h-64 before:w-24 before:bg-white before:bg-opacity-55 before:blur-[100px] before:bg-transparent before:top-1/2 before:absolute relative before:-translate-y-1/2 before:rounded-[50%] before:-translate-x-20 before:shadow-2xl before:shadow-white flex-col md:flex-row before:left-0 py-12 gap-8 snap-center max-w-[99vw] overflow-x-clip lg:p-8 ">
 		<div class="hero-text-content">
 			<span
 				class="text-gray-400 text-xs flex items-center justify-start gap-1 md:gap-2 w-fit rounded-full px-3 bg-gradient-to-b from-gray-900 via-gray-950 to-black m-0 max-md:text-[10px] mb-4">
 				<img src="./assets/Discount.svg" alt="" /><wbr />
 				<span class="text-white">20%</span> DISCOUNT FOR <span class="text-white">1 MONTH</span>ACCOUNT </span>
 			<div class="hero-intro">
-				<a class="float-right rounded-full border border-secondary aspect-square cursor-pointer p-4 lg:p-6"
+				<a class="float-right rounded-full border border-secondary aspect-square cursor-pointer p-4 lg:p-6 hover:animate-spin"
 					href="#"> Get <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
 						fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
 						stroke-linejoin="round" class="lucide lucide-arrow-up-right aspect-square h-4 inline w-fit">
@@ -78,19 +130,19 @@
 			<img src="./assets/robot-hand.png" alt="hero img"
 				class="absolute bottom-0 translate-x-12 sm:translate-x-16  md:translate-x-20 lg:translate-x-28 " />
 			<svg width="767" height="768" viewBox="0 0 767 768" fill="none" xmlns="http://www.w3.org/2000/svg"
-				class="absolute -top-20 h-full w-full scale-125">
-				<g class="glass-v scale-110" filter="url(#filter0_f_4117_141)">
-					<path d="M124 73L298.468 644H502.608L702 73H124Z" fill="url(#paint0_linear_4117_141)" />
-					<path d="M124 73L298.468 644H502.608L702 73H124Z" stroke="black" />
+				class="absolute -top-20 h-full w-full scale-125 " ">
+				<g class=" glass-v scale-110" filter="url(#filter0_f_4117_141)">
+				<path d="M124 73L298.468 644H502.608L702 73H124Z" fill="url(#paint0_linear_4117_141)" />
+				<path d="M124 73L298.468 644H502.608L702 73H124Z" stroke="black" />
 				</g>
-				<g class="card-3" filter="url(#filter1_b_4117_141)">
+				<g class="card-3 animate-smooth-up-down-1" filter="url(#filter1_b_4117_141)" style="--duration:3s;">
 					<rect width="178" height="284" rx="20" transform="matrix(0.866025 0.5 -0.866025 0.5 446.359 349)"
 						fill="url(#paint2_linear_4117_141)" />
 					<rect x="-2.98023e-08" y="0.5" width="177" height="283" rx="19.5"
 						transform="matrix(0.866025 0.5 -0.866025 0.5 446.792 349.25)"
 						stroke="url(#paint3_linear_4117_141)" />
 				</g>
-				<g class="card-2" filter="url(#filter2_d_4117_141)">
+				<g class="card-2 animate-smooth-up-down-2" style="--duration:3s;" filter="url(#filter2_d_4117_141)">
 					<rect x="-2.05613e-08" y="0.344961" width="177.31" height="283.558" rx="13.4535"
 						transform="matrix(0.866025 0.5 -0.866025 0.5 464.873 267.172)"
 						fill="url(#paint4_linear_4117_141)" stroke="url(#paint5_linear_4117_141)"
@@ -121,7 +173,7 @@
 							stroke="white" stroke-width="1.37985" stroke-linecap="round" stroke-linejoin="round" />
 					</g>
 				</g>
-				<g class="card-1" filter="url(#filter5_d_4117_141)">
+				<g class="card-1 animate-smooth-up-down-3" style="--duration:3s;" filter="url(#filter5_d_4117_141)">
 					<g filter="url(#filter6_b_4117_141)">
 						<rect width="178" height="284.248" rx="13.7985"
 							transform="matrix(0.866025 0.5 -0.866025 0.5 439.166 175)"
@@ -214,13 +266,13 @@
 						d="M479.942 328.186L530.095 299.23C529.109 296.951 527.83 294.708 526.26 292.52C522.738 287.61 517.842 283.102 511.81 279.163C507.119 276.099 501.742 273.38 495.789 271.083C482.184 265.835 466.189 263.034 449.826 263.034C433.463 263.034 417.468 265.835 403.863 271.083C390.258 276.332 379.654 283.792 373.392 292.52C367.516 300.71 365.711 309.672 368.149 318.402L402.403 338.178L420.576 327.686C414.791 324.346 410.851 320.091 409.255 315.458C407.659 310.825 408.478 306.023 411.609 301.659C414.74 297.295 420.042 293.565 426.845 290.941C433.647 288.317 441.645 286.916 449.826 286.916C458.008 286.916 466.005 288.317 472.808 290.941C475.072 291.814 477.169 292.81 479.076 293.911C482.541 295.911 485.375 298.259 487.431 300.848C487.643 301.116 487.848 301.386 488.043 301.659C490 304.387 491.054 307.285 491.179 310.207C491.188 310.404 491.192 310.601 491.192 310.799C491.192 312.355 490.928 313.916 490.397 315.458C489.898 316.906 489.171 318.316 488.229 319.674C488.168 319.762 488.106 319.85 488.043 319.938C485.974 322.822 482.936 325.458 479.076 327.686L479.942 328.186ZM431.544 321.353C421.447 315.524 421.447 306.073 431.544 300.244C441.64 294.415 458.01 294.415 468.106 300.244C478.203 306.073 478.203 315.524 468.106 321.353C463.147 324.217 456.674 325.674 450.174 325.724C450.058 325.725 449.941 325.725 449.825 325.725C449.709 325.725 449.593 325.725 449.476 325.724C442.976 325.674 436.503 324.217 431.544 321.353Z"
 						fill="url(#paint13_linear_4117_141)" />
 				</g>
-				<path class="ball-1"
+				<path class="ball-1 animate-smooth-up-down-3  " style="--duration:3s;"
 					d="M203.219 227.884C175.332 226.009 154.241 201.872 156.116 174.219C158.225 146.332 182.128 125.241 210.015 127.116C237.668 129.225 258.759 153.128 256.884 181.015C255.009 208.668 230.872 229.759 203.219 227.884Z"
 					fill="url(#paint1_radial_4117_141)" />
-				<path class="ball-2"
+				<path class="ball-2 animate-smooth-up-down-2  " style="--duration:3s;"
 					d="M560.791 565.922C542.016 564.66 527.816 548.409 529.078 529.791C530.498 511.016 546.591 496.816 565.367 498.078C583.984 499.498 598.184 515.591 596.922 534.367C595.66 552.984 579.409 567.184 560.791 565.922Z"
 					fill="url(#paint14_radial_4117_141)" />
-				<path class="ball-3"
+				<path class="ball-3 animate-smooth-up-down-1 " style="--duration:3s;"
 					d="M233.961 599.963C225.125 599.369 218.443 591.722 219.037 582.961C219.705 574.125 227.278 567.443 236.114 568.037C244.875 568.705 251.557 576.278 250.963 585.114C250.369 593.875 242.722 600.557 233.961 599.963Z"
 					fill="url(#paint15_radial_4117_141)" />
 				<defs>
@@ -523,9 +575,9 @@
 					<img src="./assets/completeIcon.svg" class="inline-block" alt="" />
 					<p class="inline">Great! Your Payment is succesfully.</p>
 				</div>
-				<img src="./assets/paypal-card.svg" class="top-0 right-0 absolute translate-x-1/2 -translate-y-[60%]"
+				<img src="./assets/paypal-card.svg" class="top-0 right-0 absolute translate-x-1/2 -translate-y-[60%] "
 					alt="" />
-				<img src="./assets/transations.svg" class="right-0" alt="" />
+				<img src="./assets/transations.svg" class="right-0 " alt="" />
 			</div>
 		</div>
 		<div class="billing-text md:p-12 md:ml-4 max-lg:pt-8">
@@ -556,12 +608,13 @@
 					class="select-none h-auto mx-auto aspect-square md:w-[450px] lg:w-[450px] xl:w-[600px] max-md:max-w-[90vw] max-h-[70vh]"
 					alt="" />
 				<img src="./assets/analysis_card.svg"
-					class="select-none absolute top-0 right-0 max-sm:right-4 max-sm:top-4 max-md:max-w-[40vw]" alt="" />
+					class="select-none absolute  top-0 right-0 max-sm:right-4 max-sm:top-4 max-md:max-w-[40vw]"
+					alt="" />
 				<img src="./assets/scan_opt.svg"
-					class="select-none absolute left-0 max-sm:left-4 top-[45%] -translate-y-1/2 max-md:max-w-[35vw]"
+					class="select-none absolute  left-0 max-sm:left-4 top-[45%] -translate-y-1/2 max-md:max-w-[35vw]"
 					alt="" />
 				<img src="./assets/payment_method.svg"
-					class="select-none absolute bottom-0 max-sm:bottom-4 translate-y-1/3 left-1/2 -translate-x-1/2 max-md:max-w-[40vw]"
+					class="select-none absolute  bottom-0 max-sm:bottom-4 translate-y-1/3 left-1/2 -translate-x-1/2 max-md:max-w-[40vw]"
 					alt="" />
 			</div>
 		</div>
