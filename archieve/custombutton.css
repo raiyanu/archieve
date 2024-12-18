@@ -1,0 +1,41 @@
+.stylishButton {
+	position: relative;
+	display: inline-block;
+	box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
+		7px 7px 35px 0px #5ce1e6, 4px 4px 800px 0px #5ce1e68c;
+	background: var(--secondary);
+	background: linear-gradient(0deg, var(--secondary) 0%, var(--secondary) 100%);
+}
+
+.stylishButton:hover {
+	color: var(--secondary);
+	background: transparent;
+	box-shadow: none;
+}
+
+.stylishButton:before,
+.stylishButton:after {
+	content: "";
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: 2px;
+	width: 0;
+	background: var(--secondary);
+	box-shadow: -1px -1px 5px 0px #fff, 7px 7px 50px 0px #5ce1e6,
+		4px 4px 50px 0px #5ce1e68c;
+	transition: 400ms ease all;
+}
+
+.stylishButton:after {
+	right: inherit;
+	top: inherit;
+	left: 0;
+	bottom: 0;
+}
+
+.stylishButton:hover:before,
+.stylishButton:hover:after {
+	width: 100%;
+	transition: 800ms ease all;
+}
