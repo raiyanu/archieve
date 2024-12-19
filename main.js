@@ -52,10 +52,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-function animateMe(element) {
-    console.log("Element is in the viewport!", element);
-    element.style.backgroundColor = 'green';
-}
 
 const observerCallback = (entries, observer) => {
     entries.forEach(entry => {
@@ -82,14 +78,46 @@ document.querySelectorAll('[onViewPort]').forEach(element => {
 
 
 
+// let paths = {
+//     middleLine: document.getElementById('middleLine'),
+//     burger: {
+//         line_1: `M17 16H10`,
+//         line_2: `M17 12H13`,
+//         line_3: `M17 8H8`
+//     },
+//     closeIcon: {
+//         line_1: `M17 16H10`,
+//         line_2: `M17 12H13`,
+//         line_3: `M17 8H8`
+//     }
+// }
+// paths.middleLine.style.setAttribute;
+
+
 // Toggle Menu
 let menuVisible = true;
 let menuElement = document.querySelector('.nav-links');
 const toggleMenu = () => {
-    console.log('ey');
+    const paths = document.querySelectorAll('.menu-icon path');
     menuElement.style.display = menuVisible ? 'flex' : 'none';
+    if (!menuVisible) {
+        paths[0].setAttribute('d', 'M1 1L26 1');
+        paths[1].setAttribute('d', 'M26 9L11 9');
+        paths[1].classList.toggle('duration-300');
+        paths[1].classList.toggle('transition-all');
+        paths[2].setAttribute('d', 'M26 17L6 17');
+    } else {
+        paths[0].setAttribute('d', 'M25 1L6 17');
+
+        paths[1].setAttribute('d', '0');
+        paths[1].classList.toggle('duration-300');
+        paths[1].classList.toggle('transition-all');
+
+        paths[2].setAttribute('d', 'M25 17L6 1');
+    }
     setTimeout(() => {
-        menuElement.classList.toggle('-translate-y-8');
+        menuElement.classList.toggle('-translate-y-4');
+        menuElement.classList.toggle('max-md:opacity-100');
     }, 100)
     menuVisible = !menuVisible;
 }

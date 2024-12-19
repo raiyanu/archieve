@@ -110,7 +110,7 @@
 			},
 		};
 	</script>
-	<!-- <link rel="stylesheet" href="main.css"> -->
+	<link rel="stylesheet" href="menu.css">
 </head>
 
 <body class="bg-primary text-white  snap-y snap-proximity overflow-x-clip  cursor-customFancy *:cursor-customFancy">
@@ -122,18 +122,26 @@
 				<span class="text-xl smooth-rotate">Raa<span class="text-secondary">shid</span></span>
 			</a>
 			<div
-				class="*:ml-4 hover:*:underline underline-offset-8  max-md:hidden max-md:absolute  max-md:flex-col max-md:top-16 max-md:right-16 max-md:bg-primary max-md:border max-md:border-opacity-50 max-md:rounded-xl transition-all max-md:gap-4 max-md:px-8 max-md:py-16 max-md:z-10 max-md:text-2xl nav-links visible">
+				class="*:ml-4 hover:*:underline underline-offset-8 max-md:hidden max-md:absolute  max-md:flex-col max-md:top-16 max-md:right-16 max-md:bg-primary max-md:border max-md:border-opacity-50 max-md:rounded-xl transition-all duration-700 max-md:gap-4 max-md:px-8 max-md:py-8 max-md:z-10 max-md:text-2xl max-md:max-w-[100vw] max-md:w-52 nav-links visible max-md:opacity-0 max-md:-translate-x-8">
 				<a href="#">Home</a>
 				<a href="#">About Us</a>
 				<a href="#">Features</a>
 				<a href="#">Solution</a>
 			</div>
-			<svg class="md:hidden h-10 w-10 cursor-pointer" onclick="toggleMenu()" width="24" height="24"
-				viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-				<path d="M17 16H10" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-				<path d="M17 12H13" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-				<path d="M17 8H8" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-			</svg>
+			<div class="md:hidden h-10 w-10 cursor-pointer" onclick="toggleMenu()">
+				<svg class="menu-icon h-10 w-10 transition-all" data-state="MENU" width="27" height="18"
+					viewBox="0 0 27 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path class="transition-all duration-300" d="M1 1L26 1" stroke="white" stroke-width="2"
+						stroke-linecap="round" />
+					<path d="M26 9L11 9" stroke="white" stroke-width="2" stroke-linecap="round" />
+					<path class="transition-all duration-300" d="M26 17L6 17" stroke="white" stroke-width="2"
+						stroke-linecap="round" />
+					<set attributeName="r" to="50" begin="3s" />
+				</svg>
+			</div>
+			<script>
+
+			</script>
 		</header>
 		<!-- Hero Section -->
 		<section
@@ -583,7 +591,7 @@
 		</section>
 		<!-- Brand Promising -->
 		<section class="brand-promising container mx-auto flex py-[200px] gap-6 snap-center max-md:flex-wrap p-4">
-			<div class="brand-promising-text">
+			<div class="brand-promising-text *:mt-4 *:ml-4">
 				<h4 class="text-5xl">You do the business, we'll handle the money.</h4>
 				<p class="text-gray-400 mt-6"> With the right credit card, you can improve your financial life by
 					building credit, earning rewards and saving money. But with hundreds of credit cards on the market.
@@ -593,8 +601,7 @@
 					Get Started </button>
 				<button
 					class="rounded-lg bg-gradient-four-color bg-[length:300px_100px] bg-left-top transition-all duration-700 hover:bg-right-top p-1">
-					<div class="rounded-md border block w-full h-full px-8 py-2 bg-primary hover:border-0"> GetStarted
-					</div>
+					<div class="rounded-md  block w-full h-full px-8 py-2  hover:border-0"> GetStarted </div>
 				</button>
 				<button
 					class="relative inline-block shadow-[inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5), 7px 7px 35px 0px #5CE1E6, 4px 4px 800px 0px #5ce1e68c] bg-secondary after:bg-secondary before:bg-secondary bg-[linear-gradient(0deg, var(--secondary) 0%, var(--secondary) 100%)] hover:text-secondary hover:bg-transparent hover:shadow-none before:absolute after:absolute before:top-0 before:right-0 after:left-0 after:bottom-0 before:h-[2px] after:h-[2px] after:transition-all before:transition-all before:duration-700 after:duration-700 after:w-0 before:w-0 before:shadow-custom after:shadow-custom group/thisbutton hover:before:w-full hover:after:w-full px-4 py-2 rounded-xl">
@@ -602,6 +609,14 @@
 				<button
 					class="relative inline-block shadow-[inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5), 7px 7px 35px 0px #5CE1E6, 4px 4px 800px 0px #5ce1e68c] bg-gradient-to-r from-[#26242c] via-[#14101D] to-[#14101D] after:bg-secondary before:bg-secondary bg-[linear-gradient(0deg, var(--secondary) 0%, var(--secondary) 100%)] hover:text-secondary  hover:shadow-none before:absolute after:absolute before:top-0 before:right-0 after:left-0 after:bottom-0 before:h-[2px] after:h-[2px] after:transition-all before:transition-all before:duration-700 after:duration-700 after:w-0 before:w-0 before:shadow-custom after:shadow-custom group/thisbutton hover:before:w-full hover:after:w-full px-6 py-2 ">
 					Get started </button>
+				<button
+					class="relative inline-block shadow-[inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5), 7px 7px 35px 0px #5CE1E6, 4px 4px 800px 0px #5ce1e68c]  after:bg-secondary before:bg-secondary bg-[linear-gradient(0deg, var(--secondary) 0%, var(--secondary) 100%)]   hover:shadow-none before:absolute after:absolute before:top-0 before:right-0 after:left-0 after:bottom-0 before:h-[2px] after:h-[2px] after:transition-all before:transition-all before:duration-700 after:duration-700 after:w-0 before:w-0 before:shadow-custom after:shadow-custom group/thisbutton hover:before:w-full hover:after:w-full px-6 py-2  rounded-lg bg-gradient-four-color bg-[length:300px_100px] bg-left-top transition-all duration-700 hover:bg-right-top p-1">
+					<div class="rounded-md  block w-full h-full px-8 py-2  hover:border-0"> GetStarted </div>
+				</button>
+				<button
+					class="bg-gradient-to-r from-[#1f8386] via-[#5ce1e6] to-[#02edf5]  px-8 py-3  font-bold text-md mt-6 hover:bg-[#5ce1e6] active:bg-[#5ce1e6] focus:outline-none focus:ring focus:ring-[#5ce1e6] hover:bg-transparent rounded-lg  bg-[length:300px_100px] bg-left-top transition-all duration-700 hover:bg-right-top p-1 ">
+					<div class="rounded-md  block w-full h-full   hover:border-0"> GetStarted </div>
+				</button>
 			</div>
 			<div class="brand-promising-text min-w-[50%]">
 				<div class="wrapper promise_list" onmouseenter="showBG(true)" onmouseleave="showBG(false)">
