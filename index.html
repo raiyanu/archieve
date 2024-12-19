@@ -8,13 +8,17 @@
 	<style>
 		@import url("https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
 
-		*:hover,
-		a:hover {
-			cursor: url('https://127.0.0.1:5500/cursor.cur'), url(assets/cursor.2.png), auto;
+		a:hover,
+		button:hover {
+			cursor: url(assets/cursor_pointer.png), url('https://127.0.0.1:5500/cursor.cur'), url(assets/cursor.2.png), auto;
+		}
+
+		*:active {
+			cursor: url(assets/cursor_clicked.png), url('https://127.0.0.1:5500/cursor.cur'), url(assets/cursor.2.png), auto;
 		}
 
 		*.loading {
-			cursor: url('https://127.0.0.1:5500/cursor.cur'), url(assets/cursor.2.png), auto;
+			cursor: url(assets/cursorV2.png), url('https://127.0.0.1:5500/cursor.cur'), url(assets/cursor.2.png), auto;
 		}
 	</style>
 	<script src="https://cdn.tailwindcss.com"></script>
@@ -104,7 +108,8 @@
 							"linear-gradient(-45deg,  #338aff, var(--secondary), #338aff, #3cf0c5)",
 					},
 					cursor: {
-						// customFancy: "url('https://127.0.0.1:5500/cursor.cur'), url('https://s141.convertio.me/p/zro487NW-h8aBzAlEK1Wlg/a89a9d40dc37f1ff277f2590ceda943d/cursor.cur'), auto ",
+						pointer: " url(assets/cursorV2.png), auto",
+						customFancy: "url(assets/cursorV2.png), url('https://127.0.0.1:5500/cursor.cur'), url('https://s141.convertio.me/p/zro487NW-h8aBzAlEK1Wlg/a89a9d40dc37f1ff277f2590ceda943d/cursor.cur'), auto ",
 					},
 				},
 			},
