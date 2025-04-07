@@ -1,12 +1,15 @@
-# Use the official SQL Server 2022 image on Ubuntu 20.04
-FROM mcr.microsoft.com/mssql/server:2022-lts-ubuntu-20.04
+FROM mcr.microsoft.com/mssql/server:2022-latest
 
-# Set environment variables
 ENV ACCEPT_EULA=Y
 ENV SA_PASSWORD=YourStrong!Passw0rd
 
-# Expose default SQL Server port
+# Optional: install basic tools (optional if you're debugging inside the container)
+RUN apt-get update && \
+    apt-get install -y curl unzip vim && \
+    rm -rf /var/lib/apt/lists/*
+
+# Expose port
 EXPOSE 1433
 
-# Start SQL Server
+# Run SQL Server
 CMD ["/opt/mssql/bin/sqlservr"]
