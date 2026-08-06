@@ -1,62 +1,76 @@
+export type Inline =
+  | string
+  | StrongNode
+  | EmNode
+  | LinkNode
+  | CodeNode;
+
 export interface DocumentNode {
-    type: "document";
-    content: Node[];
+  type: "document";
+  content: Block[];
 }
 
 export interface SectionNode {
-    type: "section";
-    content: Node[];
+  type: "section";
+  content: Block[];
 }
 
 export interface HeadingNode {
-    type: "heading";
-    level: number;
-    content: InlineNode[];
+  type: "heading";
+  level: number;
+  content: Inline[];
 }
 
 export interface ParagraphNode {
-    type: "paragraph";
-    content: InlineNode[];
+  type: "paragraph";
+  content: Inline[];
 }
 
 export interface ListNode {
-    type: "list";
-    content: (string | ParagraphNode)[];
+  type: "list";
+  ordered?: boolean;
+  content: (string | ParagraphNode)[];
 }
 
 export interface TableNode {
-    type: "table";
-    rows: {
-        cells: InlineNode[];
-    }[];
-}
-
-export interface StrongNode {
-    type: "strong";
-    content: InlineNode[];
-}
-
-export interface LinkNode {
-    type: "link";
-    href: string;
-    content: InlineNode[];
+  type: "table";
+  rows: {
+    cells: Inline[];
+  }[];
 }
 
 export interface ImageNode {
-    type: "image";
-    src: string;
-    width?: number;
+  type: "image";
+  src: string;
+  width?: number;
+  height?: number;
 }
 
-export type InlineNode =
-    | string
-    | StrongNode
-    | LinkNode;
+export interface StrongNode {
+  type: "strong";
+  content: Inline[];
+}
 
-export type Node =
-    | SectionNode
-    | HeadingNode
-    | ParagraphNode
-    | ListNode
-    | TableNode
-    | ImageNode;
+export interface EmNode {
+  type: "em";
+  content: Inline[];
+}
+
+export interface LinkNode {
+  type: "link";
+  href: string;
+  content: Inline[];
+}
+
+export interface CodeNode {
+  type: "code";
+  content: Inline[];
+}
+
+export type Block =
+  | SectionNode
+  | HeadingNode
+  | ParagraphNode
+  | ListNode
+  | TableNode
+  | ImageNode;

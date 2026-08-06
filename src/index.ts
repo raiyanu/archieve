@@ -12,142 +12,55 @@ import {
   Paragraph,
   Table,
   TableCell,
+  TableLayoutType,
   TableRow,
   TextRun,
+  VerticalAlign,
   WidthType,
+  ShadingType,
 } from "docx";
 
-/* ============================================================
-   AST
-============================================================ */
+import type {
+  Block,
+  DocumentNode,
+  HeadingNode,
+  ImageNode,
+  Inline,
+  ListNode,
+  ParagraphNode,
+  TableNode,
+} from "./types.js";
 
-type Inline = string | StrongNode | EmNode | LinkNode | CodeNode;
-
-interface DocumentNode {
-  type: "document";
-  content: Block[];
-}
-
-interface SectionNode {
-  type: "section";
-  content: Block[];
-}
-
-interface HeadingNode {
-  type: "heading";
-  level: number;
-  content: Inline[];
-}
-
-interface ParagraphNode {
-  type: "paragraph";
-  content: Inline[];
-}
-
-interface ListNode {
-  type: "list";
-  ordered?: boolean;
-  content: (string | ParagraphNode)[];
-}
-
-interface TableNode {
-  type: "table";
-  rows: {
-    cells: Inline[];
-  }[];
-}
-
-interface ImageNode {
-  type: "image";
-  src: string;
-  width?: number;
-  height?: number;
-}
-
-interface StrongNode {
-  type: "strong";
-  content: Inline[];
-}
-
-interface EmNode {
-  type: "em";
-  content: Inline[];
-}
-
-interface LinkNode {
-  type: "link";
-  href: string;
-  content: Inline[];
-}
-
-interface CodeNode {
-  type: "code";
-  content: Inline[];
-}
-
-type Block =
-  | SectionNode
-  | HeadingNode
-  | ParagraphNode
-  | ListNode
-  | TableNode
-  | ImageNode;
+import { COLORS, theme } from "./theme.js";
 
 /* ============================================================
-   THEME
-============================================================ */
-
-const theme = {
-  font: "Calibri",
-
-  size: 22,
-
-  heading(level: number) {
-    switch (level) {
-      case 1:
-        return {
-          heading: HeadingLevel.TITLE,
-          size: 36,
-          spacing: 250,
-        };
-
-      case 2:
-        return {
-          heading: HeadingLevel.HEADING_1,
-          size: 28,
-          spacing: 180,
-        };
-
-      case 3:
-        return {
-          heading: HeadingLevel.HEADING_2,
-          size: 24,
-          spacing: 150,
-        };
-
-      default:
-        return {
-          heading: HeadingLevel.HEADING_3,
-          size: 22,
-          spacing: 120,
-        };
-    }
-  },
-};
-
-/* ============================================================
-   RENDERER
+   RENDER ENTRY
 ============================================================ */
 
 function render(document: DocumentNode): Document {
   return new Document({
     sections: [
       {
+        properties: {
+          page: {
+            margin: {
+              top: 720,
+              bottom: 720,
+              left: 720,
+              right: 720,
+            },
+          },
+        },
+
         children: renderBlocks(document.content),
       },
     ],
   });
 }
+
+/* ============================================================
+   BLOCK RENDERER
+============================================================ */
 
 function renderBlocks(nodes: Block[]) {
   const output: any[] = [];
@@ -178,75 +91,129 @@ function renderBlock(node: Block): any[] {
 
     case "image":
       return [renderImage(node)];
+
+    default:
+      return [];
   }
 }
 
+/* ============================================================
+   HEADINGS
+============================================================ */
+
 function renderHeading(node: HeadingNode) {
-  const style = theme.heading(node.level);
+  if (node.level === 1) {
+    return new Paragraph({
+      alignment: AlignmentType.CENTER,
+
+      spacing: {
+        before: 0,
+        after: 220,
+      },
+
+      children: [
+        new TextRun({
+          text: flatten(node.content),
+          bold: true,
+          color: COLORS.primary,
+          size: 40,
+        }),
+      ],
+    });
+  }
+
+  if (node.level === 2) {
+    return new Paragraph({
+      spacing: {
+        before: 260,
+        after: 140,
+      },
+
+      shading: {
+        type: ShadingType.CLEAR,
+        fill: COLORS.background,
+      },
+
+      border: {
+        left: {
+          style: BorderStyle.SINGLE,
+          color: COLORS.primary,
+          size: 8,
+        },
+      },
+
+      children: [
+        new TextRun({
+          text: flatten(node.content),
+          bold: true,
+          color: COLORS.primary,
+          size: 28,
+        }),
+      ],
+    });
+  }
 
   return new Paragraph({
-    heading: style.heading,
-
     spacing: {
-      before: style.spacing,
-
-      after: 100,
+      before: 160,
+      after: 80,
     },
 
-    border:
-      node.level === 2
-        ? {
-            bottom: {
-              color: "DDDDDD",
-
-              style: BorderStyle.SINGLE,
-
-              size: 1,
-            },
-          }
-        : undefined,
-
-    children: renderInline(node.content),
+    children: [
+      new TextRun({
+        text: flatten(node.content),
+        bold: true,
+        color: COLORS.dark,
+        size: 24,
+      }),
+    ],
   });
 }
+
+/* ============================================================
+   PARAGRAPHS
+============================================================ */
 
 function renderParagraph(node: ParagraphNode) {
   return new Paragraph({
     spacing: {
       after: 120,
+      line: 276,
     },
 
     children: renderInline(node.content),
   });
 }
-
 function renderList(node: ListNode) {
   return node.content.map((item) => {
-    if (typeof item === "string") {
-      return new Paragraph({
-        bullet: {
-          level: 0,
-        },
-
-        children: [new TextRun(item)],
-      });
-    }
+    const children =
+      typeof item === "string" ? [theme.run(item)] : renderInline(item.content);
 
     return new Paragraph({
       bullet: {
         level: 0,
       },
 
-      children: renderInline(item.content),
+      spacing: {
+        after: 70,
+      },
+
+      indent: {
+        left: 420,
+        hanging: 220,
+      },
+
+      children,
     });
   });
 }
 
 function renderTable(node: TableNode) {
   return new Table({
+    layout: TableLayoutType.FIXED,
+
     width: {
       size: 100,
-
       type: WidthType.PERCENTAGE,
     },
 
@@ -254,10 +221,21 @@ function renderTable(node: TableNode) {
       (row) =>
         new TableRow({
           children: row.cells.map(
-            (cell) =>
+            (cell, index) =>
               new TableCell({
+                width: {
+                  size: index === 0 ? 28 : 72,
+                  type: WidthType.PERCENTAGE,
+                },
+
+                verticalAlign: VerticalAlign.CENTER,
+
                 children: [
                   new Paragraph({
+                    spacing: {
+                      after: 50,
+                    },
+
                     children: renderInline([cell]),
                   }),
                 ],
@@ -274,13 +252,17 @@ function renderImage(node: ImageNode) {
   return new Paragraph({
     alignment: AlignmentType.CENTER,
 
+    spacing: {
+      before: 120,
+      after: 120,
+    },
+
     children: [
       new ImageRun({
         data: buffer,
 
         transformation: {
           width: node.width ?? 120,
-
           height: node.height ?? 120,
         },
       }),
@@ -293,61 +275,21 @@ function renderInline(nodes: Inline[]): any[] {
 
   for (const node of nodes) {
     if (typeof node === "string") {
-      output.push(
-        new TextRun({
-          text: node,
-
-          font: theme.font,
-
-          size: theme.size,
-        }),
-      );
-
+      output.push(theme.run(node));
       continue;
     }
 
     switch (node.type) {
       case "strong":
-        output.push(
-          new TextRun({
-            text: flatten(node.content),
-
-            bold: true,
-
-            font: theme.font,
-
-            size: theme.size,
-          }),
-        );
-
+        output.push(theme.bold(flatten(node.content)));
         break;
 
       case "em":
-        output.push(
-          new TextRun({
-            text: flatten(node.content),
-
-            italics: true,
-
-            font: theme.font,
-
-            size: theme.size,
-          }),
-        );
-
+        output.push(theme.italic(flatten(node.content)));
         break;
 
       case "code":
-        output.push(
-          new TextRun({
-            text: flatten(node.content),
-
-            font: "Consolas",
-
-            size: theme.size,
-          }),
-        );
-
+        output.push(theme.code(flatten(node.content)));
         break;
 
       case "link":
@@ -358,13 +300,11 @@ function renderInline(nodes: Inline[]): any[] {
             children: [
               new TextRun({
                 text: flatten(node.content),
-
                 style: "Hyperlink",
               }),
             ],
           }),
         );
-
         break;
     }
   }
@@ -384,20 +324,12 @@ function flatten(nodes: Inline[]): string {
     .join("");
 }
 
-/* ============================================================
-   MAIN
-============================================================ */
-
 const json = JSON.parse(fs.readFileSync("data.json", "utf8")) as DocumentNode;
 
 const document = render(json);
 
 const buffer = await Packer.toBuffer(document);
 
-fs.writeFileSync(
-  path.resolve("resume.docx"),
-
-  buffer,
-);
+fs.writeFileSync(path.resolve("resume.docx"), buffer);
 
 console.log("✅ resume.docx generated");

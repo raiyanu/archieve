@@ -1,170 +1,137 @@
 import {
-    AlignmentType,
-    BorderStyle,
-    HeadingLevel,
-    type IParagraphOptions,
-    TextRun,
+  AlignmentType,
+  BorderStyle,
+  HeadingLevel,
+  type IParagraphOptions,
+  TextRun,
 } from "docx";
 
+export const COLORS = {
+  blue: "2E74B5",
+  text: "000000",
+  gray: "666666",
+  border: "D9D9D9",
+};
+
 export class Theme {
+  font = "Calibri";
 
-    readonly font = "Calibri";
-    readonly size = 22;
+  body = 22;
+  h1 = 56;
+  h2 = 32;
+  h3 = 26;
 
-    heading(level: number): IParagraphOptions {
-
-        switch (level) {
-
-            case 1:
-
-                return {
-                    heading: HeadingLevel.TITLE,
-                    spacing: {
-                        before: 0,
-                        after: 240
-                    }
-                };
-
-            case 2:
-
-                return {
-
-                    heading: HeadingLevel.HEADING_1,
-
-                    spacing: {
-
-                        before: 220,
-
-                        after: 120
-
-                    },
-
-                    border: {
-
-                        bottom: {
-
-                            style: BorderStyle.SINGLE,
-
-                            color: "DDDDDD",
-
-                            size: 1
-
-                        }
-
-                    }
-
-                };
-
-            case 3:
-
-                return {
-
-                    heading: HeadingLevel.HEADING_2,
-
-                    spacing: {
-
-                        before: 160,
-
-                        after: 80
-
-                    }
-
-                };
-
-            default:
-
-                return {};
-
-        }
-
-    }
-
-    paragraph(): IParagraphOptions {
-
+  heading(level: number): IParagraphOptions {
+    switch (level) {
+      case 1:
         return {
-
-            spacing: {
-
-                after: 120
-
-            }
-
+          heading: HeadingLevel.TITLE,
+          alignment: AlignmentType.LEFT,
+          spacing: {
+            before: 0,
+            after: 240,
+          },
         };
 
-    }
-
-    bullet(): IParagraphOptions {
-
+      case 2:
         return {
+          heading: HeadingLevel.HEADING_1,
 
-            bullet: {
+          spacing: {
+            before: 240,
+            after: 120,
+          },
 
-                level: 0
-
-            }
-
+          border: {
+            bottom: {
+              style: BorderStyle.SINGLE,
+              color: COLORS.border,
+              size: 2,
+            },
+          },
         };
 
+      case 3:
+        return {
+          heading: HeadingLevel.HEADING_2,
+
+          spacing: {
+            before: 160,
+            after: 80,
+          },
+        };
+
+      default:
+        return {};
     }
+  }
 
-    run(text: string) {
+  run(text: string) {
+    return new TextRun({
+      text,
+      font: this.font,
+      size: this.body,
+      color: COLORS.text,
+    });
+  }
 
-        return new TextRun({
+  bold(text: string) {
+    return new TextRun({
+      text,
+      bold: true,
+      font: this.font,
+      size: this.body,
+      color: COLORS.text,
+    });
+  }
 
-            text,
+  title(text: string) {
+    return new TextRun({
+      text,
+      bold: true,
+      font: this.font,
+      size: this.h1,
+      color: COLORS.text,
+    });
+  }
 
-            font: this.font,
+  heading1(text: string) {
+    return new TextRun({
+      text,
+      bold: true,
+      font: this.font,
+      size: this.h2,
+      color: COLORS.blue,
+    });
+  }
 
-            size: this.size
+  heading2(text: string) {
+    return new TextRun({
+      text,
+      bold: true,
+      font: this.font,
+      size: this.h3,
+      color: COLORS.blue,
+    });
+  }
 
-        });
+  italic(text: string) {
+    return new TextRun({
+      text,
+      italics: true,
+      font: this.font,
+      size: this.body,
+      color: COLORS.gray,
+    });
+  }
 
-    }
-
-    bold(text: string) {
-
-        return new TextRun({
-
-            text,
-
-            font: this.font,
-
-            size: this.size,
-
-            bold: true
-
-        });
-
-    }
-
-    italic(text: string) {
-
-        return new TextRun({
-
-            text,
-
-            font: this.font,
-
-            size: this.size,
-
-            italics: true
-
-        });
-
-    }
-
-    code(text: string) {
-
-        return new TextRun({
-
-            text,
-
-            font: "Consolas",
-
-            size: this.size
-
-        });
-
-    }
-
+  code(text: string) {
+    return new TextRun({
+      text,
+      font: "Consolas",
+      size: this.body,
+    });
+  }
 }
+
+export const theme = new Theme();
