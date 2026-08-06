@@ -1,0 +1,232 @@
+{
+  "type": "document",
+  "content": [
+    {
+      "type": "section",
+      "content": [
+        {
+          "type": "heading",
+          "level": 1,
+          "content": [
+            "Raiyan Ahmed CM"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            "Frontend Software Engineer"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            "Pernambut, Tamil Nadu • ",
+            {
+              "type": "link",
+              "href": "mailto:raiyan.c.me@gmail.com",
+              "content": [
+                "raiyan.c.me@gmail.com"
+              ]
+            },
+            " • ",
+            {
+              "type": "link",
+              "href": "https://linkedin.com/in/c-raiyan",
+              "content": [
+                "LinkedIn"
+              ]
+            },
+            " • ",
+            {
+              "type": "link",
+              "href": "https://github.com/raiyanu",
+              "content": [
+                "GitHub"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "content": [
+        {
+          "type": "heading",
+          "level": 2,
+          "content": [
+            "Professional Summary"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            "Frontend Software Engineer with nearly 2 years of experience building scalable React.js applications..."
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "content": [
+        {
+          "type": "heading",
+          "level": 2,
+          "content": [
+            "Technical Skills"
+          ]
+        },
+        {
+          "type": "table",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "type": "strong",
+                  "content": [
+                    "Languages"
+                  ]
+                },
+                "JavaScript, TypeScript"
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "type": "strong",
+                  "content": [
+                    "Frameworks"
+                  ]
+                },
+                "React.js, Next.js, Redux Toolkit"
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "type": "strong",
+                  "content": [
+                    "Tools"
+                  ]
+                },
+                "Git, GitHub, Jira, Jenkins"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "content": [
+        {
+          "type": "heading",
+          "level": 2,
+          "content": [
+            "Experience"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "strong",
+              "content": [
+                "Colan Infotech Pvt. Ltd."
+              ]
+            },
+            " • Frontend Software Engineer"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            "Nov 2024 – Present"
+          ]
+        },
+        {
+          "type": "list",
+          "content": [
+            "Develop frontend solutions using React.js and TypeScript.",
+            "Collaborate with backend engineers, QA and designers.",
+            "Build reusable components and improve maintainability.",
+            "Participate in code reviews and release management."
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "content": [
+        {
+          "type": "heading",
+          "level": 2,
+          "content": [
+            "Projects"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "content": [
+            "6thStreet — Enterprise E-commerce Platform"
+          ]
+        },
+        {
+          "type": "list",
+          "content": [
+            "Reduced PLP load time by 50%.",
+            "Implemented Arabic localization.",
+            "Improved Algolia search.",
+            "Built automation tools."
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "content": [
+            "OntoRX — Legacy Dashboard Modernization"
+          ]
+        },
+        {
+          "type": "list",
+          "content": [
+            "Rebuilt legacy ASP.NET dashboard in React.",
+            "Improved performance by 60%.",
+            "Achieved SEO score of 100.",
+            "Built reusable component library."
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "content": [
+        {
+          "type": "heading",
+          "level": 2,
+          "content": [
+            "Education"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "strong",
+              "content": [
+                "Bachelor of Science in Computer Science"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            "Mazharul Uloom College • 2021–2024"
+          ]
+        }
+      ]
+    }
+  ]
+}
