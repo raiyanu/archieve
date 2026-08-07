@@ -1,76 +1,68 @@
 {
-  "name": "Raiyan Ahmed CM",
-  "title": "Frontend Software Engineer",
-  "location": "Pernambut, Tamil Nadu, India",
-  "phone": "+91 73396 77034",
-  "email": "raiyan.c.me@gmail.com",
-  "linkedin": "linkedin.com/in/c-raiyan",
-  "github": "github.com/raiyanu",
+  "profile": {
+    "name": "Raiyan Ahmed CM",
+    "title": "Frontend Software Engineer",
+    "location": "Pernambut, Tamil Nadu, India",
+    "phone": "+91 73396 77034",
+    "email": "raiyan.c.me@gmail.com",
+    "links": ["linkedin.com/in/c-raiyan", "github.com/raiyanu"]
+  },
 
-  "summary": "Frontend Software Engineer with nearly 2 years of experience building scalable, high-performance React.js applications for enterprise e-commerce and business platforms. Skilled in React.js, Redux Toolkit, TypeScript, and modern JavaScript, with experience modernizing legacy applications, optimizing performance and SEO, and collaborating with cross-functional Agile teams.",
+  "blocks": [
+    { "type": "section", "title": "Professional Summary" },
+    { "type": "paragraph", "text": "Frontend Software Engineer with nearly 2 years of experience building scalable, high-performance React.js applications for enterprise e-commerce and business platforms. Skilled in React.js, Redux Toolkit, TypeScript, and modern JavaScript, with experience modernizing legacy applications, optimizing performance and SEO, and collaborating with cross-functional Agile teams." },
 
-  "skills": [
-    { "label": "Languages", "value": "JavaScript (ES6+), TypeScript" },
-    { "label": "Libraries & Frameworks", "value": "React.js, Next.js, Redux, Redux Toolkit, React Router" },
-    { "label": "UI & Styling", "value": "HTML5, CSS3, SCSS, Tailwind CSS, Material UI, Shadcn UI" },
-    { "label": "Web & APIs", "value": "REST APIs, Axios, Node.js, Express.js" },
-    { "label": "Databases", "value": "MongoDB, Firebase" },
-    { "label": "Tools & Platforms", "value": "Git, GitHub, Jira, Jenkins, AWS S3, Vite, Postman, Figma" },
-    { "label": "AI Tools", "value": "Antigravity, ChatGPT, Claude, NotebookLM, GitHub Copilot" }
-  ],
+    { "type": "section", "title": "Technical Skills" },
+    { "type": "list", "style": "keyvalue", "items": [
+      { "label": "Languages", "value": "JavaScript (ES6+), TypeScript" },
+      { "label": "Libraries & Frameworks", "value": "React.js, Next.js, Redux, Redux Toolkit, React Router" },
+      { "label": "UI & Styling", "value": "HTML5, CSS3, SCSS, Tailwind CSS, Material UI, Shadcn UI" },
+      { "label": "Web & APIs", "value": "REST APIs, Axios, Node.js, Express.js" },
+      { "label": "Databases", "value": "MongoDB, Firebase" },
+      { "label": "Tools & Platforms", "value": "Git, GitHub, Jira, Jenkins, AWS S3, Vite, Postman, Figma" },
+      { "label": "AI Tools", "value": "Antigravity, ChatGPT, Claude, NotebookLM, GitHub Copilot" }
+    ]},
 
-  "experience": [
-    {
-      "company": "Colan Infotech Pvt. Ltd.",
-      "duration": "Nov 2024 - Present",
-      "role": "Frontend Software Engineer, Tamil Nadu",
-      "bullets": [
-        "Develop frontend solutions for enterprise e-commerce and business platforms using React.js, TypeScript, and modern web technologies.",
-        "Collaborate with cross-functional teams including backend engineers, QA, designers, and client stakeholders to deliver high-quality software.",
-        "Participate in architecture discussions, code reviews, debugging, release management, production support, and continuous application improvements.",
-        "Build reusable frontend components, improve code maintainability, and implement responsive, accessible user interfaces following industry best practices.",
-        "Contribute to Agile development processes, ensuring timely delivery of scalable and reliable frontend features."
-      ]
-    }
-  ],
+    { "type": "section", "title": "Work Experience" },
+    { "type": "heading", "text": "Colan Infotech Pvt. Ltd.", "meta": "Nov 2024 - Present" },
+    { "type": "subheading", "text": "Frontend Software Engineer, Tamil Nadu" },
+    { "type": "list", "style": "bullet", "items": [
+      "Develop frontend solutions for enterprise e-commerce and business platforms using React.js, TypeScript, and modern web technologies.",
+      "Collaborate with cross-functional teams including backend engineers, QA, designers, and client stakeholders to deliver high-quality software.",
+      "Participate in architecture discussions, code reviews, debugging, release management, production support, and continuous application improvements.",
+      "Build reusable frontend components, improve code maintainability, and implement responsive, accessible user interfaces following industry best practices.",
+      "Contribute to Agile development processes, ensuring timely delivery of scalable and reliable frontend features."
+    ]},
 
-  "projects": [
-    {
-      "name": "6thStreet — Enterprise E-commerce Platform (Apparel Group)",
-      "stack": "",
-      "bullets": [
-        "Developed and enhanced multiple business-critical e-commerce modules supporting customer shopping journeys.",
-        "Implemented complete Arabic and English localization across newly developed interfaces.",
-        "Reduced Product Listing Page load time by approximately 50% by resolving a complex routing issue.",
-        "Improved frontend performance by eliminating redundant API calls and resolving memory leaks.",
-        "Enhanced Algolia search and filtering functionality for improved product discovery.",
-        "Implemented MoEngage event tracking for customer analytics.",
-        "Developed an internal automation tool that generated 1,000+ product configuration variants across 50 product categories, reducing manual effort from 2 weeks to approximately 3 days.",
-        "Expanded New Relic monitoring coverage to improve production issue diagnosis.",
-        "Supported production deployments, domain migration, and platform rebranding."
-      ]
-    },
-    {
-      "name": "OntoRX — Legacy Dashboard Modernization (SheThink)",
-      "stack": "React.js, Redux Toolkit, React Router, Material UI, PrimeReact, Formik, Yup, JavaScript",
-      "bullets": [
-        "Led the frontend modernization of a legacy ASP.NET dashboard by rebuilding it as a modern React.js application while preserving existing functionality.",
-        "Improved application performance by over 60% through reusable component architecture, optimized rendering, and efficient state management.",
-        "Achieved a perfect SEO score of 100 by implementing semantic HTML and frontend optimization best practices.",
-        "Designed a reusable component library that improved maintainability and accelerated future feature development.",
-        "Implemented role-based routing and UI rendering for Admin, Author, and Manager workflows.",
-        "Developed a dynamic analytics query builder supporting complex AND/OR filtering logic.",
-        "Built a configurable drag-and-drop CRUD form builder using dnd-kit, Formik, and Yup.",
-        "Collaborated with backend engineers and business stakeholders to deliver production-ready features."
-      ]
-    }
-  ],
+    { "type": "section", "title": "Projects" },
+    { "type": "heading", "text": "6thStreet — Enterprise E-commerce Platform (Apparel Group)" },
+    { "type": "list", "style": "bullet", "items": [
+      "Developed and enhanced multiple business-critical e-commerce modules supporting customer shopping journeys.",
+      "Implemented complete Arabic and English localization across newly developed interfaces.",
+      "Reduced Product Listing Page load time by approximately 50% by resolving a complex routing issue.",
+      "Improved frontend performance by eliminating redundant API calls and resolving memory leaks.",
+      "Enhanced Algolia search and filtering functionality for improved product discovery.",
+      "Implemented MoEngage event tracking for customer analytics.",
+      "Developed an internal automation tool that generated 1,000+ product configuration variants across 50 product categories, reducing manual effort from 2 weeks to approximately 3 days.",
+      "Expanded New Relic monitoring coverage to improve production issue diagnosis.",
+      "Supported production deployments, domain migration, and platform rebranding."
+    ]},
 
-  "education": [
-    {
-      "degree": "Bachelor of Science in Computer Science",
-      "duration": "June 2021 - May 2024",
-      "school": "Mazharul Uloom College, Ambur, Tamil Nadu"
-    }
+    { "type": "heading", "text": "OntoRX — Legacy Dashboard Modernization (SheThink)" },
+    { "type": "subheading", "text": "React.js, Redux Toolkit, React Router, Material UI, PrimeReact, Formik, Yup, JavaScript" },
+    { "type": "list", "style": "bullet", "items": [
+      "Led the frontend modernization of a legacy ASP.NET dashboard by rebuilding it as a modern React.js application while preserving existing functionality.",
+      "Improved application performance by over 60% through reusable component architecture, optimized rendering, and efficient state management.",
+      "Achieved a perfect SEO score of 100 by implementing semantic HTML and frontend optimization best practices.",
+      "Designed a reusable component library that improved maintainability and accelerated future feature development.",
+      "Implemented role-based routing and UI rendering for Admin, Author, and Manager workflows.",
+      "Developed a dynamic analytics query builder supporting complex AND/OR filtering logic.",
+      "Built a configurable drag-and-drop CRUD form builder using dnd-kit, Formik, and Yup.",
+      "Collaborated with backend engineers and business stakeholders to deliver production-ready features."
+    ]},
+
+    { "type": "section", "title": "Education" },
+    { "type": "heading", "text": "Bachelor of Science in Computer Science", "meta": "June 2021 - May 2024" },
+    { "type": "subheading", "text": "Mazharul Uloom College, Ambur, Tamil Nadu" }
   ]
 }

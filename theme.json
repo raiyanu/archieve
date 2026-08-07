@@ -1,0 +1,56 @@
+{
+  "colors": {
+    "dark": "1F2937",
+    "accent": "1565C0",
+    "grey": "666666"
+  },
+
+  "page": {
+    "width": 12240,
+    "height": 15840,
+    "marginTop": 900,
+    "marginBottom": 900,
+    "marginLeft": 1000,
+    "marginRight": 1000
+  },
+
+  "fonts": {
+    "name": { "size": 40, "bold": true, "color": "dark" },
+    "title": { "size": 24, "bold": true, "color": "accent" },
+    "contactLine": { "size": 18, "color": "grey" },
+
+    "sectionHeading": { "size": 28, "bold": true, "color": "dark" },
+    "heading": { "size": 22, "bold": true, "color": "dark" },
+    "headingMeta": { "size": 20, "italic": true, "color": "grey" },
+    "subheading": { "size": 20, "italic": true, "color": "grey" },
+
+    "paragraph": { "size": 20, "color": "dark" },
+    "bulletItem": { "size": 20, "color": "dark" },
+    "keyvalueLabel": { "size": 20, "bold": true, "color": "dark" },
+    "keyvalueValue": { "size": 20, "color": "dark" }
+  },
+
+  "spacing": {
+    "afterName": 60,
+    "afterTitle": 120,
+    "afterContactLine": 40,
+    "afterLinks": 300,
+
+    "beforeSection": 300,
+    "afterSection": 140,
+
+    "beforeHeading": 220,
+    "afterHeading": 60,
+    "afterSubheading": 100,
+
+    "afterParagraph": 160,
+    "afterBulletItem": 60,
+    "afterKeyvalueItem": 100
+  },
+
+  "bullet": {
+    "character": "\u2022",
+    "indentLeft": 360,
+    "indentHanging": 220
+  }
+}

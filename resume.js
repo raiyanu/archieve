@@ -14,47 +14,6 @@ const DARK = "1F2937";
 const BLUE = "1565C0";
 const GREY = "666666";
 
-// ---------------- HELPERS ----------------
-function h1(text) {
-  return new Paragraph({
-    text,
-    heading: HeadingLevel.HEADING_1,
-    spacing: { before: 300, after: 140 },
-  });
-}
-
-function h2(text, opts = {}) {
-  return new Paragraph({
-    children: [new TextRun({ text, bold: true, size: 22, color: DARK, ...opts })],
-    spacing: { before: 220, after: 80 },
-  });
-}
-
-function p(text, opts = {}) {
-  return new Paragraph({
-    children: [new TextRun({ text, ...opts })],
-    spacing: { after: 120 },
-  });
-}
-
-function bullet(text, opts = {}) {
-  return new Paragraph({
-    children: [new TextRun({ text, ...opts })],
-    numbering: { reference: "bullet-list", level: 0 },
-    spacing: { after: 60 },
-  });
-}
-
-function skillRow(label, value) {
-  return new Paragraph({
-    children: [
-      new TextRun({ text: `${label}: `, bold: true, size: 20 }),
-      new TextRun({ text: value, size: 20 }),
-    ],
-    spacing: { after: 100 },
-  });
-}
-
 // ---------------- NUMBERING CONFIG ----------------
 const numberingConfig = {
   config: [
@@ -68,105 +27,106 @@ const numberingConfig = {
   ],
 };
 
-// ---------------- BUILD BLOCKS FROM DATA ----------------
-function titleBlock() {
+// ---------------- PROFILE HEADER ----------------
+function profileBlock(profile) {
   return [
     new Paragraph({
-      children: [new TextRun({ text: data.name, bold: true, size: 40, color: DARK })],
+      children: [new TextRun({ text: profile.name, bold: true, size: 40, color: DARK })],
       spacing: { after: 60 },
     }),
     new Paragraph({
-      children: [new TextRun({ text: data.title, size: 24, color: BLUE, bold: true })],
+      children: [new TextRun({ text: profile.title, size: 24, color: BLUE, bold: true })],
       spacing: { after: 120 },
     }),
     new Paragraph({
-      children: [
-        new TextRun({ text: `${data.location}  |  ${data.phone}  |  ${data.email}`, size: 18, color: GREY }),
-      ],
+      children: [new TextRun({ text: `${profile.location}  |  ${profile.phone}  |  ${profile.email}`, size: 18, color: GREY })],
       spacing: { after: 40 },
     }),
     new Paragraph({
-      children: [
-        new TextRun({ text: `${data.linkedin}  |  ${data.github}`, size: 18, color: GREY }),
-      ],
+      children: [new TextRun({ text: profile.links.join("  |  "), size: 18, color: GREY })],
       spacing: { after: 300 },
     }),
   ];
 }
 
-function summaryBlock() {
-  return [
-    h1("Professional Summary"),
-    p(data.summary),
-  ];
-}
-
-function skillsBlock() {
-  return [
-    h1("Technical Skills"),
-    ...data.skills.map((s) => skillRow(s.label, s.value)),
-  ];
-}
-
-function experienceBlock() {
-  const blocks = [h1("Work Experience")];
-  data.experience.forEach((exp) => {
-    blocks.push(
+// ---------------- BLOCK RENDERERS (one per semantic type) ----------------
+const renderers = {
+  section(block) {
+    return [
       new Paragraph({
-        children: [
-          new TextRun({ text: exp.company, bold: true, size: 22 }),
-          new TextRun({ text: `   ${exp.duration}`, size: 20, color: GREY, italics: true }),
-        ],
-        spacing: { after: 40 },
+        text: block.title,
+        heading: HeadingLevel.HEADING_1,
+        spacing: { before: 300, after: 140 },
       }),
+    ];
+  },
+
+  heading(block) {
+    const runs = [new TextRun({ text: block.text, bold: true, size: 22, color: DARK })];
+    if (block.meta) {
+      runs.push(new TextRun({ text: `   ${block.meta}`, size: 20, color: GREY, italics: true }));
+    }
+    return [new Paragraph({ children: runs, spacing: { before: 220, after: 60 } })];
+  },
+
+  subheading(block) {
+    return [
       new Paragraph({
-        children: [new TextRun({ text: exp.role, size: 20, italics: true, color: GREY })],
+        children: [new TextRun({ text: block.text, size: 20, italics: true, color: GREY })],
         spacing: { after: 100 },
       }),
-      ...exp.bullets.map((b) => bullet(b))
-    );
-  });
-  return blocks;
-}
+    ];
+  },
 
-function projectsBlock() {
-  const blocks = [h1("Projects")];
-  data.projects.forEach((proj) => {
-    blocks.push(h2(proj.name));
-    if (proj.stack) {
-      blocks.push(
-        new Paragraph({
-          children: [new TextRun({ text: proj.stack, size: 18, italics: true, color: GREY })],
-          spacing: { after: 100 },
-        })
+  paragraph(block) {
+    return [
+      new Paragraph({
+        children: [new TextRun({ text: block.text })],
+        spacing: { after: 160 },
+      }),
+    ];
+  },
+
+  list(block) {
+    if (block.style === "keyvalue") {
+      return block.items.map(
+        (item) =>
+          new Paragraph({
+            children: [
+              new TextRun({ text: `${item.label}: `, bold: true, size: 20 }),
+              new TextRun({ text: item.value, size: 20 }),
+            ],
+            spacing: { after: 100 },
+          })
       );
     }
-    blocks.push(...proj.bullets.map((b) => bullet(b)));
-  });
-  return blocks;
-}
-
-function educationBlock() {
-  const blocks = [h1("Education")];
-  data.education.forEach((edu) => {
-    blocks.push(
-      new Paragraph({
-        children: [
-          new TextRun({ text: edu.degree, bold: true, size: 20 }),
-          new TextRun({ text: `   ${edu.duration}`, size: 18, color: GREY, italics: true }),
-        ],
-        spacing: { after: 20 },
-      }),
-      new Paragraph({
-        children: [new TextRun({ text: edu.school, size: 18, color: GREY })],
-        spacing: { after: 200 },
-      })
+    // default: bullet list
+    return block.items.map(
+      (text) =>
+        new Paragraph({
+          children: [new TextRun({ text })],
+          numbering: { reference: "bullet-list", level: 0 },
+          spacing: { after: 60 },
+        })
     );
+  },
+};
+
+// ---------------- RENDER ALL BLOCKS ----------------
+function renderBlocks(blocks) {
+  const out = [];
+  blocks.forEach((block) => {
+    const renderer = renderers[block.type];
+    if (!renderer) {
+      console.warn(`Unknown block type "${block.type}", skipping`);
+      return;
+    }
+    out.push(...renderer(block));
   });
-  return blocks;
+  return out;
 }
 
-// ---------------- BUILD DOCUMENT (single column) ----------------
+// ---------------- BUILD DOCUMENT ----------------
 const docSections = [
   {
     properties: {
@@ -176,12 +136,8 @@ const docSections = [
       },
     },
     children: [
-      ...titleBlock(),
-      ...summaryBlock(),
-      ...skillsBlock(),
-      ...experienceBlock(),
-      ...projectsBlock(),
-      ...educationBlock(),
+      ...profileBlock(data.profile),
+      ...renderBlocks(data.blocks),
     ],
   },
 ];
