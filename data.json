@@ -4,31 +4,33 @@
     {
       "type": "section",
       "content": [
-        { "type": "heading", "level": 1, "content": ["Raiyan Ahmeds CM"] },
-        { "type": "paragraph", "content": ["Frontend Software Engineer"] },
+        { "type": "heading", "level": 1, "content": ["Raiyan Ahmed"] },
+        { "type": "paragraph", "subtype": "subtitle", "content": ["Frontend Software Engineer"] },
         {
           "type": "paragraph",
+          "subtype": "contact",
           "content": [
-            "Pernambut, Tamil Nadu • ",
+            "Pernambut, Tamil Nadu  ·  ",
             {
               "type": "link",
               "href": "mailto:raiyan.c.me@gmail.com",
               "content": ["raiyan.c.me@gmail.com"]
             },
-            " • ",
+            "  ·  ",
             {
               "type": "link",
               "href": "https://linkedin.com/in/c-raiyan",
-              "content": ["LinkedIn"]
+              "content": ["linkedin.com/in/c-raiyan"]
             },
-            " • ",
+            "  ·  ",
             {
               "type": "link",
               "href": "https://github.com/raiyanu",
-              "content": ["GitHub"]
+              "content": ["github.com/raiyanu"]
             }
           ]
-        }
+        },
+        { "type": "paragraph", "subtype": "divider", "content": [] }
       ]
     },
     {
@@ -111,7 +113,7 @@
             " • Frontend Software Engineer"
           ]
         },
-        { "type": "paragraph", "content": ["November 2024 – Present"] },
+        { "type": "paragraph", "subtype": "meta", "content": ["November 2024 – Present"] },
         {
           "type": "list",
           "content": [
@@ -138,8 +140,9 @@
         },
         {
           "type": "paragraph",
+          "subtype": "stack",
           "content": [
-            "Frontend Stack: React.js, TypeScript, Redux Toolkit, ScandiPWA, GraphQL, Algolia, MoEngage, New Relic"
+            "Stack: React.js, TypeScript, Redux Toolkit, ScandiPWA, GraphQL, Algolia, MoEngage, New Relic"
           ]
         },
         {
@@ -164,7 +167,8 @@
         },
         {
           "type": "paragraph",
-          "content": ["Frontend Architecture, SEO, Performance Engineering"]
+          "subtype": "stack",
+          "content": ["Focus: Frontend Architecture, SEO, Performance Engineering"]
         },
         {
           "type": "list",
@@ -185,8 +189,9 @@
         },
         {
           "type": "paragraph",
+          "subtype": "stack",
           "content": [
-            "Frontend Stack: React.js, Redux Toolkit, React Router, Material UI, PrimeReact, Formik, Yup, JavaScript"
+            "Stack: React.js, Redux Toolkit, React Router, Material UI, PrimeReact, Formik, Yup, JavaScript"
           ]
         },
         {

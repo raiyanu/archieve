@@ -23,6 +23,8 @@ export interface HeadingNode {
 
 export interface ParagraphNode {
   type: "paragraph";
+  /** Optional semantic variant — controls alignment and styling */
+  subtype?: "subtitle" | "contact" | "meta" | "stack" | "divider";
   content: Inline[];
 }
 

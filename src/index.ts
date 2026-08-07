@@ -6,7 +6,6 @@ import {
   BorderStyle,
   Document,
   ExternalHyperlink,
-  HeadingLevel,
   ImageRun,
   Packer,
   Paragraph,
@@ -17,7 +16,7 @@ import {
   TextRun,
   VerticalAlign,
   WidthType,
-  ShadingType,
+  convertInchesToTwip,
 } from "docx";
 
 import type {
@@ -31,23 +30,57 @@ import type {
   TableNode,
 } from "./types.js";
 
-import { COLORS, theme } from "./theme.js";
+import { COLORS, FONT, SIZE, theme } from "./theme.js";
 
-/* ============================================================
-   RENDER ENTRY
-============================================================ */
+// ─────────────────────────────────────────────────────────────────────────────
+// NO-BORDER TABLE CELL HELPER
+// Produces a completely invisible cell border definition for borderless tables.
+// ─────────────────────────────────────────────────────────────────────────────
+
+const noBorder = {
+  top:    { style: BorderStyle.NONE, size: 0, color: "FFFFFF" },
+  bottom: { style: BorderStyle.NONE, size: 0, color: "FFFFFF" },
+  left:   { style: BorderStyle.NONE, size: 0, color: "FFFFFF" },
+  right:  { style: BorderStyle.NONE, size: 0, color: "FFFFFF" },
+};
+
+const noBorderTable = {
+  top:    { style: BorderStyle.NONE, size: 0, color: "FFFFFF" },
+  bottom: { style: BorderStyle.NONE, size: 0, color: "FFFFFF" },
+  left:   { style: BorderStyle.NONE, size: 0, color: "FFFFFF" },
+  right:  { style: BorderStyle.NONE, size: 0, color: "FFFFFF" },
+  insideH: { style: BorderStyle.NONE, size: 0, color: "FFFFFF" },
+  insideV: { style: BorderStyle.NONE, size: 0, color: "FFFFFF" },
+};
+
+// ─────────────────────────────────────────────────────────────────────────────
+// RENDER ENTRY
+// ─────────────────────────────────────────────────────────────────────────────
 
 function render(document: DocumentNode): Document {
   return new Document({
+    // Register Calibri as the default document font
+    styles: {
+      default: {
+        document: {
+          run: {
+            font: FONT.body,
+            size: SIZE.body,
+            color: COLORS.text,
+          },
+        },
+      },
+    },
+
     sections: [
       {
         properties: {
           page: {
             margin: {
-              top: 720,
-              bottom: 720,
-              left: 720,
-              right: 720,
+              top:    convertInchesToTwip(0.8),
+              bottom: convertInchesToTwip(0.8),
+              left:   convertInchesToTwip(0.9),
+              right:  convertInchesToTwip(0.9),
             },
           },
         },
@@ -58,17 +91,15 @@ function render(document: DocumentNode): Document {
   });
 }
 
-/* ============================================================
-   BLOCK RENDERER
-============================================================ */
+// ─────────────────────────────────────────────────────────────────────────────
+// BLOCK RENDERER
+// ─────────────────────────────────────────────────────────────────────────────
 
 function renderBlocks(nodes: Block[]) {
   const output: any[] = [];
-
   for (const node of nodes) {
     output.push(...renderBlock(node));
   }
-
   return output;
 }
 
@@ -97,97 +128,169 @@ function renderBlock(node: Block): any[] {
   }
 }
 
-/* ============================================================
-   HEADINGS
-============================================================ */
+// ─────────────────────────────────────────────────────────────────────────────
+// HEADINGS
+// ─────────────────────────────────────────────────────────────────────────────
 
-function renderHeading(node: HeadingNode) {
+function renderHeading(node: HeadingNode): Paragraph {
+  // ── H1 — Candidate Name ───────────────────────────────────────────────────
+  // Large, centered, bold. Sets commanding first impression.
   if (node.level === 1) {
     return new Paragraph({
       alignment: AlignmentType.CENTER,
 
       spacing: {
         before: 0,
-        after: 220,
+        after:  80,
       },
 
       children: [
         new TextRun({
-          text: flatten(node.content),
-          bold: true,
-          color: COLORS.primary,
-          size: 40,
+          text:  flatten(node.content),
+          bold:  true,
+          font:  FONT.body,
+          size:  SIZE.h1,
+          color: COLORS.dark,
         }),
       ],
     });
   }
 
+  // ── H2 — Section Headings ─────────────────────────────────────────────────
+  // Bold, slightly larger than body. A thin bottom rule provides section
+  // separation without heavy decoration — exactly like the Word reference.
   if (node.level === 2) {
     return new Paragraph({
       spacing: {
-        before: 260,
-        after: 140,
+        before: 320,
+        after:  100,
       },
 
-      shading: {
-        type: ShadingType.CLEAR,
-        fill: COLORS.background,
-      },
-
+      // Thin horizontal rule below — the only visual decoration used.
       border: {
-        left: {
+        bottom: {
           style: BorderStyle.SINGLE,
-          color: COLORS.primary,
-          size: 8,
+          color: COLORS.rule,
+          size:  4,
         },
       },
 
       children: [
         new TextRun({
-          text: flatten(node.content),
-          bold: true,
-          color: COLORS.primary,
-          size: 28,
+          text:  flatten(node.content).toUpperCase(),
+          bold:  true,
+          font:  FONT.body,
+          size:  SIZE.h2,
+          color: COLORS.dark,
+          // Small caps gives a polished Word-document feel
+          smallCaps: false,
         }),
       ],
     });
   }
 
+  // ── H3 — Sub-headings (Project / Role Titles) ─────────────────────────────
+  // Bold, same size as body or slightly larger. No decoration.
   return new Paragraph({
     spacing: {
-      before: 160,
-      after: 80,
+      before: 180,
+      after:  50,
     },
 
     children: [
       new TextRun({
-        text: flatten(node.content),
-        bold: true,
+        text:  flatten(node.content),
+        bold:  true,
+        font:  FONT.body,
+        size:  SIZE.h3,
         color: COLORS.dark,
-        size: 24,
       }),
     ],
   });
 }
 
-/* ============================================================
-   PARAGRAPHS
-============================================================ */
+// ─────────────────────────────────────────────────────────────────────────────
+// PARAGRAPHS
+// ─────────────────────────────────────────────────────────────────────────────
 
-function renderParagraph(node: ParagraphNode) {
+function renderParagraph(node: ParagraphNode): Paragraph {
+  // ── Subtitle (job title under name) ───────────────────────────────────────
+  if (node.subtype === "subtitle") {
+    return new Paragraph({
+      alignment: AlignmentType.CENTER,
+      spacing: { before: 0, after: 60 },
+      children: [
+        new TextRun({
+          text:  flatten(node.content),
+          font:  FONT.body,
+          size:  SIZE.body + 2, // 12pt — slightly above body
+          color: COLORS.muted,
+          italics: true,
+        }),
+      ],
+    });
+  }
+
+  // ── Contact line ──────────────────────────────────────────────────────────
+  if (node.subtype === "contact") {
+    return new Paragraph({
+      alignment: AlignmentType.CENTER,
+      spacing: { before: 0, after: 60 },
+      children: renderInline(node.content),
+    });
+  }
+
+  // ── Divider (thin horizontal rule) ─────────────────────────────────────────
+  if (node.subtype === "divider") {
+    return new Paragraph({
+      spacing: { before: 60, after: 60 },
+      border: {
+        bottom: {
+          style: BorderStyle.SINGLE,
+          color: COLORS.rule,
+          size:  4,
+        },
+      },
+      children: [
+        new TextRun({ text: "", size: 4 }),
+      ],
+    });
+  }
+  if (node.subtype === "meta" || node.subtype === "stack") {
+    return new Paragraph({
+      spacing: { after: 80, line: 260 },
+      children: [
+        new TextRun({
+          text:    flatten(node.content),
+          font:    FONT.body,
+          size:    SIZE.small,
+          color:   COLORS.muted,
+          italics: true,
+        }),
+      ],
+    });
+  }
+
+  // ── Standard body paragraph ───────────────────────────────────────────────
   return new Paragraph({
     spacing: {
-      after: 120,
-      line: 276,
+      after: 80,
+      line:  268,
     },
-
     children: renderInline(node.content),
   });
 }
-function renderList(node: ListNode) {
+
+// ─────────────────────────────────────────────────────────────────────────────
+// LISTS
+// ─────────────────────────────────────────────────────────────────────────────
+
+function renderList(node: ListNode): Paragraph[] {
   return node.content.map((item) => {
     const children =
-      typeof item === "string" ? [theme.run(item)] : renderInline(item.content);
+      typeof item === "string"
+        ? [theme.run(item)]
+        : renderInline(item.content);
 
     return new Paragraph({
       bullet: {
@@ -195,11 +298,12 @@ function renderList(node: ListNode) {
       },
 
       spacing: {
-        after: 70,
+        after: 60,
+        line:  268,
       },
 
       indent: {
-        left: 420,
+        left:    360,
         hanging: 220,
       },
 
@@ -208,7 +312,11 @@ function renderList(node: ListNode) {
   });
 }
 
-function renderTable(node: TableNode) {
+// ─────────────────────────────────────────────────────────────────────────────
+// TABLES — Borderless two-column layout for skills
+// ─────────────────────────────────────────────────────────────────────────────
+
+function renderTable(node: TableNode): Table {
   return new Table({
     layout: TableLayoutType.FIXED,
 
@@ -217,6 +325,9 @@ function renderTable(node: TableNode) {
       type: WidthType.PERCENTAGE,
     },
 
+    // Remove all outer table borders
+    borders: noBorderTable,
+
     rows: node.rows.map(
       (row) =>
         new TableRow({
@@ -224,16 +335,21 @@ function renderTable(node: TableNode) {
             (cell, index) =>
               new TableCell({
                 width: {
-                  size: index === 0 ? 28 : 72,
+                  size: index === 0 ? 22 : 78,
                   type: WidthType.PERCENTAGE,
                 },
 
-                verticalAlign: VerticalAlign.CENTER,
+                verticalAlign: VerticalAlign.TOP,
 
+                // Remove all cell borders
+                borders: noBorder,
+
+                // Subtle top margin per row via paragraph spacing
                 children: [
                   new Paragraph({
                     spacing: {
-                      after: 50,
+                      after: 60,
+                      line:  260,
                     },
 
                     children: renderInline([cell]),
@@ -246,7 +362,11 @@ function renderTable(node: TableNode) {
   });
 }
 
-function renderImage(node: ImageNode) {
+// ─────────────────────────────────────────────────────────────────────────────
+// IMAGES
+// ─────────────────────────────────────────────────────────────────────────────
+
+function renderImage(node: ImageNode): Paragraph {
   const buffer = fs.readFileSync(node.src);
 
   return new Paragraph({
@@ -254,21 +374,24 @@ function renderImage(node: ImageNode) {
 
     spacing: {
       before: 120,
-      after: 120,
+      after:  120,
     },
 
     children: [
       new ImageRun({
         data: buffer,
-
         transformation: {
-          width: node.width ?? 120,
+          width:  node.width  ?? 120,
           height: node.height ?? 120,
         },
       }),
     ],
   });
 }
+
+// ─────────────────────────────────────────────────────────────────────────────
+// INLINE RENDERERS
+// ─────────────────────────────────────────────────────────────────────────────
 
 function renderInline(nodes: Inline[]): any[] {
   const output: any[] = [];
@@ -296,10 +419,12 @@ function renderInline(nodes: Inline[]): any[] {
         output.push(
           new ExternalHyperlink({
             link: node.href,
-
             children: [
               new TextRun({
-                text: flatten(node.content),
+                text:  flatten(node.content),
+                font:  FONT.body,
+                size:  SIZE.body,
+                color: COLORS.link,
                 style: "Hyperlink",
               }),
             ],
@@ -312,23 +437,23 @@ function renderInline(nodes: Inline[]): any[] {
   return output;
 }
 
+// ─────────────────────────────────────────────────────────────────────────────
+// UTILITIES
+// ─────────────────────────────────────────────────────────────────────────────
+
 function flatten(nodes: Inline[]): string {
   return nodes
-    .map((node) => {
-      if (typeof node === "string") {
-        return node;
-      }
-
-      return flatten(node.content);
-    })
+    .map((node) => (typeof node === "string" ? node : flatten(node.content)))
     .join("");
 }
 
-const json = JSON.parse(fs.readFileSync("data.json", "utf8")) as DocumentNode;
+// ─────────────────────────────────────────────────────────────────────────────
+// ENTRY POINT
+// ─────────────────────────────────────────────────────────────────────────────
 
+const json     = JSON.parse(fs.readFileSync("data.json", "utf8")) as DocumentNode;
 const document = render(json);
-
-const buffer = await Packer.toBuffer(document);
+const buffer   = await Packer.toBuffer(document);
 
 fs.writeFileSync(path.resolve("resume.docx"), buffer);
 
