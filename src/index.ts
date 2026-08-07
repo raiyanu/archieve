@@ -3,6 +3,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { convertDocxToPdf } from "./pdf.js";
 import {
   AlignmentType,
   Document,
@@ -470,12 +471,16 @@ async function main(): Promise<void> {
 
   const buffer = await Packer.toBuffer(doc);
   fs.writeFileSync(outFile, buffer);
-
   console.log(`Done -> ${outFile}`);
+
+  const pdfFile = outFile.replace(/\.docx$/i, "") + ".pdf";
+  await convertDocxToPdf(outFile, pdfFile);
+  console.log(`Done -> ${pdfFile}`);
 }
 
-main().catch((err) => {
+main().then(() => {
+  process.exit(0);
+}).catch((err) => {
   console.error("Failed to generate resume:", err);
   process.exit(1);
 });
-

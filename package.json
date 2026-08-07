@@ -11,12 +11,13 @@
     "generate": "tsx src/index.ts",
     "build:watch": "tsx watch src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc --ignoreConfig src/index.ts --outDir ./dist"
+    "build": "tsc --outDir ./dist"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@matbee/libreoffice-converter": "^2.7.2",
     "docx": "^9.7.1"
   },
   "devDependencies": {
@@ -25,4 +26,3 @@
     "typescript": "^7.0.2"
   }
 }
-
