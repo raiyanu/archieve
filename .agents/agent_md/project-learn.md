@@ -22,6 +22,8 @@ src/
   types.ts    — TypeScript AST types for data.json
   renderer/   — Empty (reserved)
 data.json     — Resume content in AST format
+resume.js     — CommonJS generator script consuming data.json
+llm.md        — Specification & LLM guide for writing valid data.json
 resume.docx   — Generated output
 ```
 
