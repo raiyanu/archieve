@@ -9,7 +9,9 @@
   },
   "scripts": {
     "generate": "tsx src/index.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build:watch": "tsx watch src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc --ignoreConfig src/index.ts --outDir ./dist"
   },
   "keywords": [],
   "author": "",
