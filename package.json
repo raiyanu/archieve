@@ -1,9 +1,14 @@
 {
   "name": "resume_ui_v2",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Resume DOCX generator CLI",
+  "main": "src/index.ts",
+  "type": "module",
+  "bin": {
+    "resume-docx": "./src/index.ts"
+  },
   "scripts": {
+    "generate": "tsx src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -18,3 +23,4 @@
     "typescript": "^7.0.2"
   }
 }
+

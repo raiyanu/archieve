@@ -1,92 +1,64 @@
-export type Inline =
-  | string
-  | StrongNode
-  | EmNode
-  | LinkNode
-  | CodeNode;
 
-export interface DocumentNode {
-  type: "document";
-  content: Block[];
+// -----------------------------------------------------------------------------
+// Types
+// -----------------------------------------------------------------------------
+
+export interface Profile {
+  name: string;
+  title: string;
+  location: string;
+  phone: string;
+  email: string;
+  links: string[];
 }
 
-export interface SectionNode {
+export interface SectionBlock {
   type: "section";
-  content: Block[];
+  title: string;
 }
 
-export interface HeadingNode {
+export interface HeadingBlock {
   type: "heading";
-  level: number;
-  content: Inline[];
+  text: string;
+  meta?: string;
 }
 
-export interface ParagraphNode {
+export interface SubheadingBlock {
+  type: "subheading";
+  text: string;
+}
+
+export interface ParagraphBlock {
   type: "paragraph";
-  /**
-   * Optional semantic variant — controls alignment and styling.
-   *
-   * subtitle  → centered italic muted (job title under name)
-   * contact   → centered small muted (contact info with links)
-   * divider   → empty paragraph with thin bottom border (header separator)
-   * meta      → small muted italic (dates, locations)
-   * stack     → very small faint italic (tech-stack labels under projects)
-   */
-  subtype?: "subtitle" | "contact" | "divider" | "meta" | "stack";
-  content: Inline[];
+  text: string;
 }
 
-export interface ListNode {
+export interface BulletListBlock {
   type: "list";
-  ordered?: boolean;
-  content: (string | ParagraphNode)[];
+  style?: "bullet";
+  items: string[];
 }
 
-export interface TableNode {
-  type: "table";
-  /**
-   * layout "plain"  → each row becomes a "Label:  Value" paragraph (ATS-safe, no Word table)
-   * layout "grid"   → rendered as a proper table (borderless)
-   * Omit or "plain" is the default for skills sections.
-   */
-  layout?: "plain" | "grid";
-  rows: {
-    cells: Inline[];
-  }[];
+export interface KeyValueItem {
+  label: string;
+  value: string;
 }
 
-export interface ImageNode {
-  type: "image";
-  src: string;
-  width?: number;
-  height?: number;
-}
-
-export interface StrongNode {
-  type: "strong";
-  content: Inline[];
-}
-
-export interface EmNode {
-  type: "em";
-  content: Inline[];
-}
-
-export interface LinkNode {
-  type: "link";
-  href: string;
-  content: Inline[];
-}
-
-export interface CodeNode {
-  type: "code";
-  content: Inline[];
+export interface KeyValueListBlock {
+  type: "list";
+  style: "keyvalue";
+  items: KeyValueItem[];
 }
 
 export type Block =
-  | SectionNode
-  | HeadingNode
-  | ParagraphNode
-  | ListNode
-  | TableNode
-  | ImageNode;
+  | SectionBlock
+  | HeadingBlock
+  | SubheadingBlock
+  | ParagraphBlock
+  | BulletListBlock
+  | KeyValueListBlock;
+
+export interface ResumeData {
+  profile: Profile;
+  blocks: Block[];
+}

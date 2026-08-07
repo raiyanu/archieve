@@ -1,295 +1,481 @@
-import fs   from "node:fs";
-import path from "node:path";
+#!/usr/bin/env node
 
+import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import {
   AlignmentType,
   Document,
-  ExternalHyperlink,
-  ImageRun,
+  HeadingLevel,
+  LevelFormat,
   Packer,
   Paragraph,
+  TextRun,
 } from "docx";
 
+// -----------------------------------------------------------------------------
+// Types
+// -----------------------------------------------------------------------------
 import type {
+  Profile,
+  SectionBlock,
+  HeadingBlock,
+  SubheadingBlock,
+  ParagraphBlock,
+  BulletListBlock,
+  KeyValueListBlock,
+  ResumeData,
   Block,
-  DocumentNode,
-  HeadingNode,
-  ImageNode,
-  Inline,
-  ListNode,
-  ParagraphNode,
-  TableNode,
 } from "./types.js";
 
-import {
-  documentNumbering,
-  documentStyles,
-  MARGINS,
-  theme,
-  type InlineVariant,
-} from "./theme.js";
+// -----------------------------------------------------------------------------
+// __dirname for ES Modules
+// -----------------------------------------------------------------------------
 
-// ─────────────────────────────────────────────────────────────────────────────
-//  NOTE ON STYLING
-//  This file contains ZERO hardcoded colors, font names, sizes, or spacing.
-//  All styling decisions live in src/theme.ts.
-//  To change the look of the resume, edit theme.ts only.
-// ─────────────────────────────────────────────────────────────────────────────
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-/* ═══════════════════════════════════════════════════════════════════════════
-   RENDER ENTRY
-═══════════════════════════════════════════════════════════════════════════ */
+// -----------------------------------------------------------------------------
+// CLI Options & Data Loading
+// -----------------------------------------------------------------------------
 
-function render(doc: DocumentNode): Document {
-  return new Document({
-    styles:    documentStyles,
-    numbering: documentNumbering,
+interface CliOptions {
+  dataFile?: string;
+  outFile?: string;
+  help?: boolean;
+}
 
+function parseArgs(args: string[]): CliOptions {
+  const options: CliOptions = {};
+  for (let i = 0; i < args.length; i++) {
+    const arg = args[i];
+    if (!arg) continue;
+    if (arg === "--data-file" || arg === "-d") {
+      const nextVal = args[++i];
+      if (nextVal !== undefined) {
+        options.dataFile = nextVal;
+      }
+    } else if (arg.startsWith("--data-file=")) {
+      const val = arg.split("=")[1];
+      if (val !== undefined) {
+        options.dataFile = val;
+      }
+    } else if (arg === "--out" || arg === "-o") {
+      const nextVal = args[++i];
+      if (nextVal !== undefined) {
+        options.outFile = nextVal;
+      }
+    } else if (arg.startsWith("--out=")) {
+      const val = arg.split("=")[1];
+      if (val !== undefined) {
+        options.outFile = val;
+      }
+    } else if (arg === "--help" || arg === "-h") {
+      options.help = true;
+    }
+  }
+  return options;
+}
+
+function printHelp(): void {
+  console.log(`
+Resume DOCX Generator CLI
+
+Usage:
+  npx tsx src/index.ts [options]
+  resume-docx [options]
+
+Options:
+  -d, --data-file <path>   Path to resume JSON data file
+  -o, --out <path>         Output file path for generated .docx
+  -h, --help               Show this help message
+
+Data Resolution Precedence:
+  1. CLI parameter (--data-file <path> / -d <path>)
+  2. Pipelined input via stdin (e.g. cat data.json | resume-docx)
+  3. data.json in Current Working Directory (where command is executed)
+  4. data.json in script/package directory
+`);
+}
+
+async function readStdin(): Promise<string> {
+  return new Promise((resolve, reject) => {
+    let data = "";
+    process.stdin.setEncoding("utf8");
+    process.stdin.on("data", (chunk) => {
+      data += chunk;
+    });
+    process.stdin.on("end", () => resolve(data));
+    process.stdin.on("error", (err) => reject(err));
+  });
+}
+
+async function loadResumeData(options: CliOptions): Promise<{ data: ResumeData; source: string }> {
+  // 1. Check CLI argument (--data-file / -d)
+  if (options.dataFile) {
+    const resolvedPath = path.resolve(process.cwd(), options.dataFile);
+    if (!fs.existsSync(resolvedPath)) {
+      throw new Error(`Data file specified via --data-file does not exist: ${resolvedPath}`);
+    }
+    const content = fs.readFileSync(resolvedPath, "utf8");
+    return { data: JSON.parse(content), source: resolvedPath };
+  }
+
+  // 2. Check piped data from stdin
+  if (!process.stdin.isTTY) {
+    const stdinContent = await readStdin();
+    if (stdinContent.trim().length > 0) {
+      return { data: JSON.parse(stdinContent), source: "piped stdin" };
+    }
+  }
+
+  // 3. Check data.json in Current Working Directory (execution path)
+  const cwdDataPath = path.join(process.cwd(), "data.json");
+  if (fs.existsSync(cwdDataPath)) {
+    const content = fs.readFileSync(cwdDataPath, "utf8");
+    return { data: JSON.parse(content), source: cwdDataPath };
+  }
+
+  // 4. Check data.json in script/package directory
+  const scriptDataPath = path.join(__dirname, "data.json");
+  if (fs.existsSync(scriptDataPath)) {
+    const content = fs.readFileSync(scriptDataPath, "utf8");
+    return { data: JSON.parse(content), source: scriptDataPath };
+  }
+
+  const scriptParentDataPath = path.join(__dirname, "..", "data.json");
+  if (fs.existsSync(scriptParentDataPath)) {
+    const content = fs.readFileSync(scriptParentDataPath, "utf8");
+    return { data: JSON.parse(content), source: scriptParentDataPath };
+  }
+
+  throw new Error(
+    "Could not find resume JSON data.\n" +
+      "Resolution order checked:\n" +
+      "  1. --data-file <path> / -d <path> option\n" +
+      "  2. Pipelined stdin data\n" +
+      `  3. ${cwdDataPath} (Current Working Directory)\n` +
+      `  4. ${scriptDataPath} (Script Directory)\n`
+  );
+}
+
+// -----------------------------------------------------------------------------
+// Colors
+// -----------------------------------------------------------------------------
+
+const DARK = "1F2937";
+const BLUE = "1565C0";
+const GREY = "666666";
+
+// -----------------------------------------------------------------------------
+// Numbering
+// -----------------------------------------------------------------------------
+
+const numberingConfig = {
+  config: [
+    {
+      reference: "bullet-list",
+      levels: [
+        {
+          level: 0,
+          format: LevelFormat.BULLET,
+          text: "\u2022",
+          alignment: AlignmentType.LEFT,
+          style: {
+            paragraph: {
+              indent: {
+                left: 360,
+                hanging: 220,
+              },
+            },
+          },
+        },
+      ],
+    },
+  ],
+};
+
+// -----------------------------------------------------------------------------
+// Profile
+// -----------------------------------------------------------------------------
+
+function profileBlock(profile: Profile): Paragraph[] {
+  return [
+    new Paragraph({
+      children: [
+        new TextRun({
+          text: profile.name,
+          bold: true,
+          size: 40,
+          color: DARK,
+        }),
+      ],
+      spacing: { after: 60 },
+    }),
+
+    new Paragraph({
+      children: [
+        new TextRun({
+          text: profile.title,
+          size: 24,
+          color: BLUE,
+          bold: true,
+        }),
+      ],
+      spacing: { after: 120 },
+    }),
+
+    new Paragraph({
+      children: [
+        new TextRun({
+          text: `${profile.location}  |  ${profile.phone}  |  ${profile.email}`,
+          size: 18,
+          color: GREY,
+        }),
+      ],
+      spacing: { after: 40 },
+    }),
+
+    new Paragraph({
+      children: [
+        new TextRun({
+          text: profile.links.join("  |  "),
+          size: 18,
+          color: GREY,
+        }),
+      ],
+      spacing: { after: 300 },
+    }),
+  ];
+}
+
+// -----------------------------------------------------------------------------
+// Renderers
+// -----------------------------------------------------------------------------
+
+const renderers = {
+  section(block: SectionBlock): Paragraph[] {
+    return [
+      new Paragraph({
+        text: block.title,
+        heading: HeadingLevel.HEADING_1,
+        spacing: {
+          before: 300,
+          after: 140,
+        },
+      }),
+    ];
+  },
+
+  heading(block: HeadingBlock): Paragraph[] {
+    const runs = [
+      new TextRun({
+        text: block.text,
+        bold: true,
+        size: 22,
+        color: DARK,
+      }),
+    ];
+
+    if (block.meta) {
+      runs.push(
+        new TextRun({
+          text: `   ${block.meta}`,
+          size: 20,
+          color: GREY,
+          italics: true,
+        }),
+      );
+    }
+
+    return [
+      new Paragraph({
+        children: runs,
+        spacing: {
+          before: 220,
+          after: 60,
+        },
+      }),
+    ];
+  },
+
+  subheading(block: SubheadingBlock): Paragraph[] {
+    return [
+      new Paragraph({
+        children: [
+          new TextRun({
+            text: block.text,
+            size: 20,
+            italics: true,
+            color: GREY,
+          }),
+        ],
+        spacing: {
+          after: 100,
+        },
+      }),
+    ];
+  },
+
+  paragraph(block: ParagraphBlock): Paragraph[] {
+    return [
+      new Paragraph({
+        children: [
+          new TextRun({
+            text: block.text,
+          }),
+        ],
+        spacing: {
+          after: 160,
+        },
+      }),
+    ];
+  },
+
+  list(block: BulletListBlock | KeyValueListBlock): Paragraph[] {
+    if (block.style === "keyvalue") {
+      return block.items.map(
+        (item) =>
+          new Paragraph({
+            children: [
+              new TextRun({
+                text: `${item.label}: `,
+                bold: true,
+                size: 20,
+              }),
+              new TextRun({
+                text: item.value,
+                size: 20,
+              }),
+            ],
+            spacing: {
+              after: 100,
+            },
+          }),
+      );
+    }
+
+    return block.items.map(
+      (text) =>
+        new Paragraph({
+          children: [new TextRun({ text })],
+          numbering: {
+            reference: "bullet-list",
+            level: 0,
+          },
+          spacing: {
+            after: 60,
+          },
+        }),
+    );
+  },
+};
+
+// -----------------------------------------------------------------------------
+// Render blocks
+// -----------------------------------------------------------------------------
+
+function renderBlocks(blocks: Block[]): Paragraph[] {
+  const out: Paragraph[] = [];
+
+  for (const block of blocks) {
+    switch (block.type) {
+      case "section":
+        out.push(...renderers.section(block));
+        break;
+
+      case "heading":
+        out.push(...renderers.heading(block));
+        break;
+
+      case "subheading":
+        out.push(...renderers.subheading(block));
+        break;
+
+      case "paragraph":
+        out.push(...renderers.paragraph(block));
+        break;
+
+      case "list":
+        out.push(...renderers.list(block));
+        break;
+
+      default:
+        console.warn("Unknown block:", block);
+    }
+  }
+
+  return out;
+}
+
+// -----------------------------------------------------------------------------
+// Main Execution
+// -----------------------------------------------------------------------------
+
+async function main(): Promise<void> {
+  const args = process.argv.slice(2);
+  const options = parseArgs(args);
+
+  if (options.help) {
+    printHelp();
+    return;
+  }
+
+  let loaded: { data: ResumeData; source: string };
+  try {
+    loaded = await loadResumeData(options);
+  } catch (err: any) {
+    console.error(`Error: ${err.message}`);
+    process.exit(1);
+  }
+
+  console.log(`Loading data from: ${loaded.source}`);
+  const data = loaded.data;
+
+  // Build document
+  const doc = new Document({
+    numbering: numberingConfig,
     sections: [
       {
         properties: {
           page: {
-            margin: MARGINS,
+            size: {
+              width: 12240,
+              height: 15840,
+            },
+            margin: {
+              top: 900,
+              bottom: 900,
+              left: 1000,
+              right: 1000,
+            },
           },
         },
-        children: renderBlocks(doc.content),
+        children: [...profileBlock(data.profile), ...renderBlocks(data.blocks)],
       },
     ],
   });
-}
 
-/* ═══════════════════════════════════════════════════════════════════════════
-   BLOCK DISPATCHER
-═══════════════════════════════════════════════════════════════════════════ */
-
-function renderBlocks(nodes: Block[]): any[] {
-  return nodes.flatMap(renderBlock);
-}
-
-function renderBlock(node: Block): any[] {
-  switch (node.type) {
-    case "section":   return renderBlocks(node.content);
-    case "heading":   return [renderHeading(node)];
-    case "paragraph": return [renderParagraph(node)];
-    case "list":      return renderList(node);
-    case "table":     return renderTable(node);
-    case "image":     return [renderImage(node)];
-    default:          return [];
-  }
-}
-
-/* ═══════════════════════════════════════════════════════════════════════════
-   HEADINGS
-═══════════════════════════════════════════════════════════════════════════ */
-
-function renderHeading(node: HeadingNode): Paragraph {
-  // ── H1: Candidate Name ────────────────────────────────────────────────────
-  if (node.level === 1) {
-    return new Paragraph({
-      ...theme.nameParaOpts(),
-      children: [theme.nameRun(flatten(node.content))],
-    });
+  // Determine output file location
+  let outFile: string;
+  if (options.outFile) {
+    outFile = path.resolve(process.cwd(), options.outFile);
+  } else {
+    const outDir = path.join(process.cwd(), "out");
+    outFile = path.join(outDir, "Resume.docx");
   }
 
-  // ── H2: Section Headings ──────────────────────────────────────────────────
-  // ALL CAPS, morning sky blue — no border/underline.
-  // Hierarchy is created through color, weight, and generous spacing alone.
-  if (node.level === 2) {
-    return new Paragraph({
-      ...theme.sectionHeadingParaOpts(),
-      children: [theme.sectionHeadingRun(flatten(node.content))],
-    });
-  }
+  const outDir = path.dirname(outFile);
+  fs.mkdirSync(outDir, { recursive: true });
 
-  // ── H3: Sub-headings (project/role titles) ────────────────────────────────
-  return new Paragraph({
-    ...theme.subHeadingParaOpts(),
-    children: [theme.subHeadingRun(flatten(node.content))],
-  });
+  const buffer = await Packer.toBuffer(doc);
+  fs.writeFileSync(outFile, buffer);
+
+  console.log(`Done -> ${outFile}`);
 }
 
-/* ═══════════════════════════════════════════════════════════════════════════
-   PARAGRAPHS
-═══════════════════════════════════════════════════════════════════════════ */
+main().catch((err) => {
+  console.error("Failed to generate resume:", err);
+  process.exit(1);
+});
 
-function renderParagraph(node: ParagraphNode): Paragraph {
-  switch (node.subtype) {
-    // ── Header block ──────────────────────────────────────────────────────
-    case "subtitle":
-      return new Paragraph({
-        ...theme.subtitleParaOpts(),
-        children: [theme.subtitleRun(flatten(node.content))],
-      });
-
-    case "contact":
-      return new Paragraph({
-        ...theme.contactParaOpts(),
-        // renderInline in 'contact' variant → muted, smaller runs + small links
-        children: renderInline(node.content, "contact"),
-      });
-
-    case "divider":
-      return new Paragraph({
-        ...theme.dividerParaOpts(),
-        children: [theme.dividerRun()],
-      });
-
-    // ── Body metadata ─────────────────────────────────────────────────────
-    case "meta":
-      return new Paragraph({
-        ...theme.metaParaOpts(),
-        children: [theme.metaRun(flatten(node.content))],
-      });
-
-    case "stack":
-      return new Paragraph({
-        ...theme.metaParaOpts(),
-        children: [theme.stackRun(flatten(node.content))],
-      });
-
-    // ── Standard body paragraph ───────────────────────────────────────────
-    default:
-      return new Paragraph({
-        ...theme.bodyParaOpts(),
-        children: renderInline(node.content),
-      });
-  }
-}
-
-/* ═══════════════════════════════════════════════════════════════════════════
-   LISTS
-   Custom en-dash bullet (defined in documentNumbering) — small, muted, elegant.
-   ATS parsers treat '–' as a list indicator; no parsing issues.
-═══════════════════════════════════════════════════════════════════════════ */
-
-function renderList(node: ListNode): Paragraph[] {
-  return node.content.map((item) => {
-    const children =
-      typeof item === "string"
-        ? [theme.run(item)]
-        : renderInline(item.content);
-
-    return new Paragraph({
-      ...theme.bulletParaOpts(),
-      children,
-    });
-  });
-}
-
-/* ═══════════════════════════════════════════════════════════════════════════
-   TABLE / SKILL DEFINITIONS
-   "plain" layout (default) → ATS-friendly "Label:  Value" paragraphs.
-   "grid" layout            → borderless Word table (for tabular data).
-═══════════════════════════════════════════════════════════════════════════ */
-
-function renderTable(node: TableNode): Paragraph[] {
-  // "plain" layout (default) — ATS-friendly "Label:  Value" paragraphs.
-  // No Word table structure in the output: fully readable by ATS parsers.
-  //
-  // To switch to a bordered/borderless Word table, change layout to "grid"
-  // in data.json and implement a grid renderer here using the docx Table API.
-  return node.rows.map((row) => {
-    const [labelCell, valueCell] = row.cells;
-
-    // Extract text from either a raw string or a StrongNode / inline node
-    const labelText = typeof labelCell === "string"
-      ? labelCell
-      : flatten((labelCell as any).content ?? []);
-
-    const valueText = typeof valueCell === "string"
-      ? valueCell
-      : flatten((valueCell as any).content ?? []);
-
-    return new Paragraph({
-      ...theme.skillParaOpts(),
-      children: [
-        theme.skillLabelRun(labelText),
-        theme.skillValueRun(valueText),
-      ],
-    });
-  });
-}
-
-/* ═══════════════════════════════════════════════════════════════════════════
-   IMAGE
-═══════════════════════════════════════════════════════════════════════════ */
-
-function renderImage(node: ImageNode): Paragraph {
-  const buffer = fs.readFileSync(node.src);
-
-  return new Paragraph({
-    alignment: AlignmentType.CENTER,
-    children: [
-      new ImageRun({
-        data: buffer,
-        transformation: {
-          width:  node.width  ?? 120,
-          height: node.height ?? 120,
-        },
-      }),
-    ],
-  });
-}
-
-/* ═══════════════════════════════════════════════════════════════════════════
-   INLINE RENDERER
-   Converts Inline[] → docx run/hyperlink objects.
-   variant controls sizing/color for contextual paragraphs (e.g., contact).
-═══════════════════════════════════════════════════════════════════════════ */
-
-function renderInline(nodes: Inline[], variant: IV = "body"): any[] {
-  const output: any[] = [];
-
-  for (const node of nodes) {
-    if (typeof node === "string") {
-      output.push(theme.stringRun(node, variant));
-      continue;
-    }
-
-    switch (node.type) {
-      case "strong":
-        output.push(theme.bold(flatten(node.content)));
-        break;
-
-      case "em":
-        output.push(theme.italic(flatten(node.content)));
-        break;
-
-      case "code":
-        output.push(theme.code(flatten(node.content)));
-        break;
-
-      case "link":
-        output.push(
-          new ExternalHyperlink({
-            link: node.href,
-            children: [theme.linkTextRun(flatten(node.content), variant)],
-          }),
-        );
-        break;
-    }
-  }
-
-  return output;
-}
-
-/* ═══════════════════════════════════════════════════════════════════════════
-   UTILITIES
-═══════════════════════════════════════════════════════════════════════════ */
-
-function flatten(nodes: Inline[]): string {
-  return nodes
-    .map((n) => (typeof n === "string" ? n : flatten(n.content)))
-    .join("");
-}
-
-/* ═══════════════════════════════════════════════════════════════════════════
-   ENTRY POINT
-═══════════════════════════════════════════════════════════════════════════ */
-
-const json     = JSON.parse(fs.readFileSync("data.json", "utf8")) as DocumentNode;
-const document = render(json);
-const buffer   = await Packer.toBuffer(document);
-
-fs.writeFileSync(path.resolve("resume.docx"), buffer);
-console.log("✅ resume.docx generated");

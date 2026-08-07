@@ -102,11 +102,23 @@ To restyle — edit `theme.ts` only.
 - Contact info in body (not in Word header/footer)
 - Standard bullet structure via docx numbering
 
+## CLI Options & Data Loading Resolution
+
+`src/index.ts` works as a CLI executable (`resume-docx`). It resolves resume JSON data with the following precedence order:
+
+1. **CLI Flag**: `--data-file <path>` / `-d <path>`
+2. **Piped Stdin**: `cat data.json | npx tsx src/index.ts`
+3. **CWD File**: `data.json` in execution working directory (`process.cwd()`)
+4. **Script Directory File**: `data.json` in package directory (`__dirname`)
+
+### CLI Options:
+- `-d, --data-file <path>`: Specify input resume JSON filepath
+- `-o, --out <path>`: Specify output `.docx` filepath (defaults to `./out/Resume.docx`)
+- `-h, --help`: Show usage help
+
 ## Known Issues / Gotchas
 
-- `TextRun` is NOT imported in index.ts — all runs come from theme methods
-- `AlignmentType` is imported in index.ts only for `renderImage` centering
-- `LevelFormat` is imported in theme.ts for `documentNumbering`
-- `flatten()` helper is needed for recursive Inline node text extraction
-- `data.json` is read from project root (not from src/)
-- Table cells have `(cell as any).content` because Inline can be a StrongNode — always flatten via `flatten()`
+- `TextRun` is imported in `index.ts` for rendering inline text
+- `data.json` is automatically resolved in order: CLI flag → stdin → CWD `data.json` → Script dir `data.json`
+- Executable binary configured in `package.json` under `"bin": { "resume-docx": "./src/index.ts" }`
+
