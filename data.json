@@ -110,7 +110,7 @@
           "type": "paragraph",
           "content": [
             { "type": "strong", "content": ["Colan Infotech Pvt. Ltd."] },
-            " • Frontend Software Engineer"
+            "  —  Frontend Software Engineer"
           ]
         },
         { "type": "paragraph", "subtype": "meta", "content": ["November 2024 – Present"] },
@@ -214,27 +214,9 @@
       "content": [
         { "type": "heading", "level": 2, "content": ["Core Competencies"] },
         {
-          "type": "list",
+          "type": "paragraph",
           "content": [
-            "Enterprise React Development",
-            "TypeScript",
-            "Performance Optimization",
-            "Frontend Architecture",
-            "SEO Optimization",
-            "Progressive Web Applications (PWA)",
-            "Reusable Component Design",
-            "State Management (Redux Toolkit)",
-            "REST API Integration",
-            "GraphQL",
-            "Agile Development",
-            "Code Reviews",
-            "Production Debugging",
-            "Release Management",
-            "Accessibility (WCAG)",
-            "Responsive Design",
-            "Localization (LTR & RTL)",
-            "Application Monitoring",
-            "Frontend Performance Profiling"
+            "Enterprise React Development  ·  TypeScript  ·  Performance Optimization  ·  Frontend Architecture  ·  SEO Optimization  ·  Progressive Web Applications  ·  Reusable Component Design  ·  State Management (Redux Toolkit)  ·  REST API Integration  ·  GraphQL  ·  Agile Development  ·  Code Reviews  ·  Production Debugging  ·  Release Management  ·  Accessibility (WCAG)  ·  Responsive Design  ·  Localization (LTR & RTL)  ·  Application Monitoring  ·  Frontend Performance Profiling"
           ]
         }
       ]
@@ -246,17 +228,10 @@
         {
           "type": "paragraph",
           "content": [
-            {
-              "type": "strong",
-              "content": ["Bachelor of Science in Computer Science"]
-            }
+            { "type": "strong", "content": ["Bachelor of Science in Computer Science"] }
           ]
         },
-        {
-          "type": "paragraph",
-          "content": ["Mazharul Uloom College, Ambur, Tamil Nadu"]
-        },
-        { "type": "paragraph", "content": ["June 2021 – May 2024"] }
+        { "type": "paragraph", "subtype": "meta", "content": ["Mazharul Uloom College, Ambur, Tamil Nadu  ·  June 2021 – May 2024"] }
       ]
     },
     {

@@ -1,22 +1,13 @@
-import fs from "node:fs";
+import fs   from "node:fs";
 import path from "node:path";
 
 import {
   AlignmentType,
-  BorderStyle,
   Document,
   ExternalHyperlink,
   ImageRun,
   Packer,
   Paragraph,
-  Table,
-  TableCell,
-  TableLayoutType,
-  TableRow,
-  TextRun,
-  VerticalAlign,
-  WidthType,
-  convertInchesToTwip,
 } from "docx";
 
 import type {
@@ -30,260 +21,146 @@ import type {
   TableNode,
 } from "./types.js";
 
-import { COLORS, FONT, SIZE, theme } from "./theme.js";
+import {
+  documentNumbering,
+  documentStyles,
+  MARGINS,
+  theme,
+  type InlineVariant,
+} from "./theme.js";
 
 // ─────────────────────────────────────────────────────────────────────────────
-// NO-BORDER TABLE CELL HELPER
-// Produces a completely invisible cell border definition for borderless tables.
+//  NOTE ON STYLING
+//  This file contains ZERO hardcoded colors, font names, sizes, or spacing.
+//  All styling decisions live in src/theme.ts.
+//  To change the look of the resume, edit theme.ts only.
 // ─────────────────────────────────────────────────────────────────────────────
 
-const noBorder = {
-  top:    { style: BorderStyle.NONE, size: 0, color: "FFFFFF" },
-  bottom: { style: BorderStyle.NONE, size: 0, color: "FFFFFF" },
-  left:   { style: BorderStyle.NONE, size: 0, color: "FFFFFF" },
-  right:  { style: BorderStyle.NONE, size: 0, color: "FFFFFF" },
-};
+/* ═══════════════════════════════════════════════════════════════════════════
+   RENDER ENTRY
+═══════════════════════════════════════════════════════════════════════════ */
 
-const noBorderTable = {
-  top:    { style: BorderStyle.NONE, size: 0, color: "FFFFFF" },
-  bottom: { style: BorderStyle.NONE, size: 0, color: "FFFFFF" },
-  left:   { style: BorderStyle.NONE, size: 0, color: "FFFFFF" },
-  right:  { style: BorderStyle.NONE, size: 0, color: "FFFFFF" },
-  insideH: { style: BorderStyle.NONE, size: 0, color: "FFFFFF" },
-  insideV: { style: BorderStyle.NONE, size: 0, color: "FFFFFF" },
-};
-
-// ─────────────────────────────────────────────────────────────────────────────
-// RENDER ENTRY
-// ─────────────────────────────────────────────────────────────────────────────
-
-function render(document: DocumentNode): Document {
+function render(doc: DocumentNode): Document {
   return new Document({
-    // Register Calibri as the default document font
-    styles: {
-      default: {
-        document: {
-          run: {
-            font: FONT.body,
-            size: SIZE.body,
-            color: COLORS.text,
-          },
-        },
-      },
-    },
+    styles:    documentStyles,
+    numbering: documentNumbering,
 
     sections: [
       {
         properties: {
           page: {
-            margin: {
-              top:    convertInchesToTwip(0.8),
-              bottom: convertInchesToTwip(0.8),
-              left:   convertInchesToTwip(0.9),
-              right:  convertInchesToTwip(0.9),
-            },
+            margin: MARGINS,
           },
         },
-
-        children: renderBlocks(document.content),
+        children: renderBlocks(doc.content),
       },
     ],
   });
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
-// BLOCK RENDERER
-// ─────────────────────────────────────────────────────────────────────────────
+/* ═══════════════════════════════════════════════════════════════════════════
+   BLOCK DISPATCHER
+═══════════════════════════════════════════════════════════════════════════ */
 
-function renderBlocks(nodes: Block[]) {
-  const output: any[] = [];
-  for (const node of nodes) {
-    output.push(...renderBlock(node));
-  }
-  return output;
+function renderBlocks(nodes: Block[]): any[] {
+  return nodes.flatMap(renderBlock);
 }
 
 function renderBlock(node: Block): any[] {
   switch (node.type) {
-    case "section":
-      return renderBlocks(node.content);
-
-    case "heading":
-      return [renderHeading(node)];
-
-    case "paragraph":
-      return [renderParagraph(node)];
-
-    case "list":
-      return renderList(node);
-
-    case "table":
-      return [renderTable(node)];
-
-    case "image":
-      return [renderImage(node)];
-
-    default:
-      return [];
+    case "section":   return renderBlocks(node.content);
+    case "heading":   return [renderHeading(node)];
+    case "paragraph": return [renderParagraph(node)];
+    case "list":      return renderList(node);
+    case "table":     return renderTable(node);
+    case "image":     return [renderImage(node)];
+    default:          return [];
   }
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
-// HEADINGS
-// ─────────────────────────────────────────────────────────────────────────────
+/* ═══════════════════════════════════════════════════════════════════════════
+   HEADINGS
+═══════════════════════════════════════════════════════════════════════════ */
 
 function renderHeading(node: HeadingNode): Paragraph {
-  // ── H1 — Candidate Name ───────────────────────────────────────────────────
-  // Large, centered, bold. Sets commanding first impression.
+  // ── H1: Candidate Name ────────────────────────────────────────────────────
   if (node.level === 1) {
     return new Paragraph({
-      alignment: AlignmentType.CENTER,
-
-      spacing: {
-        before: 0,
-        after:  80,
-      },
-
-      children: [
-        new TextRun({
-          text:  flatten(node.content),
-          bold:  true,
-          font:  FONT.body,
-          size:  SIZE.h1,
-          color: COLORS.dark,
-        }),
-      ],
+      ...theme.nameParaOpts(),
+      children: [theme.nameRun(flatten(node.content))],
     });
   }
 
-  // ── H2 — Section Headings ─────────────────────────────────────────────────
-  // Bold, slightly larger than body. A thin bottom rule provides section
-  // separation without heavy decoration — exactly like the Word reference.
+  // ── H2: Section Headings ──────────────────────────────────────────────────
+  // ALL CAPS, morning sky blue — no border/underline.
+  // Hierarchy is created through color, weight, and generous spacing alone.
   if (node.level === 2) {
     return new Paragraph({
-      spacing: {
-        before: 320,
-        after:  100,
-      },
-
-      // Thin horizontal rule below — the only visual decoration used.
-      border: {
-        bottom: {
-          style: BorderStyle.SINGLE,
-          color: COLORS.rule,
-          size:  4,
-        },
-      },
-
-      children: [
-        new TextRun({
-          text:  flatten(node.content).toUpperCase(),
-          bold:  true,
-          font:  FONT.body,
-          size:  SIZE.h2,
-          color: COLORS.dark,
-          // Small caps gives a polished Word-document feel
-          smallCaps: false,
-        }),
-      ],
+      ...theme.sectionHeadingParaOpts(),
+      children: [theme.sectionHeadingRun(flatten(node.content))],
     });
   }
 
-  // ── H3 — Sub-headings (Project / Role Titles) ─────────────────────────────
-  // Bold, same size as body or slightly larger. No decoration.
+  // ── H3: Sub-headings (project/role titles) ────────────────────────────────
   return new Paragraph({
-    spacing: {
-      before: 180,
-      after:  50,
-    },
-
-    children: [
-      new TextRun({
-        text:  flatten(node.content),
-        bold:  true,
-        font:  FONT.body,
-        size:  SIZE.h3,
-        color: COLORS.dark,
-      }),
-    ],
+    ...theme.subHeadingParaOpts(),
+    children: [theme.subHeadingRun(flatten(node.content))],
   });
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
-// PARAGRAPHS
-// ─────────────────────────────────────────────────────────────────────────────
+/* ═══════════════════════════════════════════════════════════════════════════
+   PARAGRAPHS
+═══════════════════════════════════════════════════════════════════════════ */
 
 function renderParagraph(node: ParagraphNode): Paragraph {
-  // ── Subtitle (job title under name) ───────────────────────────────────────
-  if (node.subtype === "subtitle") {
-    return new Paragraph({
-      alignment: AlignmentType.CENTER,
-      spacing: { before: 0, after: 60 },
-      children: [
-        new TextRun({
-          text:  flatten(node.content),
-          font:  FONT.body,
-          size:  SIZE.body + 2, // 12pt — slightly above body
-          color: COLORS.muted,
-          italics: true,
-        }),
-      ],
-    });
-  }
+  switch (node.subtype) {
+    // ── Header block ──────────────────────────────────────────────────────
+    case "subtitle":
+      return new Paragraph({
+        ...theme.subtitleParaOpts(),
+        children: [theme.subtitleRun(flatten(node.content))],
+      });
 
-  // ── Contact line ──────────────────────────────────────────────────────────
-  if (node.subtype === "contact") {
-    return new Paragraph({
-      alignment: AlignmentType.CENTER,
-      spacing: { before: 0, after: 60 },
-      children: renderInline(node.content),
-    });
-  }
+    case "contact":
+      return new Paragraph({
+        ...theme.contactParaOpts(),
+        // renderInline in 'contact' variant → muted, smaller runs + small links
+        children: renderInline(node.content, "contact"),
+      });
 
-  // ── Divider (thin horizontal rule) ─────────────────────────────────────────
-  if (node.subtype === "divider") {
-    return new Paragraph({
-      spacing: { before: 60, after: 60 },
-      border: {
-        bottom: {
-          style: BorderStyle.SINGLE,
-          color: COLORS.rule,
-          size:  4,
-        },
-      },
-      children: [
-        new TextRun({ text: "", size: 4 }),
-      ],
-    });
-  }
-  if (node.subtype === "meta" || node.subtype === "stack") {
-    return new Paragraph({
-      spacing: { after: 80, line: 260 },
-      children: [
-        new TextRun({
-          text:    flatten(node.content),
-          font:    FONT.body,
-          size:    SIZE.small,
-          color:   COLORS.muted,
-          italics: true,
-        }),
-      ],
-    });
-  }
+    case "divider":
+      return new Paragraph({
+        ...theme.dividerParaOpts(),
+        children: [theme.dividerRun()],
+      });
 
-  // ── Standard body paragraph ───────────────────────────────────────────────
-  return new Paragraph({
-    spacing: {
-      after: 80,
-      line:  268,
-    },
-    children: renderInline(node.content),
-  });
+    // ── Body metadata ─────────────────────────────────────────────────────
+    case "meta":
+      return new Paragraph({
+        ...theme.metaParaOpts(),
+        children: [theme.metaRun(flatten(node.content))],
+      });
+
+    case "stack":
+      return new Paragraph({
+        ...theme.metaParaOpts(),
+        children: [theme.stackRun(flatten(node.content))],
+      });
+
+    // ── Standard body paragraph ───────────────────────────────────────────
+    default:
+      return new Paragraph({
+        ...theme.bodyParaOpts(),
+        children: renderInline(node.content),
+      });
+  }
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
-// LISTS
-// ─────────────────────────────────────────────────────────────────────────────
+/* ═══════════════════════════════════════════════════════════════════════════
+   LISTS
+   Custom en-dash bullet (defined in documentNumbering) — small, muted, elegant.
+   ATS parsers treat '–' as a list indicator; no parsing issues.
+═══════════════════════════════════════════════════════════════════════════ */
 
 function renderList(node: ListNode): Paragraph[] {
   return node.content.map((item) => {
@@ -293,90 +170,55 @@ function renderList(node: ListNode): Paragraph[] {
         : renderInline(item.content);
 
     return new Paragraph({
-      bullet: {
-        level: 0,
-      },
-
-      spacing: {
-        after: 60,
-        line:  268,
-      },
-
-      indent: {
-        left:    360,
-        hanging: 220,
-      },
-
+      ...theme.bulletParaOpts(),
       children,
     });
   });
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
-// TABLES — Borderless two-column layout for skills
-// ─────────────────────────────────────────────────────────────────────────────
+/* ═══════════════════════════════════════════════════════════════════════════
+   TABLE / SKILL DEFINITIONS
+   "plain" layout (default) → ATS-friendly "Label:  Value" paragraphs.
+   "grid" layout            → borderless Word table (for tabular data).
+═══════════════════════════════════════════════════════════════════════════ */
 
-function renderTable(node: TableNode): Table {
-  return new Table({
-    layout: TableLayoutType.FIXED,
+function renderTable(node: TableNode): Paragraph[] {
+  // "plain" layout (default) — ATS-friendly "Label:  Value" paragraphs.
+  // No Word table structure in the output: fully readable by ATS parsers.
+  //
+  // To switch to a bordered/borderless Word table, change layout to "grid"
+  // in data.json and implement a grid renderer here using the docx Table API.
+  return node.rows.map((row) => {
+    const [labelCell, valueCell] = row.cells;
 
-    width: {
-      size: 100,
-      type: WidthType.PERCENTAGE,
-    },
+    // Extract text from either a raw string or a StrongNode / inline node
+    const labelText = typeof labelCell === "string"
+      ? labelCell
+      : flatten((labelCell as any).content ?? []);
 
-    // Remove all outer table borders
-    borders: noBorderTable,
+    const valueText = typeof valueCell === "string"
+      ? valueCell
+      : flatten((valueCell as any).content ?? []);
 
-    rows: node.rows.map(
-      (row) =>
-        new TableRow({
-          children: row.cells.map(
-            (cell, index) =>
-              new TableCell({
-                width: {
-                  size: index === 0 ? 22 : 78,
-                  type: WidthType.PERCENTAGE,
-                },
-
-                verticalAlign: VerticalAlign.TOP,
-
-                // Remove all cell borders
-                borders: noBorder,
-
-                // Subtle top margin per row via paragraph spacing
-                children: [
-                  new Paragraph({
-                    spacing: {
-                      after: 60,
-                      line:  260,
-                    },
-
-                    children: renderInline([cell]),
-                  }),
-                ],
-              }),
-          ),
-        }),
-    ),
+    return new Paragraph({
+      ...theme.skillParaOpts(),
+      children: [
+        theme.skillLabelRun(labelText),
+        theme.skillValueRun(valueText),
+      ],
+    });
   });
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
-// IMAGES
-// ─────────────────────────────────────────────────────────────────────────────
+/* ═══════════════════════════════════════════════════════════════════════════
+   IMAGE
+═══════════════════════════════════════════════════════════════════════════ */
 
 function renderImage(node: ImageNode): Paragraph {
   const buffer = fs.readFileSync(node.src);
 
   return new Paragraph({
     alignment: AlignmentType.CENTER,
-
-    spacing: {
-      before: 120,
-      after:  120,
-    },
-
     children: [
       new ImageRun({
         data: buffer,
@@ -389,16 +231,18 @@ function renderImage(node: ImageNode): Paragraph {
   });
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
-// INLINE RENDERERS
-// ─────────────────────────────────────────────────────────────────────────────
+/* ═══════════════════════════════════════════════════════════════════════════
+   INLINE RENDERER
+   Converts Inline[] → docx run/hyperlink objects.
+   variant controls sizing/color for contextual paragraphs (e.g., contact).
+═══════════════════════════════════════════════════════════════════════════ */
 
-function renderInline(nodes: Inline[]): any[] {
+function renderInline(nodes: Inline[], variant: IV = "body"): any[] {
   const output: any[] = [];
 
   for (const node of nodes) {
     if (typeof node === "string") {
-      output.push(theme.run(node));
+      output.push(theme.stringRun(node, variant));
       continue;
     }
 
@@ -419,15 +263,7 @@ function renderInline(nodes: Inline[]): any[] {
         output.push(
           new ExternalHyperlink({
             link: node.href,
-            children: [
-              new TextRun({
-                text:  flatten(node.content),
-                font:  FONT.body,
-                size:  SIZE.body,
-                color: COLORS.link,
-                style: "Hyperlink",
-              }),
-            ],
+            children: [theme.linkTextRun(flatten(node.content), variant)],
           }),
         );
         break;
@@ -437,24 +273,23 @@ function renderInline(nodes: Inline[]): any[] {
   return output;
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
-// UTILITIES
-// ─────────────────────────────────────────────────────────────────────────────
+/* ═══════════════════════════════════════════════════════════════════════════
+   UTILITIES
+═══════════════════════════════════════════════════════════════════════════ */
 
 function flatten(nodes: Inline[]): string {
   return nodes
-    .map((node) => (typeof node === "string" ? node : flatten(node.content)))
+    .map((n) => (typeof n === "string" ? n : flatten(n.content)))
     .join("");
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
-// ENTRY POINT
-// ─────────────────────────────────────────────────────────────────────────────
+/* ═══════════════════════════════════════════════════════════════════════════
+   ENTRY POINT
+═══════════════════════════════════════════════════════════════════════════ */
 
 const json     = JSON.parse(fs.readFileSync("data.json", "utf8")) as DocumentNode;
 const document = render(json);
 const buffer   = await Packer.toBuffer(document);
 
 fs.writeFileSync(path.resolve("resume.docx"), buffer);
-
 console.log("✅ resume.docx generated");
