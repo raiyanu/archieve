@@ -1,0 +1,71 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  height: 100%;
+  min-height: 100vh;
+  width: 100%;
+  background: linear-gradient(125deg, white 98%, black 2%);
+  background-repeat: repeat;
+  background-size: 30px 50px;
+  background-attachment: fixed;
+  background-position-x: -30px;
+  background-position-y: -30px;
+  animation: backblender 15s infinite linear;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+h1{
+  width: 270px;
+}
+span{
+  font-family: 'Arial';
+  animation: textblender 15s infinite linear;
+  text-anchor: middle;
+  font-size: 3rem;
+}
+@keyframes backblender {
+  0%{
+  background-size: 40px 60px;
+    background-position-x: -30px;
+    background-position-y: -30px;
+  }
+  12%{
+    background-size: 40px 55px;
+      background-position-x: -30px;
+      background-position-y: -30px;
+    }
+  25%{
+  background-size: 40px 50px;
+    background-position-x: 0px;
+    background-position-y: 0px;
+  }
+  37%{
+    background-size: 45px 45px;
+      background-position-x: -30px;
+      background-position-y: -30px;
+    }
+  50%{
+  background-size: 50px 40px;
+    background-position-x: 0px;
+    background-position-y: 0px;
+  }
+  75%{
+  background-size: 50px 30px;
+    background-position-x: 30px;
+    background-position-y: 30px;
+  }
+  87%{
+    background-size: 45px 35px;
+      background-position-x: 30px;
+      background-position-y: 30px;
+    }
+    100%{
+      background-size: 40px 60px;
+        background-position-x: -30px;
+        background-position-y: -30px;
+      }
+}
