@@ -1,0 +1,133 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+:root {
+	--clr-primary: 244, 208, 78;
+	--clr-grey: 17, 17, 17;
+	--clr-l-grey: 107, 107, 107;
+}
+
+.container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	margin-inline: auto;
+	font-family: "Figtree", "poppins", sans-serif, "Segoe UI", Tahoma, Geneva,
+		Verdana;
+	background: rgba(var(--clr-primary), 1);
+	padding-block: 15px;
+	height: 100vh;
+	height: 100dvh;
+	max-width: 100vw;
+}
+
+.card {
+	border-radius: 15px;
+	border: 1px solid black;
+	box-shadow: 8px 8px 0px 0px black;
+	overflow: hidden;
+	padding: 24px;
+	background-color: aliceblue;
+	display: flex;
+	flex-direction: column;
+	gap: 18px;
+	width: 364px;
+	max-width: 95vw;
+	height: max-content;
+}
+
+.featured-image {
+	border-radius: 12px;
+	overflow: hidden;
+	aspect-ratio: 16/9;
+	width: 100%;
+}
+
+.featured-image img {
+	width: 100%;
+	height: auto;
+	object-fit: cover;
+}
+
+.text-content {
+	max-width: 95%;
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+}
+
+.card-heading {
+	font-size: x-large;
+	font-weight: 700;
+	cursor: pointer;
+}
+.card-heading:hover {
+	color: rgb(var(--clr-primary));
+}
+
+.main-tag {
+	padding-block: 4px;
+	padding-inline: 12px;
+	background: rgba(var(--clr-primary), 1);
+	font-weight: 500;
+	display: block;
+	width: fit-content;
+	margin-block: 5px;
+	border-radius: 3px;
+}
+
+.card-date {
+	display: block;
+	font-weight: 400;
+}
+
+.author-info {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	padding-block: 5px;
+}
+
+.author-info h2 {
+	font-size: 14px;
+}
+
+.author-info img {
+	aspect-ratio: 1/1;
+	width: 35px;
+	border-radius: 50%;
+	object-fit: cover;
+	font-weight: 900;
+	letter-spacing: 0.1ch;
+}
+
+.card-body-content {
+	font-size: 16px;
+	color: rgb(39, 36, 36, 0.6);
+	font-weight: 400;
+	word-spacing: 0.4ch;
+}
+
+@media screen and (max-width: 360px) {
+	.container {
+		height: 100vh;
+		height: 100dvh;
+		min-height: max-content;
+	}
+
+	.featured-image {
+		border-radius: 8px;
+	}
+
+	.text-content {
+		gap: 12px;
+	}
+	.card-body-content {
+		font-size: 14px;
+		word-spacing: 0.3ch;
+	}
+}
