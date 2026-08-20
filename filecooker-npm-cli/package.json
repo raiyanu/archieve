@@ -1,0 +1,17 @@
+{
+  "name": "filecooker",
+  "version": "1.0.1",
+  "bin": {
+    "filecooker": "./cli.js"
+  },
+  "type": "module",
+  "main": "cli.js",
+  "scripts": {
+    "build": "node --experimental-sea-config sea-config.json",
+    "prepack": "cp cli.js cli.temp.js",
+    "dev" : "node cli.js"
+  },
+  "dependencies": {
+    "follow-redirects": "^1.15.9"
+  }
+}
