@@ -1,0 +1,102 @@
+---
+import Blob from "../components/blob.astro";
+import Link from "../components/Link.astro";
+import { fetchData } from "../module/FetchMyData.js";
+const data = await fetchData();
+---
+
+<div class="hero" id="home">
+  <Link />
+  <div class="hero-intro">
+    <h1>{data.name}</h1>
+    <span><hr /> Full Stack Dev</span>
+    <p>
+      {data.bio}
+    </p>
+    <a href="mailto:raiyan.c.me@gmail.com" target="_blank"
+      >Say hello <img src="assets/send-2.svg" alt="" srcset="" /></a
+    >
+  </div>
+  <Blob />
+</div>
+
+<style>
+  .hero {
+    padding: 20px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column-reverse;
+  }
+  .hero-intro {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  h1 {
+    font-size: 40px;
+    font-weight: 500;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+      sans-serif;
+  }
+  span {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 16px;
+    font-weight: 500;
+  }
+  hr {
+    width: 50px;
+    border: 0px solid white;
+    border-top: 1px solid black;
+    height: 1px;
+  }
+  p {
+    font-size: 1.05rem;
+    width: 350px;
+  }
+  a {
+    cursor: pointer;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    height: 50px;
+    border-radius: 15px;
+    background-color: black;
+    color: white;
+    gap: 5px;
+    font-size: medium;
+    border: none;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+  }
+  a:hover {
+    border-radius: 10px;
+    box-shadow: 0px 15px 30px -12px rgba(0, 0, 0, 0.25);
+  }
+  a > img {
+    width: 20px;
+    height: 20px;
+    transition: all 0.3s ease-in-out;
+  }
+  a:hover > img {
+    transform: translateX(3px) translateY(-3px);
+  }
+
+  @media (min-width: 700px) {
+    .hero {
+      padding-top: 3rem;
+      flex-direction: row;
+      margin-top: 130px;
+    }
+    .hero-intro {
+      gap: 1.4rem;
+    }
+    Blob {
+      height: 500px;
+    }
+  }
+</style>

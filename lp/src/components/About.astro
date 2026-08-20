@@ -1,0 +1,90 @@
+---
+import IntroCard from "./elements/Intro-Card.astro";
+---
+
+<section class="center">
+  <h1 id="about">About me</h1>
+  <span>My introduction</span>
+  <div class="intro center">
+    <img class="myimg" src="assets/myimg.png" alt="my img" />
+    <div class="intro-detail">
+      <IntroCard />
+      <p>
+        I'm an experienced frontend developer specializing in crafting visually
+        stunning and user-friendly web pages with a focus on UI/UX design. Let's
+        collaborate and create something extraordinary together!
+      </p>
+      <button
+        >Download CV<img src="assets/send-2.svg" alt="" srcset="" /></button
+      >
+    </div>
+  </div>
+</section>
+
+<style>
+  button {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    height: 50px;
+    border-radius: 15px;
+    background-color: black;
+    color: white;
+    gap: 5px;
+    font-size: medium;
+    border: none;
+  }
+  section {
+    margin-top: 40px;
+  }
+  .center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .myimg {
+    display: block;
+    height: 350px;
+    background: black;
+    width: 300px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+    margin-top: 40px;
+    flex-shrink: 0;
+  }
+
+  p {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 16px;
+  }
+  .intro-detail {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    max-width: 450px;
+  }
+  @media (min-width: 700px) {
+    .intro {
+      justify-content: space-evenly;
+      flex-direction: row;
+      width: 100%;
+    }
+    p {
+      text-align: start;
+    }
+    .myimg {
+      height: 300px;
+    }
+    .intro-detail {
+      padding: 10px;
+      align-items: flex-start;
+      height: 300px;
+      justify-content: space-between;
+      width: 400px;
+    }
+  }
+</style>
