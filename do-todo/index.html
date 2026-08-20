@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DO TODO | Main</title>
+    <link rel="stylesheet" href="./style/style.css" />
+    <link rel="stylesheet" href="./style/font.css" />
+    <link rel="stylesheet" href="./style/fun.css" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="todo">
+            <div class="todo-head">
+                <div class="todo-topbar">
+                    <span class="ui_coin_container" data-long-press-delay="500" id="ui_coin_container"> Goal Coin: <span
+                            id="ui_coin">0</span></span>
+                    <div class="util-action">
+                        <img src="./assets/setting.svg"
+                            onclick="util_list.classList.toggle('showUtil'); this.classList.toggle('isOpen')" alt="">
+                        <div class="util-list" id="util_list">
+                            <p><b>Delete:</b> <br> <span class="utils-trigger" id="uiClearAll">All</span> - <span
+                                    class="utils-trigger" id="uiClearAllCompleted">completed</span></p>
+                        </div>
+                    </div>
+                </div>
+                <form action="" id="taskForm">
+                    <input type="text" name="todo-text" id="todo_text" placeholder="Enter your task here..." />
+                    <button type="submit"><img src="./assets/add.svg" alt=""></button>
+                </form>
+            </div>
+            <div class="todo-body" id="todo_body">
+                <div id="TaskList" class="taskListContainer">
+                </div>
+                <div class="completedTask" id="toggleComplete">
+                    <p>Completed</p>
+                    <button class="toggleComplete">
+                        <img src="./assets/arrow-right.svg" id="ArrowIcon" alt="">
+                    </button>
+                </div>
+                <div id="CompletedTaskList" class="taskListContainer completedTaskListContainer  ">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./js/main.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
+</body>
+
+</html>
