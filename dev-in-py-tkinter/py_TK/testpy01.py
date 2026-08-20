@@ -1,0 +1,1 @@
+frcanvas.itemconfig(image_container,image=pic)
