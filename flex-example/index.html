@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlexBox sample</title>
+    <style>
+        body {
+            background-color: #FFDEE9;
+            background-color: #FAACA8;
+            background-image: linear-gradient( 58.2deg,  rgba(40,91,212,0.73) -3%, rgba(171,53,163,0.45) 49.3%, rgba(255,204,112,0.37) 97.7% );
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            max-width: 1200px;
+            min-width: 900px;
+            flex-direction: column;
+            border: 1px solid rgba(255, 255, 255, 0.575);
+            padding: 1rem;
+        }
+
+        .box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #8EC5FC;
+            background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+            height: 100px;
+            width: 150px;
+            margin: 5px;
+            color: white;
+            font-family: monospace;
+            font-weight: bolder;
+            padding: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.014);
+            transition:1s ease-in-out;
+        }
+        .box:hover{
+            border: 1px solid rgba(255, 255, 255, 0.418);
+        }
+        .fl {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .flex-around {
+            justify-content: space-around;
+        }
+
+        .flex-btw {
+            justify-content: space-between;
+        }
+
+        .flex-evenly {
+            justify-content: space-evenly;
+        }
+
+        .flex-flex-start {
+            justify-content: flex-start;
+        }
+
+        .flex-flex-end {
+            justify-content: flex-end;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="fl flex-center">
+            <div class="box">display:flex;</div>
+            <div class="box">align-items:center;</div>
+            <div class="box">justify-content:center;</div>
+        </div>
+        <div class="fl flex-around">
+            <div class="box">display:flex;</div>
+            <div class="box">align-items:center;</div>
+            <div class="box">justify-content:flex-around;</div>
+        </div>
+        <div class="fl flex-btw">
+            <div class="box">display:flex;</div>
+            <div class="box">align-items:center;</div>
+            <div class="box">justify-content:space-between;</div>
+        </div>
+        <div class="fl flex-evenly">
+            <div class="box">display:flex;</div>
+            <div class="box">align-items:center;</div>
+            <div class="box">justify-content:space-evenly;</div>
+        </div>
+        <div class="fl flex-flex-start">
+            <div class="box">display:flex;</div>
+            <div class="box">align-items:center;</div>
+            <div class="box">justify-content:flex-start;</div>
+        </div>
+        <div class="fl flex-flex-end">
+            <div class="box">display:flex;</div>
+            <div class="box">align-items:center;</div>
+            <div class="box">justify-content:flex-end;</div>
+        </div>
+    </div>
+</body>
+
+</html>
