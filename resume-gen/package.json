@@ -1,0 +1,28 @@
+{
+  "name": "resume_ui_v2",
+  "version": "1.0.0",
+  "description": "Resume DOCX generator CLI",
+  "main": "src/index.ts",
+  "type": "module",
+  "bin": {
+    "resume-docx": "./src/index.ts"
+  },
+  "scripts": {
+    "generate": "tsx src/index.ts",
+    "build:watch": "tsx watch src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc --outDir ./dist"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@matbee/libreoffice-converter": "^2.7.2",
+    "docx": "^9.7.1"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.2",
+    "tsx": "^4.23.9",
+    "typescript": "^7.0.2"
+  }
+}
