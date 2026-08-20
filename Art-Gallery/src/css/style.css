@@ -1,0 +1,64 @@
+@import url("https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #333;
+  border-radius: 10px;
+}
+
+nav {
+  max-height: 10vh;
+}
+
+body {
+  font-family: roboto;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+body main {
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: 100%;
+  gap: 1rem;
+  height: auto;
+  display: flex;
+}
+body main > div {
+  min-height: 100%;
+}
+body main > div:nth-child(1) {
+  flex-grow: 0;
+  flex-shrink: 1;
+  padding: 1rem;
+  gap: 1rem;
+}
+@media (max-width: 720px) {
+  body main > div:nth-child(1) {
+    background-color: whitesmoke;
+  }
+}
+body main > div:nth-child(2) {
+  flex-grow: 0;
+  flex-shrink: 1;
+  width: 100%;
+}
+body main .tab-content .tab-pane {
+  max-height: 90vh;
+  overflow-y: scroll;
+}
+body main #HomeCarousel {
+  max-height: 400px;
+}
+body main #HomeCarousel .carousel-inner {
+  max-height: 400px;
+}
+body main #HomeCarousel .carousel-inner img {
+  max-height: 400px;
+  object-fit: cover;
+}
+
+/*# sourceMappingURL=style.css.map */

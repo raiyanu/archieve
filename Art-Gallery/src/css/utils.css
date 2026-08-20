@@ -1,0 +1,15 @@
+.link-icon-hover-move {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  transition: all 250ms ease-in;
+}
+.link-icon-hover-move:hover {
+  gap: 10px;
+}
+.link-icon-hover-move:hover > svg {
+  transition: all 250ms ease-in;
+  rotate: -35deg;
+}
+
+/*# sourceMappingURL=utils.css.map */

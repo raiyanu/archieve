@@ -1,0 +1,13 @@
+.link-icon-hover-move {
+	display: flex;
+	align-items: center;
+	justify-content: start;
+	transition: all 250ms ease-in;
+	&:hover {
+		gap: 10px;
+		& > svg {
+			transition: all 250ms ease-in;
+			rotate: -35deg;
+		}
+	}
+}
