@@ -1,0 +1,93 @@
+.container {
+	width: 100%;
+	max-width: minmax(1200px, 100vw);
+	overflow-x: clip;
+	margin-inline: auto;
+	min-height: 100vh;
+	min-height: 100dvh;
+}
+.calci {
+	width: 400px;
+	border-radius: 10px;
+	background: linear-gradient(225deg, #cacaca, #f0f0f0);
+	box-shadow: -20px 20px 60px #bebebe, 20px -20px 60px #ffffff;
+	padding: 2rem;
+	animation: hop-up 250ms ease-in-out;
+}
+.numpad {
+	animation: hop-up 250ms ease-in-out;
+}
+.numpad button:nth-child(4n + 4) {
+	animation: draw-in-left 1050ms ease-in;
+}
+.numpad button:nth-child(4n + 3) {
+	animation: draw-in-left 850ms ease-in;
+}
+.numpad button:nth-child(4n + 2) {
+	animation: draw-in-left 650ms ease-in;
+}
+.numpad button:nth-child(4n + 1) {
+	animation: draw-in-left 450ms ease-in;
+}
+@keyframes draw-in-left {
+	from {
+		transform: translateX(20px);
+	}
+	to {
+		transform: translateX(0px);
+	}
+}
+
+@keyframes hop-up {
+	from {
+		transform: translateY(20px) translateX(20px);
+	}
+	to {
+		transform: translateY(0px) translateX(0px);
+	}
+}
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	color: rgb(100, 100, 100);
+	gap: 1rem;
+}
+.wrapper input {
+	width: 100%;
+	border-radius: 5px;
+}
+.calci .wrapper input {
+	color: rgb(120, 120, 120);
+	padding: 10px;
+	font-size: 1.5rem;
+}
+.numpad {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 10px;
+	color: white;
+}
+.numpad button {
+	color: rgb(120, 120, 120);
+	font-size: 1.4rem;
+	padding-inline: 1.5rem;
+	-webkit-user-select: none; /* Safari */
+	-ms-user-select: none; /* IE 10 and IE 11 */
+	user-select: none;
+}
+.util span {
+	display: inline-block;
+	border-radius: 50%;
+	width: 20px;
+	height: 20px;
+	text-align: center;
+	aspect-ratio: 1/1;
+	background-color: rgba(54, 54, 54, 0.075);
+	vertical-align: middle;
+	line-height: 120%;
+	cursor: pointer;
+}
+
+span.active {
+	background: gray;
+}
