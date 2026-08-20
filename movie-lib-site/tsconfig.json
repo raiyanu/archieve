@@ -1,0 +1,13 @@
+{
+	// "files": [],
+	"references": [],
+	"compilerOptions": {
+		"jsx": "react",
+		"baseUrl": ".",
+		"paths": {
+			"@/*": ["./src/*"],
+			"@/utils/*": ["./src/utils/*"],
+			"@/section/*": ["./src/section/*"]
+		}
+	}
+}
