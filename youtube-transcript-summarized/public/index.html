@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Youtube Transcript summarized </title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="box">
+            <h3>Summarize youtube Transcript</h3>
+            <textarea name="Transcript" id="Transcript" placeholder="Paste Transcript here..." rows="6"></textarea>
+            <button onclick="summarize()">Summarize!!</button>
+            <div class="summary">
+                <h3>Summary</h3>
+                <textarea name="Transcript" id="Summary" rows="6" aria-readonly="true"></textarea>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.2/axios.min.js"
+        integrity="sha512-JSCFHhKDilTRRXe9ak/FJ28dcpOJxzQaCd3Xg8MyF6XFjODhy/YMCM8HW0TFDckNHWUewW+kfvhin43hKtJxAw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="./main.js"></script>
+</body>
+
+</html>
