@@ -1,0 +1,113 @@
+@media screen and (max-width: 460px) {
+	.top-content {
+		flex-direction: column;
+		gap: 1.5rem;
+		justify-content: flex-end;
+	}
+	.weather-main-detail {
+		padding-block: 2rem;
+	}
+	.weather-card-media {
+		border-radius: 0px;
+	}
+	.weather-main-detail hr {
+		max-height: 2px;
+		min-width: 200px;
+		margin-block: 0.5rem;
+	}
+	.right-set {
+		gap: 1rem;
+		flex: 1 0 auto;
+		min-width: 80%;
+		padding: 2rem;
+	}
+	.right-set dl p:nth-child(1) {
+		font-weight: 500;
+		color: #1a1a1a;
+	}
+}
+
+@media screen and (min-width: 460px) {
+	.right-set {
+		grid-template-columns: 1fr 1fr;
+	}
+	.right-set > dl {
+		gap: 12px;
+	}
+	.right-set > dl > p:nth-child(1) {
+		grid-column: 1 / 2;
+	}
+	.right-set > dl > p:nth-child(2) {
+		grid-column: 2 / 3;
+	}
+
+	.weather-main-detail {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-items: flex-start;
+	}
+	.weather-card-detail {
+		margin-top: 0;
+	}
+	.extra-detail {
+		min-width: fit-content;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 1rem;
+	}
+	.extra-detail > dl {
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+	.weather-card-detail {
+		border-radius: 0px;
+	}
+}
+
+@media screen and (min-width: 1000px) {
+	.container {
+		min-height: 100vh;
+		min-height: 100dvh;
+	}
+	.weather-card {
+		width: fit-content;
+		margin: auto;
+		border-radius: 10px;
+		overflow: hidden;
+		border: 1px solid rgba(128, 128, 128, 0.253);
+		box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+	}
+	.weather-card-media {
+		display: flex;
+		border-radius: 10px;
+		flex-direction: column;
+		min-width: 300px;
+		flex-basis: 100%;
+	}
+	.wrapper {
+		display: flex;
+		justify-content: center;
+	}
+
+	.right-set {
+		width: 240px;
+	}
+	.extra-detail {
+		width: 300px;
+		flex-shrink: 1;
+		align-items: flex-start;
+		justify-content: flex-start;
+	}
+	.extra-detail dl {
+		min-width: 100%;
+		flex-shrink: 0;
+		width: 200px;
+	}
+	.weather-card-detail {
+		padding: 1rem;
+	}
+}
