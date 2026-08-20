@@ -1,0 +1,107 @@
+.hero{
+    background-image: url('../assets/shows\ banner.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    height: 100dvh;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    position: relative;
+    padding-top: 10rem;
+}
+.hero-container{
+    width: 80%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+    position: absolute;
+    z-index: 9;
+}
+.hero::before{
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: red;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, .6);
+    z-index: 1;
+}
+
+.hero-container h1{
+    font-size: 3.5rem;
+    text-align: center;
+}
+.hero-container p{
+    font-size: 1.6rem;
+}
+/* Subscribe */
+.subscribe{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 780px;
+    gap: .3rem;
+}
+.subscribe p{
+    font-size: 1.4rem;
+}
+.getstarted{
+    display: flex;
+    align-items: center;
+    gap: .9rem;
+}
+.getstarted input{
+    background-color: rgba(0, 0, 0, 0.233);
+    border: 1px solid white;
+    font-size: 1.4rem;
+    padding: .5px 1rem;
+    height: 3rem;
+    width: 350px;
+    border-radius: 5px;
+}
+.getstarted button{
+    border: none;
+    background-color: red;
+    cursor: pointer;
+    height: 3rem;
+    width: 170px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    flex-grow: 0;
+}
+@media (width <=750px) {
+    .getstarted{
+        flex-direction: column;
+        max-width: 100%;
+    }
+    .hero-container h1{
+        font-size: 32px;
+        text-align: center;
+    }
+    .hero-container p{
+        text-align: center;
+        font-size: 18px;
+        font-weight: 18px;
+    }
+    .hero{
+        min-height: 90vh;
+        min-height: 90dvh;
+    }
+    .subscribe{
+        max-width: 95%;
+    }
+    .getstarted input{
+        max-width: 100%;
+    }
+    .hero-container {
+        width: 100%;
+    }
+}
