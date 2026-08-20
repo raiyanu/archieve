@@ -1,0 +1,103 @@
+.card, body {
+  display: flex;
+  align-items: center;
+}
+
+body {
+  justify-content: center;
+  height: 100dvh;
+  height: 100vh;
+  background: url("./images/bg.webp");
+  background-position: center;
+  background-size: contain;
+  color: #fafafa;
+}
+body * {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: inter, Verdana, Geneva, Tahoma, sans-serif;
+}
+body *::selection {
+  background-color: #333;
+  color: #fff;
+}
+body ul {
+  padding-inline-start: 10px;
+}
+body ul li {
+  list-style-type: none;
+}
+
+.card {
+  /* Glassmorphism Effect */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(3px);
+  background-color: rgba(255, 255, 255, 0.05);
+  position: relative;
+  transition: transform 0.75s ease-in-out;
+  justify-content: stretch;
+  border-radius: 10px;
+  height: 250px;
+  width: 520px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.card:hover {
+  transform: translateZ(12px) translateY(-2px) translateX(-2px);
+}
+.card::before {
+  content: " ";
+  height: 300%;
+  width: 60%;
+  rotate: 20deg;
+  translate: -200%;
+  background: linear-gradient(to left, transparent, rgba(255, 255, 255, 0.363), transparent);
+  position: absolute;
+  z-index: -1;
+}
+.card:hover::before {
+  transition: translate 0.75s ease-in-out, rotate 0.55s ease-in-out;
+  translate: 250%;
+  rotate: 40deg;
+}
+.card h2 {
+  font-size: calc(18px + 6 * (100vw - 320px) / 680) !important;
+  font-weight: 800;
+}
+.card .logo img {
+  height: 100px;
+  user-select: none;
+  transition: filter 250ms ease-in-out;
+}
+.card .logo img ::selection {
+  cursor: not-allowed;
+}
+.card .logo img:hover {
+  filter: drop-shadow(2px 2px 8px white);
+}
+.card .text-content > * {
+  font-size: calc(10px + 5 * (100vw - 320px) / 680);
+}
+.card .text-content * {
+  margin-top: 5px;
+}
+.card .text-content > *:nth-child(2) {
+  margin-top: 1px;
+  margin-bottom: 10px;
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 600px) {
+  .card {
+    flex-direction: column;
+    height: 400px;
+    width: 250px;
+    padding: calc(1rem - 12px);
+    justify-content: space-evenly;
+    list-style-type: none;
+    list-style-position: outside;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */

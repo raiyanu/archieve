@@ -1,0 +1,114 @@
+@use "effects";
+@use "global";
+
+@use "sass:color";
+
+$font-white: color.mix(white, whitesmoke, $method: rgb);
+
+%v-center {
+	display: flex;
+	align-items: center;
+}
+
+%h-center {
+	display: flex;
+	justify-content: center;
+}
+
+body {
+	@extend %v-center;
+	justify-content: center;
+
+	height: 100dvh;
+	height: 100vh;
+	@include global.bg-img-contained("./images/bg.webp");
+	color: $font-white;
+
+	* {
+		@include global.global;
+	}
+
+	ul {
+		padding-inline-start: 10px;
+		li {
+			list-style-type: none;
+		}
+	}
+}
+
+.card {
+	@include effects.glassmorphismEffect;
+
+	@extend %v-center;
+	justify-content: stretch;
+	border-radius: 10px;
+	height: 250px;
+	width: 520px;
+	overflow: hidden;
+	cursor: pointer;
+
+	h2 {
+		font: {
+			size: calc(18px + 6 * ((100vw - 320px) / 680)) !important;
+			weight: 800;
+		}
+	}
+	.logo img {
+		height: 100px;
+		::selection {
+			cursor: not-allowed;
+		}
+		user-select: none;
+		transition: filter 250ms ease-in-out;
+		&:hover {
+			filter: drop-shadow(2px 2px 8px white);
+		}
+	}
+	.text-content > * {
+		font-size: calc(10px + 5 * ((100vw - 320px) / 680));
+	}
+	.text-content * {
+		margin-top: 5px;
+	}
+	.text-content > *:nth-child(2) {
+		margin: {
+			top: 1px;
+			bottom: 10px;
+		}
+		text-decoration: underline;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.card {
+		flex-direction: column;
+		height: 400px;
+		width: 250px;
+		padding: calc(1rem - 12px);
+		justify-content: space-evenly;
+		list-style : {
+			type: none;
+			position: outside;
+		}
+	}
+}
+
+// Testing scope of variable in scss
+
+// $vale-val: red;
+
+// $is-dark-theme: false;
+// @if $is-dark-theme {
+// 	$vale-val: blue;
+// }
+
+// @mixin styleIt($theme) {
+// 	@if $is-dark-theme {
+// 		$vale-val: blue;
+// 	}
+// 	border: 3px solid $vale-val;
+// }
+// .card {
+// 	@include styleIt($is-dark-theme);
+// 	background-color: $vale-val;
+// }

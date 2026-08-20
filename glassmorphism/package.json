@@ -1,0 +1,9 @@
+{
+  "name": "glassmorphism",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "sass": "^1.81.1"
+  }
+}

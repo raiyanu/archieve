@@ -1,0 +1,36 @@
+$blur-amount: 3px;
+@mixin glassmorphismEffect {
+	/* Glassmorphism Effect */
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	backdrop-filter: blur($blur-amount);
+	background-color: rgba(255, 255, 255, 0.05);
+	position: relative;
+	transition: transform 0.75s ease-in-out;
+	&:hover {
+		transform: translateZ(12px) translateY(-2px) translateX(-2px);
+	}
+	&::before {
+		content: " ";
+		height: 300%;
+		width: calc(60%);
+		rotate: 20deg;
+		translate: -200%;
+		background: linear-gradient(
+			to left,
+			transparent,
+			rgba(255, 255, 255, 0.363),
+			transparent
+		);
+		position: absolute;
+		z-index: -1;
+	}
+	&:hover::before {
+		transition: translate 0.75s ease-in-out, rotate 0.55s ease-in-out;
+		translate: 250%;
+		rotate: 40deg;
+	}
+}
+
+@mixin dropEffect($spread) {
+	filter: drop-shadow(2px 2px $spread white);
+}
