@@ -1,0 +1,21 @@
+{
+  "name": "my-react-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RaiyanAhmed-RK/git-my-react-app.git"
+  },
+  "author": "raiyan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RaiyanAhmed-RK/git-my-react-app/issues"
+  },
+  "homepage": "https://github.com/RaiyanAhmed-RK/git-my-react-app#readme"
+}
