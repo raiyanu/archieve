@@ -1,0 +1,31 @@
+.token-growth-timeline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.token-growth-timeline .tk-growth-card-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: center;
+  gap: 12px;
+}
+.token-growth-timeline .tk-growth-card-wrapper > *,
+.token-growth-timeline .tk-growth-card-wrapper .tk-growth-card {
+  max-height: 160px;
+  width: auto;
+  aspect-ratio: 2/1;
+}
+
+.tk-growth-card {
+  background: #171b29;
+}
+
+.diode-sm + span {
+  color: var(--accent-color);
+}
+.diode-sm:nth-child(1n+1) {
+  box-shadow: 2px 4px 4px var(--accent-color);
+}
+
+/*# sourceMappingURL=tk-growth-line.css.map */

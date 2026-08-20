@@ -1,0 +1,17 @@
+@media (min-width: 920px) {
+  .navbar .container-fluid > img {
+    height: 18px;
+  }
+  .navbar .navbar-nav {
+    margin-top: 5px;
+    margin-left: 10px;
+  }
+}
+
+.navbar-nav a {
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/*# sourceMappingURL=navbar.css.map */

@@ -1,0 +1,68 @@
+.hero-section .wrapper {
+  min-height: max-content;
+  width: 100%;
+}
+
+.tokners-schedule-count.annual-number {
+  width: fit-content;
+  margin-inline: auto;
+}
+
+.annual-number-mini:nth-child(1) {
+  margin-bottom: auto;
+}
+.annual-number-mini:nth-child(3) {
+  margin-top: 5rem;
+}
+
+.hero-image {
+  position: relative;
+}
+.hero-image > .actual-image {
+  width: 600px;
+  max-width: 90vw;
+  z-index: 99;
+  position: relative;
+}
+.hero-image > .shadow-image {
+  width: 600px;
+  max-width: 90vw;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  transform: translateY(10px) translateY(-10px);
+  border: 2px solid rgba(100, 150, 255, 0.1);
+  filter: blur(10px);
+  z-index: 1;
+  opacity: 0.3;
+}
+
+@media screen and (max-width: 900px) {
+  .tokners-schedule-count.annual-number {
+    width: unset;
+    margin-inline: unset;
+  }
+  .bottom-text-content {
+    flex-wrap: wrap;
+  }
+  .bottom-text-content > div:nth-child(1) {
+    order: 1;
+  }
+  .bottom-text-content > div:nth-child(2) {
+    order: 3;
+  }
+  .bottom-text-content > div:nth-child(3) {
+    order: 2;
+  }
+  .annual-number-mini:nth-child(1) {
+    margin-bottom: 0rem;
+  }
+  .annual-number-mini:nth-child(2) {
+    margin-top: 0rem;
+  }
+  .annual-number-digits > span {
+    right: 0.5rem;
+  }
+}
+
+/*# sourceMappingURL=token.css.map */

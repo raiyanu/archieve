@@ -1,0 +1,43 @@
+.annual-collection {
+	.annual-card {
+		&:nth-child(1) {
+			margin-left: auto;
+		}
+		background-color: #fff;
+		width: 700px;
+		max-width: 95vw;
+		height: 300px;
+		min-height: fit-content;
+		color: #000;
+		padding: 4rem 6rem;
+	}
+}
+.annual-number {
+	& > p {
+		position: relative;
+		margin-bottom: 2rem;
+		& > span {
+			color: #000;
+			position: absolute;
+			top: 100%;
+			font-size: 16px;
+		}
+	}
+}
+.annual-number-digits {
+	text-align: center;
+	color: var(--accent-color);
+}
+
+@media screen and (max-width: 700px) {
+	.annual-collection {
+		.annual-card {
+			padding: 2rem 1rem;
+		}
+	}
+	.annual-number-digits {
+		& > p > span {
+			right: 1rem;
+		}
+	}
+}
